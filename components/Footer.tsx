@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="px-10 w-full bg-yellow-500/20 p-20">
-      <div className="flex flex-col gap-10  lg:flex-row justify-between">
+      <div className="flex flex-col gap-10  lg:flex-row justify-between 2xl:container 2xl:mx-auto">
         <div className="flex flex-col items-start gap-6">
           <Link
             href={"/"}

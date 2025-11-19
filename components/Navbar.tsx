@@ -27,11 +27,11 @@ const Navbar = () => {
   }, [isOpen]);
   return (
     <nav
-      className={`fixed  top-0 left-0 right-0  z-50 ${
+      className={`fixed  top-0 left-0 right-0  2xl:right-10 2xl:left-10 z-50 ${
         isOpen ? "bg-white" : ""
       }`}
     >
-      <div className="2xl:container 2xl:mx-auto z-50 bg-white/80 max-sm:border-b lg:border lg:rounded-full lg:mx-10 lg:shadow-sm lg:mt-4  backdrop-blur-md flex px-4 py-2 lg:py-4 justify-between items-center h-full">
+      <div className="2xl:container 2xl:mx-auto  z-50 bg-white/80 max-sm:border-b lg:border lg:rounded-full lg:mx-10 xl:mx-30 lg:shadow-sm lg:mt-4  backdrop-blur-md flex px-4 py-2  justify-between items-center h-full">
         <Link
           href={"/"}
           className="text-xl font-bold z-50 border bg-black px-1 md:px-4 rounded-full"
@@ -47,8 +47,8 @@ const Navbar = () => {
             />
           </div>
         </Link>
-        <ul className="hidden lg:flex items-center gap-10 text-lg">
-          <li className="text-xl">
+        <ul className="hidden lg:flex items-center gap-6 text-lg">
+          <li className="text-base">
             <Link href="/">Home</Link>
           </li>
           <li>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 onMouseLeave={() => setOpenDropdown(false)}
                 className="flex items-center gap-2"
               >
-                <span className="text-xl"> Services </span>
+                <span className="text-base"> Services </span>
 
                 <span className="mt-1">
                   <ChevronDown className="size-6" />
@@ -70,39 +70,35 @@ const Navbar = () => {
                 className="p-5 w-56"
                 align="start"
               >
-                <DropdownMenuItem className="text-lg">
+                <DropdownMenuItem className="">
                   Solar Solutions
                 </DropdownMenuItem>
-                <DropdownMenuItem className="text-lg">
+                <DropdownMenuItem className="">
                   Air Conditioning
                 </DropdownMenuItem>
-                <DropdownMenuItem className="text-lg">
-                  Hotel Booking
-                </DropdownMenuItem>
-                <DropdownMenuItem className="text-lg">
-                  Flight Booking
-                </DropdownMenuItem>
+                <DropdownMenuItem className="">Hotel Booking</DropdownMenuItem>
+                <DropdownMenuItem className="">Flight Booking</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </li>
-          <li className="text-xl">
+          <li className="text-base">
             <Link href="/" className="">
               About
             </Link>
           </li>
-          <li className="text-xl">
+          <li className="text-base text-nowrap">
             <Link href="/">Affiliate Program</Link>
           </li>
           <li>
             <span className="flex items-center gap-2">
               <Link href="/">
-                <Button className="rounded-full p-6 bg-[#ebebeb] text-black hover:bg-[#e9e8e8]">
+                <Button className="rounded-full  bg-[#ebebeb] text-black hover:bg-[#e9e8e8]">
                   {" "}
                   Contact Us
                 </Button>
               </Link>
               <Link href="/">
-                <Button className="rounded-full p-6">Join Program</Button>
+                <Button className="rounded-full ">Join Program</Button>
               </Link>
             </span>
           </li>

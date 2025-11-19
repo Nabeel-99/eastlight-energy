@@ -5,11 +5,11 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <section className="flex flex-col gap-2 py-20">
-      <div className="grid md:grid-cols-2 gap-20">
+    <section className="flex flex-col gap-2 py-20 2xl:mx-auto 2xl:container">
+      <div className="grid lg:grid-cols-2 gap-20">
         <div className="flex flex-col gap-4">
           {" "}
-          <h2 className="font-bold max-sm:text-center text-4xl lg:text-7xl leading-tight ">
+          <h2 className="font-bold max-lg:text-center text-4xl lg:text-5xl xl:text-7xl leading-tight ">
             Smart Solar. <br className="" /> Smooth Services. <br />
             Better Living.
           </h2>
@@ -27,7 +27,7 @@ const About = () => {
           </div>
         </div>
         <div className="flex flex-col lg:flex-row gap-2">
-          <div className="h-[300px] max-sm:scale-90 lg:h-[400px] rotate-4 aspect-square w-full rounded-xl overflow-hidden">
+          <div className="h-[300px] max-sm:scale-90 lg:h-[400px] rotate-4 aspect-square md:w-[500px] mx-auto lg:w-full rounded-xl overflow-hidden">
             {" "}
             <Image
               src={"/buildingsolar.jpg"}
@@ -37,7 +37,7 @@ const About = () => {
               className="object-cover w-full h-full"
             />
           </div>
-          <div className="h-[300px] max-sm:scale-90 lg:h-[400px] lg:mt-10 -rotate-4 aspect-square w-full rounded-xl overflow-hidden">
+          <div className="h-[300px] max-sm:scale-90 lg:h-[400px] lg:mt-10 -rotate-4 aspect-square md:w-[500px] mx-auto lg:w-full rounded-xl overflow-hidden">
             {" "}
             <Image
               src={"/solartwo.png.avif"}

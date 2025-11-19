@@ -5,12 +5,12 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="flex flex-col gap-6 border p-8 lg:p-20 rounded-3xl bg-black text-white lg:grid lg:grid-cols-2 lg:gap-20 2xl:container 2xl:mx-auto w-full">
+    <section className="flex flex-col gap-6 border p-8 lg:p-14 xl:p-20 rounded-3xl bg-black text-white lg:grid lg:grid-cols-2 lg:gap-40 xl:gap-20 2xl:container 2xl:mx-auto w-full">
       <div className="flex flex-col gap-2 w-full">
         <h2 className="text-lg lg:text-2xl text-gray-300">
           SUSTAINABLE ENERGY SOLUTIONS
         </h2>
-        <p className="text-[3rem] lg:text-[6rem] lg:leading-30">
+        <p className="text-[3rem] lg:text-[4rem] xl:text-[6rem] lg:leading-20 xl:leading-30">
           EASTLIGHT <br /> ENERGY
         </p>
         <p className="lg:text-xl leading-loose">
@@ -19,10 +19,10 @@ const Hero = () => {
           services nationwide.
         </p>
         <div className="flex flex-col lg:flex-row items-center gap-4 mt-4">
-          <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-6 md:text-lg md:rounded-xl items-center max-sm:w-full gap-2">
+          <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-6 md:text-lg md:rounded-xl items-center max-lg:w-full gap-2">
             Explore services <ArrowRight />
           </Button>
-          <Button className="flex bg-white/90 text-black hover:bg-white items-center md:p-6 md:text-lg md:rounded-xl max-sm:w-full gap-2">
+          <Button className="flex bg-white/90 text-black hover:bg-white items-center md:p-6 md:text-lg md:rounded-xl max-lg:w-full gap-2">
             Join Affiliate Program
           </Button>
         </div>

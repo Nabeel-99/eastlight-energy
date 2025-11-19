@@ -18,7 +18,7 @@ const GetStarted = () => {
         </div>
       </div>
       <div className="w-full ">
-        <div className="rounded-xl shadow-md  hidden md:block  absolute right-20 -top-10  w-56 h-56">
+        <div className="rounded-xl shadow-md  hidden md:block right-0  absolute  xl:right-20 -top-10  lg:w-56 lg:h-56">
           <Image
             src={"/solar.jpg"}
             alt="solar"
@@ -27,7 +27,7 @@ const GetStarted = () => {
             className="object-cover rounded-xl rotate-12 w-full h-full"
           />
         </div>
-        <div className="rounded-xl shadow-md  hidden md:block  absolute left-20 -bottom-10  w-56 h-56">
+        <div className="rounded-xl shadow-md  hidden md:block  absolute left-0 -bottom-30  xl:left-20 lg:-bottom-10  lg:w-56 lg:h-56">
           <Image
             src={"/solartwo.png.avif"}
             alt="solar"

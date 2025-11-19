@@ -23,7 +23,7 @@ const ChooseUs = () => {
     },
   ];
   return (
-    <section className="flex flex-col gap-6 w-full h-full">
+    <section className="flex flex-col gap-6 w-full h-full 2xl:container 2xl:mx-auto">
       <h2 className="text-3xl font-bold lg:text-5xl text-center">
         Why Choose EastLight Energy
       </h2>

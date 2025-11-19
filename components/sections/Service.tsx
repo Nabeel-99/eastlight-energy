@@ -55,7 +55,7 @@ const Service = () => {
     },
   ];
   return (
-    <section className="flex flex-col gap-4 w-full">
+    <section className="flex flex-col gap-4 w-full 2xl:container 2xl:mx-auto">
       <h2 className="text-2xl lg:font-bold lg:text-5xl text-center">
         Comprehensive Energy Solutions
       </h2>
@@ -63,7 +63,7 @@ const Service = () => {
         From solar installations to travel services, we provide integrated
         solutions for modern energy needs and lifestyle convenience.
       </p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-10">
         {servicesCards.map((item, index) => (
           <Card key={index}>
             <CardHeader>
