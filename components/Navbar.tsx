@@ -38,7 +38,7 @@ const Navbar = () => {
         >
           <div className="w-20 md:w-24">
             <Image
-              src="/logo.jpg"
+              src="/logo.png"
               alt="logo"
               loading="eager"
               width={100}

@@ -1,7 +1,6 @@
-import { Inbox, LocateIcon, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Footer = () => {
   return (
@@ -14,8 +13,9 @@ const Footer = () => {
           >
             <div className="w-20 md:w-24">
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="logo"
+                loading="eager"
                 width={100}
                 height={100}
                 className="object-cover rounded-full w-full h-auto"
