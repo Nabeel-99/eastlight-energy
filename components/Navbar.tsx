@@ -27,11 +27,11 @@ const Navbar = () => {
   }, [isOpen]);
   return (
     <nav
-      className={`fixed  top-0 left-0 right-0  2xl:right-10 2xl:left-10 z-50 ${
+      className={`fixed  top-0 left-0 right-0  z-50 ${
         isOpen ? "bg-white" : ""
       }`}
     >
-      <div className="2xl:container 2xl:mx-auto  z-50 bg-white/80 max-sm:border-b lg:border lg:rounded-full lg:mx-10 xl:mx-30 lg:shadow-sm lg:mt-4  backdrop-blur-md flex px-4 py-2  justify-between items-center h-full">
+      <div className="2xl:container 2xl:mx-auto 2xl:max-w-6xl z-50 bg-white/80 max-sm:border-b lg:border lg:rounded-full lg:mx-20 xl:mx-30 lg:shadow-sm lg:mt-4  backdrop-blur-md flex px-4 py-2  justify-between items-center h-full">
         <Link
           href={"/"}
           className="text-xl font-bold z-50 border bg-black px-1 md:px-4 rounded-full"
