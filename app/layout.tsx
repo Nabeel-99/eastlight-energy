@@ -14,9 +14,33 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "EastLight Energy",
-  description: "Your trusted partner in clean energy solutions.",
+  description:
+    "Major Distributor for Cworth Energy Systems. Quality solar products powering homes & businesses..",
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "EastLight Energy",
+    description:
+      "Major Distributor for Cworth Energy Systems. Quality solar products powering homes & businesses.",
+    url: "https://eastlight-energy.vercel.app",
+    siteName: "EastLight Energy",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "EastLight Energy Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EastLight Energy",
+    description:
+      "Major Distributor for Cworth Energy Systems. Quality solar products powering homes & businesses..",
+    images: ["/logo.png"],
   },
 };
 
