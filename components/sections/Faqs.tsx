@@ -53,7 +53,7 @@ const Faqs = () => {
         <Accordion
           type="single"
           collapsible
-          className="w-full accordion"
+          className="w-full"
           defaultValue="item-1"
         >
           {questions.map((question, index) => (
@@ -61,6 +61,7 @@ const Faqs = () => {
               key={index}
               value={`item-${index + 1}`}
               defaultValue={`item-${index + 1}`}
+              className="border-b last:border-b-0"
             >
               <AccordionTrigger>{question.question}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">

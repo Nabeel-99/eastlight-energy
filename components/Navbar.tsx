@@ -71,7 +71,7 @@ const Navbar = () => {
                 align="start"
               >
                 <DropdownMenuItem className="">
-                  Solar Solutions
+                  <Link href="/services/solar-solutions"> Solar Solutions</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="">
                   Air Conditioning
@@ -134,7 +134,10 @@ const Navbar = () => {
                   {isServicesOpen && (
                     <ul className="flex flex-col gap-2 pl-4 mt-2">
                       <li>
-                        <Link href="/" onClick={closeBurgerMenu}>
+                        <Link
+                          href="/services/solar-solutions"
+                          onClick={closeBurgerMenu}
+                        >
                           Solar Solutions
                         </Link>
                       </li>
