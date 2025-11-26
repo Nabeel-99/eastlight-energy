@@ -74,10 +74,16 @@ const Navbar = () => {
                   <Link href="/services/solar-solutions"> Solar Solutions</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="">
-                  Air Conditioning
+                  <Link href="/services/air-conditioning">
+                    Air Conditioning
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="">Hotel Booking</DropdownMenuItem>
-                <DropdownMenuItem className="">Flight Booking</DropdownMenuItem>
+                <DropdownMenuItem className="">
+                  <Link href="/services/hotel-booking"> Hotel Booking</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="">
+                  <Link href="/services/flight-booking"> Flight Booking</Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </li>
@@ -142,17 +148,26 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/" onClick={closeBurgerMenu}>
+                        <Link
+                          href="/services/air-conditioning"
+                          onClick={closeBurgerMenu}
+                        >
                           Air Conditioning
                         </Link>
                       </li>
                       <li>
-                        <Link href="/" onClick={closeBurgerMenu}>
+                        <Link
+                          href="/services/hotel-booking"
+                          onClick={closeBurgerMenu}
+                        >
                           Hotel Booking
                         </Link>
                       </li>
                       <li>
-                        <Link href="/" onClick={closeBurgerMenu}>
+                        <Link
+                          href="/services/flight-booking"
+                          onClick={closeBurgerMenu}
+                        >
                           Flight Booking
                         </Link>
                       </li>

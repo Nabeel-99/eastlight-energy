@@ -1,120 +1,47 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+"use client";
+
 import { Button } from "@/components/ui/button";
-import React from "react";
+import { solarProducts } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import React, { useRef, useState } from "react";
+import {
+  ArrowRight,
+  Hotel,
+  Plane,
+  Sun,
+  TrendingUp,
+  Users,
+  Wind,
+  Wrench,
+} from "lucide-react";
+import { SolarProductForm } from "@/components/forms/SolarProductForm";
 
 const page = () => {
-  const solarProducts = [
+  const [activeIndex, setActiveIndex] = useState(0);
+  const startRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = (index: number) => {
+    setActiveIndex(index);
+    if (startRef.current) {
+      startRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const items = [
     {
-      title: "Solar Panels",
-      description:
-        "High-efficiency photovoltaic panels that convert sunlight into DC power, suitable for residential and commercial systems.",
-      specs: [
-        "Wattage: 400–500 W per panel",
-        "Voltage: 31–41 V",
-        "Current: 12 A",
-        "Operating Temp: –40°C to +85°C",
-        "Power Tolerance: ±3%",
-      ],
-      image: "/solarpanel.png",
+      title: "Product Information",
+      description: "Detailed specification and features",
+      icon: <Sun className="size-6" />,
     },
     {
-      title: "MPPT Charge Controllers",
-      description:
-        "Smart controllers that maximize energy harvest from solar panels while protecting your batteries.",
-      specs: [
-        "Compatible Voltages: 12 V, 24 V, 48 V",
-        "Max Battery Current: up to 120 A",
-        "Max Solar Input Voltage: ~200 V",
-        "Efficiency: >98%",
-        "Charging Algorithm: Bulk, Absorption, Float",
-        "Operating Temp: –25°C to +60°C",
-      ],
-      image: "/mppt.png",
+      title: "Competitive Pricing",
+      description: "Best reates on CWorth Energy products",
+      icon: <Wrench className="size-6" />,
     },
     {
-      title: "Hybrid Inverters",
-      description:
-        "Inverters that convert DC from batteries or solar panels into AC power with built-in MPPT.",
-      specs: [
-        "Power Rating: up to 12 kVA",
-        "DC Input Voltage: 12 V / 24 V / 48 V",
-        "MPPT Voltage Range: 85–450 V",
-        "Peak Efficiency: 93–95%",
-        "Waveform: Pure sine wave",
-        "Protections: Overload, short circuit, over-temp",
-      ],
-      image: "/inverter.webp",
-    },
-    {
-      title: "LiFePO₄ Batteries",
-      description:
-        "Long-life lithium iron phosphate batteries for deep discharge and frequent cycling.",
-      specs: [
-        "Voltage: 48 V",
-        "Capacity: 15 kWh",
-        "Cycle Life: ≥6000 cycles @ 80% DoD",
-        "BMS: Built-in protection system",
-        "Operating Temp: –10°C to +60°C",
-        "Weight: ~130 kg",
-      ],
-      image: "/po4battery.webp",
-    },
-    {
-      title: "Gel Batteries",
-      description:
-        "Maintenance-free deep-cycle batteries, reliable for solar backup applications.",
-      specs: [
-        "Voltage: 12–48 V",
-        "Deep-cycle design",
-        "Maintenance-free",
-        "Durable under moderate cycling",
-        "Suitable for residential or commercial backup",
-      ],
-      image: "/gelbattery.webp",
-    },
-    {
-      title: "All-in-One Solar Street Lights",
-      description:
-        "Integrated solar street lights combining panel, battery, and LEDs for outdoor lighting.",
-      specs: [
-        "LED Power: 60–100 W",
-        "Battery: 340–920 Wh",
-        "Waterproof Rating: IP65",
-        "Rainy Day Support: 3–5 days autonomy",
-        "Recommended Mounting Height: 6–9 m",
-      ],
-      image: "/streetlight.webp",
-    },
-    {
-      title: "Portable Solar Kits",
-      description:
-        "Compact solar kits for camping, remote sites, or emergency power.",
-      specs: [
-        "Integrated panel + battery",
-        "Output: DC/AC via built-in inverter",
-        "Battery Type: LiFePO₄",
-        "Protection: Overcharge, deep discharge, thermal",
-        "Easy setup: plug-and-play",
-      ],
-      image: "/portablesolar.webp",
-    },
-    {
-      title: "Complete Solar Systems",
-      description:
-        "Turnkey solar systems including panels, batteries, inverters, and controllers.",
-      specs: [
-        "PV Capacity: 6–12 kW",
-        "Inverter: 6–12 kVA hybrid",
-        "Battery Storage: 15 kWh+",
-        "Controller: MPPT included",
-        "Includes all panels, frame, cables, and installation plan",
-      ],
-      image: "/solarsystem.png",
+      title: "Expert Guidance",
+      description: "Professional product recommendations",
+      icon: <TrendingUp className="size-6" />,
     },
   ];
   return (
@@ -136,6 +63,78 @@ const page = () => {
             efficiency, reliability, and long-lasting performance.
           </p>
         </div>
+        <div
+          ref={startRef}
+          className="flex flex-col lg:flex-row  lg:justify-between lg:gap-20 items-start mt-20 min-h-screen relative"
+        >
+          <section className="w-full flex flex-col gap-4 h-full pb-10">
+            <img
+              src={solarProducts[activeIndex].image}
+              alt=""
+              className="scale-90 w-[400px] aspect-square mx-auto"
+            />
+            <p className="text-2xl font-bold">
+              {solarProducts[activeIndex].title}
+            </p>
+            <p className="uppercase text-xl font-bold italic">Description</p>
+            <p className="text-lg">{solarProducts[activeIndex].description}</p>
+            <p className="text-xl font-bold uppercase italic">Specification</p>
+            <ul className="list-disc flex flex-col gap-2">
+              {solarProducts[activeIndex].specs.map((item, index) => (
+                <li key={index} className="ml-4 text-lg">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className="flex flex-col gap-4 w-full lg:w-1/2 lg:sticky top-30">
+            <h2 className="text-3xl text-center uppercase font-bold">
+              CATALOGUE
+            </h2>
+            <div className="border rounded-lg p-4 flex flex-col gap-4">
+              {solarProducts.map((item, index) => (
+                <Button
+                  key={index}
+                  onClick={() => handleClick(index)}
+                  className={cn(
+                    "border rounded-xl p-5 lg:p-6 lg:text-xl text-left bg-transparent hover:bg-blue-900 text-black hover:text-white",
+                    activeIndex === index ? "bg-blue-900 text-white" : ""
+                  )}
+                >
+                  {item.title}
+                </Button>
+              ))}
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section className="grid lg:grid-cols-2 gap-10 mt-20 lg:mt-40">
+        <div className="flex flex-col gap-6 ">
+          <h2 className="lg:text-6xl">Interested in CWorth Solar products?</h2>
+          <p className="text-lg">
+            Submit your inquiry to learn more about CWorth Energy products and
+            systems. Our team will provide detailed information and pricing.
+          </p>
+          <div className="flex flex-col gap-6">
+            {items.map((item, index) => (
+              <div className="flex items-center gap-2" key={index}>
+                <div className="flex justify-start">
+                  {" "}
+                  <span className="bg-teal-500/20 p-2 rounded-full">
+                    {" "}
+                    {item.icon}
+                  </span>
+                </div>
+                <div className="flex flex-col">
+                  <p className="">{item.title}</p>
+                  <span>{item.description}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <SolarProductForm />
       </section>
     </div>
   );

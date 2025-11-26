@@ -21,24 +21,28 @@ const Service = () => {
         "Premium Cworth Energy for residential and commercial installations.",
       image: "/solar-installation.avif",
       icon: <Sun className="size-6" />,
+      link: "/services/solar-solutions",
     },
     {
       title: "Air Conditioning",
       description: "Energy efficient cooling solutions for optimal comfort.",
       image: "/ac.avif",
       icon: <Wind className="size-6" />,
+      link: "/services/air-conditioning",
     },
     {
       title: "Flight Booking",
       description: "Convenient travel arrangements for business and leisure.",
       image: "/flight.avif",
       icon: <Plane className="size-6" />,
+      link: "/services/flight-booking",
     },
     {
       title: "Hotel Booking",
       description: "Top tier hotel accomodations for your stay.",
       image: "/hotel.avif",
       icon: <Hotel className="size-6" />,
+      link: "/services/hotel-booking",
     },
     {
       title: "Solar Installers",
@@ -46,12 +50,14 @@ const Service = () => {
         "Professional solar installation services across all Nigerian states.",
       icon: <Wrench />,
       image: "/installer.avif",
+      link: "/services/solar-installers",
     },
     {
       title: "Affiliate Program",
       description: "Earn commissions promoting our energy solutions.",
       icon: <Users />,
       image: "/affiliate.avif",
+      link: "/services/affiliate-program",
     },
   ];
   return (
@@ -85,7 +91,7 @@ const Service = () => {
               </div>
             </CardContent>
             <CardFooter className="flex h-full items-end">
-              <Link href={"/"}>
+              <Link href={item.link}>
                 <Button>
                   Learn More <ArrowRight />
                 </Button>
