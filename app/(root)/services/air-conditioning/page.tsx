@@ -37,10 +37,20 @@ const page = () => {
       image: "/ac.webp",
     },
     {
-      title: "AC Installation & Repair",
+      title: "AC Installation",
+      description: "Professional installation of new air conditioning systems.",
+      image: "/acinstallation.jpg",
+    },
+    {
+      title: "AC Repair",
       description:
-        "Professional installation, maintenance, and repair services.",
+        "Fix cooling issues, electrical faults, and refrigerant recharge.",
       image: "/acrepair.jpeg",
+    },
+    {
+      title: "AC Maintenance",
+      description: "Regular cleaning, filter replacement, and system checks.",
+      image: "/acmaintenance.webp",
     },
   ];
   return (
@@ -53,7 +63,7 @@ const page = () => {
         solutions.
       </p>
 
-      <section className="flex flex-col gap-6 mt-20 lg:mt-40 w-full">
+      <section className="flex flex-col gap-6 mt-20  w-full">
         <div className="grid lg:grid-cols-2 gap-10">
           {acDetails.map((detail, index) => (
             <div

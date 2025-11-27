@@ -42,6 +42,11 @@ import axios from "axios";
 
 const serviceOptions = [
   {
+    id: "purchase",
+    title: "AC Purchase",
+    description: "Get quotes on new AC units and brands",
+  },
+  {
     id: "installation",
     title: "AC Installation",
     description: "Professional installation of new air conditioning units",
@@ -56,11 +61,6 @@ const serviceOptions = [
     id: "maintenance",
     title: "Maintenance",
     description: "Regular cleaning, filter replacement, and system checks",
-  },
-  {
-    id: "purchase",
-    title: "AC Purchase",
-    description: "Get quotes on new AC units and brands",
   },
 ] as const;
 export function ACServiceForm() {
@@ -98,7 +98,7 @@ export function ACServiceForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form id="solar-product-form" onSubmit={form.handleSubmit(onSubmit)}>
+        <form id="ac-service-form" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
               name="fullname"
@@ -224,7 +224,7 @@ export function ACServiceForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="solar-product-form" className="w-full">
+        <Button type="submit" form="ac-service-form" className="w-full">
           Submit Service Request
         </Button>
       </CardFooter>
