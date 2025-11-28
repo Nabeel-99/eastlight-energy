@@ -16,12 +16,20 @@ import {
 const Service = () => {
   const servicesCards = [
     {
-      title: "Solar Solutions",
+      title: "Cworth Solar Products",
       description:
-        "Premium Cworth Energy for residential and commercial installations.",
+        "Premium Cworth Energy solar panels, inverters, and batteries for residential and commercial use.",
       image: "/solar-installation.avif",
       icon: <Sun className="size-6" />,
-      link: "/services/solar-solutions",
+      link: "/services/solar-products",
+    },
+    {
+      title: "Solar Installers",
+      description:
+        "Professional solar installation services across all Nigerian states.",
+      image: "/installer.avif",
+      icon: <Wrench className="size-6" />,
+      link: "/services/solar-installations",
     },
     {
       title: "Air Conditioning",
@@ -31,6 +39,13 @@ const Service = () => {
       link: "/services/air-conditioning",
     },
     {
+      title: "Hotel Booking",
+      description: "Top-tier hotel accommodations for your stay.",
+      image: "/hotel.avif",
+      icon: <Hotel className="size-6" />,
+      link: "/services/hotel-booking",
+    },
+    {
       title: "Flight Booking",
       description: "Convenient travel arrangements for business and leisure.",
       image: "/flight.avif",
@@ -38,26 +53,11 @@ const Service = () => {
       link: "/services/flight-booking",
     },
     {
-      title: "Hotel Booking",
-      description: "Top tier hotel accomodations for your stay.",
-      image: "/hotel.avif",
-      icon: <Hotel className="size-6" />,
-      link: "/services/hotel-booking",
-    },
-    {
-      title: "Solar Installers",
-      description:
-        "Professional solar installation services across all Nigerian states.",
-      icon: <Wrench />,
-      image: "/installer.avif",
-      link: "/services/solar-installers",
-    },
-    {
       title: "Affiliate Program",
       description: "Earn commissions promoting our energy solutions.",
-      icon: <Users />,
       image: "/affiliate.avif",
-      link: "/services/affiliate-program",
+      icon: <Users className="size-6" />,
+      link: "/affiliate-program",
     },
   ];
   return (

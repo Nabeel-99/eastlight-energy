@@ -129,7 +129,7 @@ const page = () => {
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <p className="">{item.title}</p>
+                  <p className="text-center">{item.title}</p>
                   <span>{item.description}</span>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -19,12 +20,19 @@ const Hero = () => {
           services nationwide.
         </p>
         <div className="flex flex-col lg:flex-row items-center gap-4 mt-4">
-          <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-6 md:text-lg md:rounded-xl items-center max-lg:w-full gap-2">
-            Explore services <ArrowRight />
-          </Button>
-          <Button className="flex bg-white/90 text-black hover:bg-white items-center md:p-6 md:text-lg md:rounded-xl max-lg:w-full gap-2">
-            Join Affiliate Program
-          </Button>
+          <Link href={"/services/solar-products"} className=" max-lg:w-full">
+            {" "}
+            <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-6 md:text-lg max-lg:w-full md:rounded-xl items-center  gap-2">
+              Explore Solar Products <ArrowRight />
+            </Button>
+          </Link>
+
+          <Link href={"/affiliate-program"} className="max-lg:w-full">
+            {" "}
+            <Button className="flex bg-white/90 text-black hover:bg-white max-lg:w-full items-center md:p-6 md:text-lg md:rounded-xl gap-2">
+              Join Affiliate Program
+            </Button>
+          </Link>
         </div>
       </div>
       <div className="w-full flex items-center justify-center">

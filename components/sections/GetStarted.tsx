@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const GetStarted = () => {
   return (
@@ -12,13 +13,15 @@ const GetStarted = () => {
         </p>
 
         <div className="flex justify-center gap-4 mt-4">
-          <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-6 md:text-lg md:rounded-xl items-center max-sm:w-full gap-2">
-            Book Solar Installer <ArrowRight />
-          </Button>
+          <Link href={"/services/solar-installations"}>
+            <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-6 md:text-lg md:rounded-xl items-center max-sm:w-full gap-2">
+              Book Solar Installation <ArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
       <div className="w-full ">
-        <div className="rounded-xl shadow-md  hidden md:block right-0  absolute  xl:right-20 -top-10  lg:w-56 lg:h-56">
+        <div className="rounded-xl shadow-md  hidden md:block -right-10  absolute  xl:right-20 -top-10  lg:w-56 lg:h-56">
           <Image
             src={"/solar.jpg"}
             alt="solar"
@@ -27,7 +30,7 @@ const GetStarted = () => {
             className="object-cover rounded-xl rotate-12 w-full h-full"
           />
         </div>
-        <div className="rounded-xl shadow-md  hidden md:block  absolute left-0 -bottom-30  xl:left-20 lg:-bottom-10  lg:w-56 lg:h-56">
+        <div className="rounded-xl shadow-md  hidden md:block  absolute -left-10 -bottom-30  xl:left-20 lg:-bottom-10  lg:w-56 lg:h-56">
           <Image
             src={"/solartwo.png.avif"}
             alt="solar"

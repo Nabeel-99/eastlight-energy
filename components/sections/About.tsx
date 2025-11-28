@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -18,12 +19,15 @@ const About = () => {
             AC services, and seamless flight and hotel bookings.
           </p>
           <div className="flex justify-center lg:justify-start">
-            <Button className="flex items-center gap-2 p-6 mt-10 rounded-xl ">
-              Learn About Us{" "}
-              <span>
-                <ArrowRight />
-              </span>
-            </Button>
+            <Link href={"/about"}>
+              {" "}
+              <Button className="flex items-center gap-2 p-6 mt-10 rounded-xl ">
+                Learn About Us{" "}
+                <span>
+                  <ArrowRight />
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col lg:flex-row gap-2">

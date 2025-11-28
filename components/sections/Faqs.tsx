@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
@@ -48,7 +49,10 @@ const Faqs = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-center">Got any questions? Reach out to us.</p>
-          <Button>Get in touch</Button>
+          <Link href={"/contact"}>
+            {" "}
+            <Button>Get in touch</Button>
+          </Link>
         </div>
         <Accordion
           type="single"

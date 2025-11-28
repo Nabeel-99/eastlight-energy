@@ -70,40 +70,47 @@ const Navbar = () => {
                 className="p-5 w-56"
                 align="start"
               >
-                <DropdownMenuItem className="">
-                  <Link href="/services/solar-solutions"> Solar Solutions</Link>
+                <DropdownMenuItem>
+                  <Link href="/services/solar-products">
+                    Cworth Solar Products
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="">
+                <DropdownMenuItem>
+                  <Link href="/services/solar-installations">
+                    Solar Installations
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
                   <Link href="/services/air-conditioning">
                     Air Conditioning
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="">
-                  <Link href="/services/hotel-booking"> Hotel Booking</Link>
+                <DropdownMenuItem>
+                  <Link href="/services/hotel-booking">Hotel Booking</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="">
-                  <Link href="/services/flight-booking"> Flight Booking</Link>
+                <DropdownMenuItem>
+                  <Link href="/services/flight-booking">Flight Booking</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </li>
           <li className="text-base">
-            <Link href="/" className="">
+            <Link href="/about" className="">
               About
             </Link>
           </li>
           <li className="text-base text-nowrap">
-            <Link href="/">Affiliate Program</Link>
+            <Link href="/affiliate-program">Affiliate Program</Link>
           </li>
           <li>
             <span className="flex items-center gap-2">
-              <Link href="/">
+              <Link href="/contact">
                 <Button className="rounded-full  bg-[#ebebeb] text-black hover:bg-[#e9e8e8]">
                   {" "}
                   Contact Us
                 </Button>
               </Link>
-              <Link href="/">
+              <Link href="/affiliate-program">
                 <Button className="rounded-full ">Join Program</Button>
               </Link>
             </span>
@@ -141,10 +148,18 @@ const Navbar = () => {
                     <ul className="flex flex-col gap-2 pl-4 mt-2">
                       <li>
                         <Link
-                          href="/services/solar-solutions"
+                          href="/services/solar-products"
                           onClick={closeBurgerMenu}
                         >
-                          Solar Solutions
+                          Cworth Solar Products
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/services/solar-installations"
+                          onClick={closeBurgerMenu}
+                        >
+                          Solar Installations
                         </Link>
                       </li>
                       <li>
@@ -175,22 +190,22 @@ const Navbar = () => {
                   )}
                 </li>
                 <li>
-                  <Link href="/" onClick={closeBurgerMenu}>
+                  <Link href="/about" onClick={closeBurgerMenu}>
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" onClick={closeBurgerMenu}>
+                  <Link href="/affiliate-program" onClick={closeBurgerMenu}>
                     Affiliate Program
                   </Link>
                 </li>
                 <li className="mt-6">
-                  <Link href="/" className="" onClick={closeBurgerMenu}>
+                  <Link href="/contact" className="" onClick={closeBurgerMenu}>
                     <Button className="w-full"> Contact Us</Button>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" onClick={closeBurgerMenu}>
+                  <Link href="/affiliate-program" onClick={closeBurgerMenu}>
                     <Button className="w-full">Join Program</Button>
                   </Link>
                 </li>

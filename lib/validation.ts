@@ -13,6 +13,25 @@ export const solarProductFormSchema = z.object({
     .min(1, { error: "Please provide additional information." }),
 });
 
+export const solarInstallerFormSchema = z.object({
+  fullname: z.string().min(1, { error: "Fullname is required" }),
+  email: z.email({ error: "Invalid email address" }),
+  phone: z.string().min(1, { error: "Phone number is required" }),
+  location: z.string().min(1, { error: "Please select a location" }),
+  // product_interest: z
+  //   .array(z.string())
+  //   .min(1, { error: "Please select the the product you want to install" }),
+  message: z
+    .string()
+    .min(1, { error: "Please provide additional information." }),
+});
+
+export const contactFormSchema = z.object({
+  fullname: z.string().min(1, { error: "Fullname is required" }),
+  email: z.email({ error: "Invalid email address" }),
+  phone: z.string().min(1, { error: "Phone number is required" }),
+  message: z.string().min(1, { error: "Please enter a message.." }),
+});
 export const acServiceFormSchema = z.object({
   fullname: z.string().min(1, { error: "Fullname is required" }),
   email: z.email({ error: "Invalid email address" }),
@@ -55,6 +74,17 @@ export const flightBookingFormSchema = z.object({
   number_of_passengers: z
     .string()
     .min(1, { message: "Number of passengers is required" }),
-  travel_class: z.string().optional(), // Economy, Business, First Class
+  travel_class: z.string().optional(),
   message: z.string().optional(),
+});
+
+export const affiliateFormSchema = z.object({
+  fullname: z.string().min(1, { error: "Fullname is required" }),
+  email: z.email({ error: "Invalid email address" }),
+  phone: z.string().min(1, { error: "Phone number is required" }),
+  location: z.string().min(1, { error: "Please select a location" }),
+
+  message: z
+    .string()
+    .min(1, { error: "Please provide additional information." }),
 });

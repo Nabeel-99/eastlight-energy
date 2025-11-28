@@ -265,11 +265,11 @@ const page = () => {
         with confidence and enjoy exceptional hospitality.
       </p>
 
-      <div className="min-h-screen w-full">
+      <div className=" w-full">
         <LayoutGrid cards={cards} />
       </div>
 
-      <section className="grid lg:grid-cols-2 gap-10 mt-20 lg:mt-40">
+      <section className="grid lg:grid-cols-2 gap-10 mt-10 lg:mt-20">
         <div className="flex flex-col gap-6 ">
           <h2 className="text-3xl lg:text-6xl">Book Your Stay</h2>
           <p className="text-lg">

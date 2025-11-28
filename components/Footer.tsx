@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="px-10 w-full bg-yellow-500/20 p-20">
+    <footer className="px-10 w-full bg-yellow-500/20 pt-20">
       <div className="flex flex-col gap-10  lg:flex-row justify-between 2xl:container 2xl:mx-auto">
         <div className="flex flex-col items-start gap-6">
           <Link
@@ -26,39 +26,6 @@ const Footer = () => {
             Major Distributor for Cworth Energy Systems. Quality solar products
             powering homes & businesses.
           </p>
-        </div>
-        <div className="grid lg:grid-cols-3 gap-10">
-          <div className="flex flex-col gap-2">
-            <p className="font-bold mb-4">Services</p>
-            <ul className="flex flex-col gap-4">
-              <li>
-                <Link href="/">Solar Solutions</Link>
-              </li>
-              <li>
-                <Link href="/">Air Conditioning</Link>
-              </li>
-              <li>
-                <Link href="/">Hotel Booking</Link>
-              </li>
-              <li>
-                <Link href="/">Flight Booking</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="font-bold mb-4">Quick Links</p>
-            <ul className="flex flex-col gap-4">
-              <li>
-                <Link href="/">About Us</Link>
-              </li>
-              <li>
-                <Link href="/">Contact</Link>
-              </li>
-              <li>
-                <Link href="/">Affiliate Program</Link>
-              </li>
-            </ul>
-          </div>
           <div className="flex flex-col gap-2">
             <p className="font-bold mb-4">Contact</p>
             <ul className="flex flex-col gap-4">
@@ -77,6 +44,51 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+        <div className="grid lg:grid-cols-2 gap-20">
+          <div className="flex flex-col gap-2">
+            <p className="font-bold mb-4">Services</p>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <Link href="/services/solar-products">
+                  Cworth Solar Products
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/solar-installations">
+                  Solar Installations
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/air-conditioning">Air Conditioning</Link>
+              </li>
+              <li>
+                <Link href="/services/hotel-booking">Hotel Booking</Link>
+              </li>
+              <li>
+                <Link href="/services/flight-booking">Flight Booking</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-bold mb-4">Quick Links</p>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <Link href="/about">About Us</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link href="/affiliate-program">Affiliate Program</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="border-t mt-10 pt-4 border-t-black/30 pb-10">
+        <p className="text-center text-sm">
+          Copyright &copy; 2025 Eastlight Energy. All Rights Reserved
+        </p>
       </div>
     </footer>
   );
