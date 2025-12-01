@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CalendarIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -45,6 +45,13 @@ export function DatePicker({
   const [inputValue, setInputValue] = useState(formatDate(date));
   const futureDate = new Date();
   futureDate.setFullYear(futureDate.getFullYear() + 1);
+
+  useEffect(() => {
+    const newDate = value ? new Date(value) : undefined;
+    setDate(newDate);
+    setMonth(newDate);
+    setInputValue(formatDate(newDate));
+  }, [value]);
 
   return (
     <div className="relative">

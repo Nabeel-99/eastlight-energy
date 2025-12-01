@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
   FieldContent,
@@ -10,20 +9,12 @@ import {
   FieldGroup,
   FieldLabel,
   FieldLegend,
-  FieldSeparator,
   FieldSet,
   FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { acServiceFormSchema, solarProductFormSchema } from "@/lib/validation";
+import { acServiceFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -36,9 +27,10 @@ import {
   CardTitle,
 } from "../ui/card";
 import { useState } from "react";
-import { solarProducts } from "@/lib/data";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import axios from "axios";
+import { toast } from "sonner";
+import { LoaderCircle } from "lucide-react";
 
 const serviceOptions = [
   {
@@ -77,12 +69,15 @@ export function ACServiceForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof acServiceFormSchema>) => {
-    // auth api
     try {
-      const res = await axios.post("/api/ac-service", data);
-      console.log("res", res.data);
       setLoading(true);
+      const res = await axios.post("/api/ac-service", data);
+      if (res.status === 200) {
+        toast.success("Message sent successfully");
+        form.reset();
+      }
     } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -224,8 +219,17 @@ export function ACServiceForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="ac-service-form" className="w-full">
-          Submit Service Request
+        <Button
+          disabled={loading}
+          type="submit"
+          form="ac-service-form"
+          className="w-full"
+        >
+          {loading ? (
+            <LoaderCircle className="animate-spin" />
+          ) : (
+            "Submit Service Request"
+          )}
         </Button>
       </CardFooter>
     </Card>

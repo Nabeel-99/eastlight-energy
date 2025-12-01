@@ -1,27 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { solarProducts } from "@/lib/data";
-import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
-import {
-  ArrowRight,
-  Clock,
-  Hotel,
-  Mail,
-  MapPin,
-  Phone,
-  Plane,
-  PlaneIcon,
-  Star,
-  Sun,
-  TrendingUp,
-  Users,
-  Users2Icon,
-  Wind,
-  Wrench,
-} from "lucide-react";
-import { ACServiceForm } from "@/components/forms/ACServiceForm";
+import { MapPin, PlaneIcon, Users2Icon } from "lucide-react";
 import { FlightBookingForm } from "@/components/forms/FlightBookingForm";
 const page = () => {
   const items = [

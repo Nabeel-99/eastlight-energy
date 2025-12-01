@@ -1,20 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { solarProducts } from "@/lib/data";
-import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
 import {
-  ArrowRight,
   Battery,
-  Hotel,
   Lightbulb,
-  Plane,
   Sun,
-  TrendingUp,
   Users,
-  Wind,
-  Wrench,
   Zap,
   Link,
   Check,
@@ -22,7 +12,6 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
-import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import { Timeline } from "@/components/ui/timeline";
 import { SolarInstallerForm } from "@/components/forms/SolarInstallerForm";
 
@@ -109,16 +98,6 @@ const installationSteps = [
 ];
 
 const page = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const startRef = useRef<HTMLDivElement>(null);
-
-  const handleClick = (index: number) => {
-    setActiveIndex(index);
-    if (startRef.current) {
-      startRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const items = [
     {
       title: "Certified Professionals",

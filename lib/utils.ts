@@ -20,3 +20,19 @@ export function isValidDate(date: Date | undefined) {
   }
   return !isNaN(date.getTime());
 }
+
+export const timestamp = `'${new Date().toLocaleString("en-NG", {
+  timeZone: "Africa/Lagos",
+  year: "numeric",
+  month: "short",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+})}`;
+
+export const formatDateForSheet = (dateString: string) => {
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "";
+  return date.toISOString().split("T")[0];
+};

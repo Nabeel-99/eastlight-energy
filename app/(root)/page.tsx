@@ -4,7 +4,6 @@ import Faqs from "@/components/sections/Faqs";
 import GetStarted from "@/components/sections/GetStarted";
 import Hero from "@/components/sections/Hero";
 import Service from "@/components/sections/Service";
-import React from "react";
 
 const page = () => {
   return (
@@ -28,12 +27,6 @@ const page = () => {
       <div className="px-4 md:px-10">
         <Faqs />
       </div>
-      {/* <div className="px-4 md:px-10">
-        <Service />
-      </div>
-      <div className="px-4 md:px-10">
-        <Service />
-      </div> */}
     </div>
   );
 };

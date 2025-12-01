@@ -1,33 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
-  FieldContent,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-  FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  contactFormSchema,
-  solarInstallerFormSchema,
-  solarProductFormSchema,
-} from "@/lib/validation";
+import { contactFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -40,24 +22,10 @@ import {
   CardTitle,
 } from "../ui/card";
 import { useState } from "react";
-import { locations, solarProducts } from "@/lib/data";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import axios from "axios";
+import { LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 
-const properties = [
-  {
-    id: "residential",
-    title: "Residential (Home/Apartment)",
-  },
-  {
-    id: "commercial",
-    title: "Commercial (Office/Shop)",
-  },
-  {
-    id: "industrial",
-    title: "Industrial (Factory/Warehouse)",
-  },
-] as const;
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof contactFormSchema>>({
@@ -71,12 +39,15 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof contactFormSchema>) => {
-    // auth api
     try {
-      const res = await axios.post("/api/contact", data);
-      console.log("res", res.data);
       setLoading(true);
+      const res = await axios.post("/api/contact", data);
+      if (res.status === 200) {
+        toast.success("Message sent successfully");
+        form.reset();
+      }
     } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -176,8 +147,17 @@ export function ContactForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="contact-form" className="w-full">
-          Send Your Message
+        <Button
+          type="submit"
+          form="contact-form"
+          className="w-full"
+          disabled={loading}
+        >
+          {loading ? (
+            <LoaderCircle className="animate-spin" />
+          ) : (
+            "Send Your Message"
+          )}
         </Button>
       </CardFooter>
     </Card>

@@ -10,18 +10,10 @@ import {
   FieldGroup,
   FieldLabel,
   FieldLegend,
-  FieldSeparator,
   FieldSet,
   FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { solarProductFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,6 +31,8 @@ import { useState } from "react";
 import { solarProducts } from "@/lib/data";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import axios from "axios";
+import { toast } from "sonner";
+import { LoaderCircle } from "lucide-react";
 
 const properties = [
   {
@@ -69,12 +63,15 @@ export function SolarProductForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof solarProductFormSchema>) => {
-    // auth api
     try {
-      const res = await axios.post("/api/solar-product", data);
-      console.log("res", res.data);
       setLoading(true);
+      const res = await axios.post("/api/solar-product", data);
+      if (res.status === 200) {
+        toast.success("Message sent successfully");
+        form.reset();
+      }
     } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -260,8 +257,17 @@ export function SolarProductForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="solar-product-form" className="w-full">
-          Request Product Information
+        <Button
+          disabled={loading}
+          type="submit"
+          form="solar-product-form"
+          className="w-full"
+        >
+          {loading ? (
+            <LoaderCircle className="animate-spin" />
+          ) : (
+            "Request Product Information"
+          )}
         </Button>
       </CardFooter>
     </Card>

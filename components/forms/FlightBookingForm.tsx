@@ -1,16 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
   FieldContent,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
-  FieldSeparator,
   FieldSet,
   FieldTitle,
 } from "@/components/ui/field";
@@ -23,11 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  flightBookingFormSchema,
-  hotelBookingFormSchema,
-  solarProductFormSchema,
-} from "@/lib/validation";
+import { flightBookingFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -40,14 +33,12 @@ import {
   CardTitle,
 } from "../ui/card";
 import { useState } from "react";
-import { solarProducts } from "@/lib/data";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import axios from "axios";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Calendar } from "../ui/calendar";
-import { cn, formatDate, isValidDate } from "@/lib/utils";
+import { LoaderCircle } from "lucide-react";
+import { cn, formatDate } from "@/lib/utils";
 import { DatePicker } from "../ui/DatePicker";
+import { toast } from "sonner";
 
 const trips = [
   {
@@ -78,10 +69,6 @@ const classes = [
 
 export function FlightBookingForm() {
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(new Date("2025-06-01"));
-  const [month, setMonth] = useState<Date | undefined>(date);
-  const [value, setValue] = useState(formatDate(date));
 
   const form = useForm<z.infer<typeof flightBookingFormSchema>>({
     resolver: zodResolver(flightBookingFormSchema),
@@ -101,12 +88,15 @@ export function FlightBookingForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof flightBookingFormSchema>) => {
-    // auth api
     try {
-      const res = await axios.post("/api/flight-booking", data);
-      console.log("res", res.data);
       setLoading(true);
+      const res = await axios.post("/api/flight-booking", data);
+      if (res.status === 200) {
+        toast.success("Message sent successfully");
+        form.reset();
+      }
     } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -391,8 +381,17 @@ export function FlightBookingForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="flight-booking-form" className="w-full">
-          Submit Booking Request
+        <Button
+          disabled={loading}
+          type="submit"
+          form="flight-booking-form"
+          className="w-full"
+        >
+          {loading ? (
+            <LoaderCircle className="animate-spin" />
+          ) : (
+            "Submit Booking Request"
+          )}
         </Button>
       </CardFooter>
     </Card>

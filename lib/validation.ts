@@ -62,7 +62,7 @@ export const hotelBookingFormSchema = z.object({
 
 export const flightBookingFormSchema = z.object({
   fullname: z.string().min(1, { message: "Full name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
+  email: z.email({ error: "Invalid email address" }),
   phone: z.string().min(1, { message: "Phone number is required" }),
   trip_type: z.enum(["one-way", "round-trip"]),
   departure_city: z.string().min(1, { message: "Departure city is required" }),
@@ -83,7 +83,6 @@ export const affiliateFormSchema = z.object({
   email: z.email({ error: "Invalid email address" }),
   phone: z.string().min(1, { error: "Phone number is required" }),
   location: z.string().min(1, { error: "Please select a location" }),
-
   message: z
     .string()
     .min(1, { error: "Please provide additional information." }),

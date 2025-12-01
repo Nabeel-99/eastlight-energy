@@ -3,17 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { solarProducts } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
-import {
-  ArrowRight,
-  Hotel,
-  Plane,
-  Sun,
-  TrendingUp,
-  Users,
-  Wind,
-  Wrench,
-} from "lucide-react";
+import { useRef, useState } from "react";
+import { Sun, TrendingUp, Wrench } from "lucide-react";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
 
 const page = () => {

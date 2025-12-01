@@ -1,18 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
-  FieldContent,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-  FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,10 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  hotelBookingFormSchema,
-  solarProductFormSchema,
-} from "@/lib/validation";
+import { hotelBookingFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -39,29 +29,10 @@ import {
   CardTitle,
 } from "../ui/card";
 import { useState } from "react";
-import { solarProducts } from "@/lib/data";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import axios from "axios";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Calendar } from "../ui/calendar";
-import { formatDate, isValidDate } from "@/lib/utils";
+import { LoaderCircle } from "lucide-react";
 import { DatePicker } from "../ui/DatePicker";
-
-const properties = [
-  {
-    id: "residential",
-    title: "Residential (Home/Apartment)",
-  },
-  {
-    id: "commercial",
-    title: "Commercial (Office/Shop)",
-  },
-  {
-    id: "industrial",
-    title: "Industrial (Factory/Warehouse)",
-  },
-] as const;
+import { toast } from "sonner";
 
 const locations = [
   {
@@ -111,10 +82,6 @@ const locations = [
 ];
 export function HotelBookingForm() {
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(new Date("2025-06-01"));
-  const [month, setMonth] = useState<Date | undefined>(date);
-  const [value, setValue] = useState(formatDate(date));
 
   const form = useForm<z.infer<typeof hotelBookingFormSchema>>({
     resolver: zodResolver(hotelBookingFormSchema),
@@ -132,12 +99,15 @@ export function HotelBookingForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof hotelBookingFormSchema>) => {
-    // auth api
     try {
-      const res = await axios.post("/api/hotel-booking", data);
-      console.log("res", res.data);
       setLoading(true);
+      const res = await axios.post("/api/hotel-booking", data);
+      if (res.status === 200) {
+        toast.success("Message sent successfully");
+        form.reset();
+      }
     } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -347,8 +317,17 @@ export function HotelBookingForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="hotel-booking-form" className="w-full">
-          Submit Booking Request
+        <Button
+          disabled={loading}
+          type="submit"
+          form="hotel-booking-form"
+          className="w-full"
+        >
+          {loading ? (
+            <LoaderCircle className="animate-spin" />
+          ) : (
+            "Submit Booking Request"
+          )}
         </Button>
       </CardFooter>
     </Card>

@@ -1,60 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { solarProducts } from "@/lib/data";
-import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
-import {
-  ArrowRight,
-  Clock,
-  Globe,
-  Hotel,
-  Mail,
-  MapPin,
-  Phone,
-  Plane,
-  PlaneIcon,
-  Shield,
-  Star,
-  Sun,
-  TrendingUp,
-  Users,
-  Users2Icon,
-  Wind,
-  Wrench,
-} from "lucide-react";
-import { ACServiceForm } from "@/components/forms/ACServiceForm";
-import { FlightBookingForm } from "@/components/forms/FlightBookingForm";
+import { Hotel, Plane, Sun, Users, Wind, Wrench } from "lucide-react";
 import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import ChooseUs from "@/components/sections/ChooseUs";
 import GetStarted from "@/components/sections/GetStarted";
 const page = () => {
-  const whyChooseUs = [
-    {
-      title: "Certified & Trusted",
-      description:
-        "Our products and installers are fully certified, ensuring safe and reliable service.",
-      icon: <Shield size={24} className="text-teal-500" />,
-    },
-    {
-      title: "Nationwide Coverage",
-      description:
-        "We provide services across all Nigerian states, reaching homes and businesses wherever they are.",
-      icon: <Globe size={24} className="text-teal-500" />,
-    },
-    {
-      title: "High-Quality Products",
-      description:
-        "We supply durable solar panels, inverters, batteries, and energy solutions built to last.",
-      icon: <Star size={24} className="text-teal-500" />,
-    },
-    {
-      title: "Personalized Support",
-      description:
-        "Our team offers guidance and assistance tailored to your specific energy and travel needs.",
-      icon: <Users size={24} className="text-teal-500" />,
-    },
-  ];
   const services = [
     {
       title: "Cworth Solar Products",

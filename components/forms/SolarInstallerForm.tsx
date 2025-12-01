@@ -1,18 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
-  FieldContent,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-  FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,10 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  solarInstallerFormSchema,
-  solarProductFormSchema,
-} from "@/lib/validation";
+import { solarInstallerFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -39,24 +29,11 @@ import {
   CardTitle,
 } from "../ui/card";
 import { useState } from "react";
-import { locations, solarProducts } from "@/lib/data";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { locations } from "@/lib/data";
 import axios from "axios";
+import { toast } from "sonner";
+import { LoaderCircle } from "lucide-react";
 
-const properties = [
-  {
-    id: "residential",
-    title: "Residential (Home/Apartment)",
-  },
-  {
-    id: "commercial",
-    title: "Commercial (Office/Shop)",
-  },
-  {
-    id: "industrial",
-    title: "Industrial (Factory/Warehouse)",
-  },
-] as const;
 export function SolarInstallerForm() {
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof solarInstallerFormSchema>>({
@@ -71,12 +48,15 @@ export function SolarInstallerForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof solarInstallerFormSchema>) => {
-    // auth api
     try {
-      const res = await axios.post("/api/solar-installer", data);
-      console.log("res", res.data);
       setLoading(true);
+      const res = await axios.post("/api/solar-installer", data);
+      if (res.status === 200) {
+        toast.success("Message sent successfully");
+        form.reset();
+      }
     } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -209,8 +189,17 @@ export function SolarInstallerForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="solar-installer-form" className="w-full">
-          Submit Booking Request
+        <Button
+          disabled={loading}
+          type="submit"
+          form="solar-installer-form"
+          className="w-full"
+        >
+          {loading ? (
+            <LoaderCircle className="animate-spin" />
+          ) : (
+            "Submit Booking Request"
+          )}
         </Button>
       </CardFooter>
     </Card>

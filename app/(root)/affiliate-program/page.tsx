@@ -1,26 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { solarProducts } from "@/lib/data";
-import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
+import { useRef } from "react";
 import {
-  ArrowRight,
-  Battery,
   CheckCircle,
-  Hotel,
   Megaphone,
   Network,
-  Plane,
   Sun,
   TrendingUp,
   UserPlus,
-  Users,
-  Wind,
-  Wrench,
   Zap,
 } from "lucide-react";
-import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
 import { AffiliateForm } from "@/components/forms/AffiliateForm";
