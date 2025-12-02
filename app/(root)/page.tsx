@@ -7,8 +7,8 @@ import Service from "@/components/sections/Service";
 
 const page = () => {
   return (
-    <div className="flex flex-col gap-20 w-full h-full pt-20 md:pt-40 ">
-      <div className="px-4 md:px-10">
+    <div className="flex flex-col gap-20 w-full h-full  ">
+      <div className="">
         <Hero />
       </div>
       <div className="px-4 md:px-10">

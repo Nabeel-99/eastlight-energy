@@ -5,13 +5,9 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import StarBorder from "../components/StarBorder";
+import { ShinyButton } from "./ui/shiny-button";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -25,13 +21,36 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     }
   }, [isOpen]);
+
+  const serviceLinks = [
+    {
+      name: "Cworth Solar Products",
+      link: "/services/solar-products",
+    },
+    {
+      name: "Solar Installations",
+      link: "/services/solar-installations",
+    },
+    {
+      name: "Air Conditioning",
+      link: "/services/air-conditioning",
+    },
+    {
+      name: "Hotel Booking",
+      link: "/services/hotel-booking",
+    },
+    {
+      name: "Flight Booking",
+      link: "/services/flight-booking",
+    },
+  ];
   return (
     <nav
       className={`fixed  top-0 left-0 right-0  z-50 ${
         isOpen ? "bg-white" : ""
       }`}
     >
-      <div className="2xl:container 2xl:mx-auto 2xl:max-w-6xl z-50 bg-white/80 max-sm:border-b lg:border lg:rounded-full lg:mx-20 xl:mx-30 lg:shadow-sm lg:mt-4  backdrop-blur-md flex px-4 py-2  justify-between items-center h-full">
+      <div className="2xl:container 2xl:mx-auto 2xl:max-w-6xl z-50 max-sm:bg-white/80 max-sm:border-b lg:rounded-full lg:mx-20 xl:mx-30  lg:mt-4  max-sm:backdrop-blur-md flex px-4 py-2  justify-between items-center h-full">
         <Link
           href={"/"}
           className="text-xl font-bold z-50 border bg-black px-1 md:px-4 rounded-full"
@@ -47,52 +66,35 @@ const Navbar = () => {
             />
           </div>
         </Link>
-        <ul className="hidden lg:flex items-center gap-6 text-lg">
+        <ul className="hidden lg:flex items-center gap-8 text-lg border px-6 py-2 rounded-3xl">
           <li className="text-base">
             <Link href="/">Home</Link>
           </li>
           <li>
-            <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>
-              <DropdownMenuTrigger
-                onMouseEnter={() => setOpenDropdown(true)}
-                onMouseLeave={() => setOpenDropdown(false)}
-                className="flex items-center gap-2"
-              >
-                <span className="text-base"> Services </span>
-
-                <span className="mt-1">
-                  <ChevronDown className="size-6" />
-                </span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                onMouseEnter={() => setOpenDropdown(true)}
-                onMouseLeave={() => setOpenDropdown(false)}
-                className="p-5 w-56"
-                align="start"
-              >
-                <DropdownMenuItem>
-                  <Link href="/services/solar-products">
-                    Cworth Solar Products
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/services/solar-installations">
-                    Solar Installations
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/services/air-conditioning">
-                    Air Conditioning
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/services/hotel-booking">Hotel Booking</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/services/flight-booking">Flight Booking</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <HoverCard openDelay={50} closeDelay={100}>
+              <HoverCardTrigger asChild className="">
+                <Button
+                  variant="link"
+                  className="no-underline text-base hover:no-underline"
+                >
+                  Services
+                </Button>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-full">
+                <ul className="flex flex-col gap-2">
+                  {serviceLinks.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        className="hover:bg-gray-100 rounded-md px-4 py-1"
+                        href={link.link}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </HoverCardContent>
+            </HoverCard>
           </li>
           <li className="text-base">
             <Link href="/about" className="">
@@ -102,20 +104,12 @@ const Navbar = () => {
           <li className="text-base text-nowrap">
             <Link href="/affiliate-program">Affiliate Program</Link>
           </li>
-          <li>
-            <span className="flex items-center gap-2">
-              <Link href="/contact">
-                <Button className="rounded-full  bg-[#ebebeb] text-black hover:bg-[#e9e8e8]">
-                  {" "}
-                  Contact Us
-                </Button>
-              </Link>
-              <Link href="/affiliate-program">
-                <Button className="rounded-full ">Join Program</Button>
-              </Link>
-            </span>
-          </li>
         </ul>
+
+        <Link className="hidden lg:block cursor-pointer" href="/contact">
+          <ShinyButton className="py-4 rounded-4xl">Contact Us</ShinyButton>
+        </Link>
+
         <div className="z-50 lg:hidden">
           <Button onClick={openBurgerMenu}>{isOpen ? <X /> : <Menu />}</Button>
         </div>
