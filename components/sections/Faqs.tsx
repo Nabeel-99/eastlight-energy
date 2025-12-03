@@ -7,6 +7,7 @@ import {
 } from "../ui/accordion";
 
 import { Button } from "../ui/button";
+import { ShineBorder } from "../ui/shine-border";
 
 const Faqs = () => {
   const questions = [
@@ -43,21 +44,27 @@ const Faqs = () => {
   ];
   return (
     <section id="faqs" className="">
-      <div className="flex flex-col gap-10 lg:flex-row lg:gap-40 2xl:container 2xl:mx-auto">
-        <div className="flex flex-col items-center lg:items-start gap-4 faq-div">
-          <h2 className="text-4xl text-center lg:text-left lg:text-5xl font-bold">
+      <div className="flex flex-col gap-10 items-center text-white 2xl:container 2xl:mx-auto">
+        <span className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
+          <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
+          FAQs
+        </span>
+        <div className="flex flex-col items-center  gap-4 faq-div">
+          <h2 className="text-3xl font-bold lg:text-5xl xl:text-6xl lg:tracking-tight  text-center xl:leading-30 bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
             Frequently Asked Questions
           </h2>
-          <p className="text-center">Got any questions? Reach out to us.</p>
-          <Link href={"/contact"}>
+          <p className="text-center text-gray-300">
+            Got any questions? Reach out to us.
+          </p>
+          {/* <Link href={"/contact"}>
             {" "}
             <Button>Get in touch</Button>
-          </Link>
+          </Link> */}
         </div>
         <Accordion
           type="single"
           collapsible
-          className="w-full"
+          className="w-full max-w-4xl flex flex-col gap-6"
           defaultValue="item-1"
         >
           {questions.map((question, index) => (
@@ -65,11 +72,11 @@ const Faqs = () => {
               key={index}
               value={`item-${index + 1}`}
               defaultValue={`item-${index + 1}`}
-              className="border-b last:border-b-0"
+              className="border bg-teal-800/10 border-teal-400/10 px-8 rounded-3xl"
             >
               <AccordionTrigger>{question.question}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
-                <p>{question.answer}</p>
+                <p className="text-gray-300">{question.answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}

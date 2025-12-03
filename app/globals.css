@@ -40,6 +40,18 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-shine: shine var(--duration) infinite linear;
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
 }
 
 :root {
@@ -148,4 +160,13 @@ textarea:-webkit-autofill:active {
   box-shadow: 0 0 0 1000px #000 inset !important;
   -webkit-text-fill-color: white !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

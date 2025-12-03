@@ -6,7 +6,7 @@ import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="flex flex-col gap-20 w-full h-full">
+    <main className="flex flex-col w-full bg-[#0A0F18] h-full">
       <Navbar />
       {children}
       <Footer />

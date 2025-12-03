@@ -4,23 +4,30 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { InteractiveHoverButton } from "../ui/interactive-hover-button";
 import { Button } from "../ui/stateful-button";
+import { ShineBorder } from "../ui/shine-border";
 
 const Hero = () => {
   return (
-    <section className="flex relative flex-col gap-6 text-white  bg-linear-to-b from-[#010706] to-[#190606] p-8 lg:p-14 xl:p-20 rounded-b-3xl   2xl:container 2xl:mx-auto w-ful lg:min-h-[90vh]">
-      <div className="absolute mask-b-from-20% mask-b-from-[#000000] inset-0 w-full h-full">
+    <section className="flex relative flex-col gap-6 text-white  bg-linear-to-b from-[#010706] to-[#190606] p-8 lg:p-14 xl:p-20 rounded-b-3xl   w-full">
+      <div className="absolute  inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
         <img
           src={"/herobg.jpeg"}
           alt=""
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover rounded-b-3xl object-top"
         />
       </div>
-      <div className="absolute inset-0 w-full h-full bg-black/50 rounded-b-3xl" />
-      <div className="flex flex-col gap-2 w-full z-40 pt-20">
-        <h2 className="text-lg lg:text-2xl text-center text-gray-300">
-          SUSTAINABLE ENERGY SOLUTIONS
-        </h2>
-        <p className="text-[3rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-30">
+      <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-linear-to-b from-black/60 via-black/80 to-black/70  z-10" />
+
+      <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20">
+        <div className="flex justify-center">
+          {" "}
+          <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
+            <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
+            SUSTAINABLE ENERGY SOLUTIONS
+          </h2>
+        </div>
+
+        <p className="text-[3rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-30 bg-linear-to-tl from-red-500 from-30%   to-teal-400 to-70% bg-clip-text text-transparent">
           EASTLIGHT ENERGY
         </p>
         <p className="lg:text-xl leading-loose text-center max-w-xl mx-auto">
@@ -28,20 +35,17 @@ const Hero = () => {
           your lifestyle. Professional installations, AC sales, and travel
           services nationwide.
         </p>
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 mt-4">
-          <Link
-            href={"/services/solar-products"}
-            className=" max-lg:w-full z-50"
-          >
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-4 mt-4">
+          <Link href={"/services/solar-products"} className=" max-lg:w-full">
             {" "}
-            <Button className="flex bg-yellow-500 hover:bg-yellow-400 text-black md:p-4 md:px-8 md:text-base max-lg:w-full md:rounded-full  items-center  gap-2">
+            <Button className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-4 md:px-8 md:text-base max-lg:w-full md:rounded-full  items-center  gap-2">
               Explore Solar Products
             </Button>
           </Link>
 
-          <Link href={"/affiliate-program"} className="max-lg:w-full z-50">
+          <Link href={"/affiliate-program"} className="max-lg:w-full">
             {" "}
-            <Button className="flex bg-white/90 text-black hover:bg-white max-lg:w-full items-center md:p-4 md:px-8  md:text-base md:rounded-full  gap-2">
+            <Button className="flex bg-white/90 text-black hover:ring-yellow-500 hover:bg-white hover:-translate-y-1 hover:shadow-md hover:shadow-white max-lg:w-full items-center md:p-4 md:px-8  md:text-base md:rounded-full  gap-2">
               Join Affiliate Program
             </Button>
           </Link>

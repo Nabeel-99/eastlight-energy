@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import React from "react";
-import { motion, AnimatePresence, useAnimate } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -21,7 +21,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       },
       {
         duration: 0.2,
-      },
+      }
     );
   };
 
@@ -35,7 +35,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       },
       {
         duration: 0.2,
-      },
+      }
     );
     await animate(
       ".check",
@@ -46,7 +46,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       },
       {
         duration: 0.2,
-      },
+      }
     );
 
     await animate(
@@ -59,7 +59,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       {
         delay: 2,
         duration: 0.2,
-      },
+      }
     );
   };
 
@@ -80,23 +80,21 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
   } = props;
 
   return (
-    <motion.button
-      layout
-      layoutId="button"
+    <button
       ref={scope}
       className={cn(
-        "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-full bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black",
-        className,
+        "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-medium text-white ring-offset-1 transition duration-200 hover:ring-2 dark:ring-offset-black",
+        className
       )}
       {...buttonProps}
       onClick={handleClick}
     >
-      <motion.div layout className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <Loader />
         <CheckIcon />
-        <motion.span layout>{children}</motion.span>
-      </motion.div>
-    </motion.button>
+        <span>{children}</span>
+      </div>
+    </button>
   );
 };
 
