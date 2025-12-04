@@ -1,8 +1,4 @@
-import Image from "next/image";
-
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { InteractiveHoverButton } from "../ui/interactive-hover-button";
 import { Button } from "../ui/stateful-button";
 import { ShineBorder } from "../ui/shine-border";
 
