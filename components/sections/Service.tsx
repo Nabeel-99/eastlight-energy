@@ -70,7 +70,7 @@ const Service = () => {
           <Link
             href={item.link}
             key={index}
-            className="bg-[#111822] overflow-hidden md:mask-b-from-70% hover:mask-none p-0 flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:-translate-y-1 hover:drop-shadow-md  transition-all duration-300 ease-in-out group"
+            className="bg-[#111822] overflow-hidden md:mask-b-from-70% hover:mask-none p-0 flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:-translate-y-1 hover:drop-shadow-md  transition-all duration-300 ease-in-out group"
           >
             <section className="p-1">
               <div className="aspect-square border-4 border-teal-400/10 group-hover:border-teal-400/20 w-full h-[300px] lg:h-[375px] rounded-xl overflow-hidden">
@@ -91,7 +91,7 @@ const Service = () => {
                   </div>
                   <h3 className="text-lg font-semibold">{item.title}</h3>
                 </div>
-                <MoveRight className="text-teal-700 group-hover:text-teal-500 group-hover:-rotate-20 transition-all duration-300" />
+                <MoveRight className="text-teal-400 lg:text-teal-700  lg:group-hover:text-teal-500 group-hover:-rotate-20 transition-all duration-300" />
               </div>
               <p className="text-sm">{item.description}</p>
             </section>

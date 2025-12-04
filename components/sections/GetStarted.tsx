@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const GetStarted = () => {
   return (
-    <section className="relative  overflow-hidden flex flex-col items-center p-10 lg:p-20 justify-center bg-black rounded-3xl border-2 border-teal-400/20 hover:border-teal-400 hover:shadow-md hover:shadow-teal-400 transition-colors duration-300 ease-in-out text-white max-w-6xl  2xl:container mx-auto w-full">
+    <section className="relative  overflow-hidden flex flex-col items-center p-10 lg:p-20 justify-center bg-black rounded-3xl border-2 border-teal-400/60 lg:border-teal-400/20 hover:border-teal-400 hover:shadow-md hover:shadow-teal-400 transition-colors duration-300 ease-in-out text-white max-w-6xl  2xl:container mx-auto w-full">
       <div className="absolute  inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
         <img
           src={"/panelfour.jpg"}
