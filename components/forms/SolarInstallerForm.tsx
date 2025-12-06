@@ -62,7 +62,7 @@ export function SolarInstallerForm() {
     }
   };
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Book a Solar Installation
@@ -193,7 +193,7 @@ export function SolarInstallerForm() {
           disabled={loading}
           type="submit"
           form="solar-installer-form"
-          className="w-full"
+          className="w-full hover:bg-teal-400/50 bg-teal-400/60"
         >
           {loading ? (
             <LoaderCircle className="animate-spin" />

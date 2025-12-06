@@ -77,7 +77,7 @@ export function SolarProductForm() {
     }
   };
   return (
-    <Card className="w-full">
+    <Card className="mt-10 lg:w-3/4 lg:mx-auto bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Cworth Solar Product Inquiry
@@ -100,6 +100,7 @@ export function SolarProductForm() {
                     id="fullname"
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter full name"
+                    className=""
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -261,7 +262,7 @@ export function SolarProductForm() {
           disabled={loading}
           type="submit"
           form="solar-product-form"
-          className="w-full"
+          className="w-full hover:bg-teal-400/50 bg-teal-400/60"
         >
           {loading ? (
             <LoaderCircle className="animate-spin" />

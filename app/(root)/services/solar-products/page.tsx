@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { solarProducts } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Check, ChevronRight, Sun, TrendingUp, Wrench } from "lucide-react";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import { ShineBorder } from "@/components/ui/shine-border";
@@ -40,10 +40,12 @@ const page = () => {
   return (
     <div className="flex flex-col items-center w-full h-full   text-white">
       <section className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden">
-        <Spotlight
-          className="-top-40 left-0 md:-top-20 md:left-60"
-          fill="#2DD4BF"
-        />
+        <div className="absolute inset-0 w-full 2xl:container 2xl:mx-auto">
+          <Spotlight
+            className="-top-40 left-0 md:-top-20 md:left-60 2xl:left-1/2 2xl:-translate-x-1/2"
+            fill="#2DD4BF"
+          />
+        </div>
         <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
         <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
           <div className="flex justify-center">
@@ -81,7 +83,7 @@ const page = () => {
         </div> */}
         <div
           ref={startRef}
-          className="flex flex-col lg:flex-row  lg:justify-between lg:gap-20 items-start mt-20 min-h-screen relative"
+          className="flex flex-col lg:flex-row  2xl:container 2xl:mx-auto lg:justify-between lg:gap-20 items-start mt-20  relative"
         >
           <section className="flex flex-col gap-4 w-full lg:w-1/2 lg:sticky top-30">
             <h2 className="text-2xl lg:text-4xl text-left uppercase bg-linear-to-t from-gray-900 from-10% to-[#313131] bg-clip-text text-transparent font-bold">
@@ -108,7 +110,7 @@ const page = () => {
               <img
                 src={solarProducts[activeIndex].image}
                 alt=""
-                className="scale-90 w-[400px] aspect-square mx-auto"
+                className=" w-[400px] aspect-square mx-auto"
               />
             </div>
 
@@ -139,30 +141,35 @@ const page = () => {
         </div>
       </section>
 
-      <section className="grid lg:grid-cols-2 gap-10 mt-20 lg:mt-40">
-        <div className="flex flex-col gap-6 ">
-          <h2 className="text-3xl lg:text-6xl">
+      <section className="py-20 px-4">
+        <div className="flex flex-col items-center gap-6 ">
+          <h2 className="text-3xl lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
             Interested in CWorth Solar products?
           </h2>
-          <p className="text-lg">
+          <p className="lg:text-lg max-w-xl text-center text-gray-300">
             Submit your inquiry to learn more about CWorth Energy products and
             systems. Our team will provide detailed information and pricing.
           </p>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col lg:flex-row items-center gap-2 lg:max-w-5xl">
             {items.map((item, index) => (
-              <div className="flex items-center gap-2" key={index}>
-                <div className="flex justify-start">
-                  {" "}
-                  <span className="bg-teal-500/20 p-2 rounded-full">
-                    {" "}
-                    {item.icon}
-                  </span>
+              <React.Fragment key={index}>
+                <div className="flex flex-col items-center gap-2" key={index}>
+                  <div className="p-[2px] rounded-full bg-linear-to-br from-[#39D3C8]/60 from-30% to-[#810303] shadow-md shadow-teal-400/20">
+                    <div className="bg-[#111822] text-white rounded-full p-3 flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-center font-bold text-lg lg:text-xl">
+                      {item.title}
+                    </p>
+                    <span className="text-center text-sm text-gray-300">
+                      {item.description}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-center">{item.title}</p>
-                  <span>{item.description}</span>
-                </div>
-              </div>
+                <div className="h-20 w-1 last:h-0 lg:w-44 lg:last:w-0 lg:h-1 rounded-full mask-x-from-40% bg-linear-to-b from-[#39D3C8]/60 from-30% to-[#810303]" />
+              </React.Fragment>
             ))}
           </div>
         </div>
