@@ -5,6 +5,7 @@ import { FlightBookingForm } from "@/components/forms/FlightBookingForm";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { Spotlight } from "@/components/ui/spotlight";
 import WorldMap from "@/components/ui/world-map";
+import React from "react";
 const page = () => {
   const items = [
     {
@@ -108,7 +109,7 @@ const page = () => {
             ]}
           /> */}
         </div>
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
+        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
           <div className="flex justify-center">
             {" "}
             <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
@@ -127,33 +128,35 @@ const page = () => {
         </div>
       </section>
 
-      <section className="grid lg:grid-cols-2 gap-10  px-4 md:px-10  py-20 lg:py-40 2xl:container 2xl:mx-auto">
-        <div className="flex flex-col gap-6 ">
-          <h2 className="text-3xl lg:text-5xl font-bold bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
+      <section className="py-20 px-4">
+        <div className="flex flex-col items-center gap-6 ">
+          <h2 className="text-3xl lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
             Book Your Flight
           </h2>
-          <p className="text-base text-gray-300">
+          <p className="lg:text-lg max-w-xl text-center text-gray-300">
             Submit your flight booking request and our travel experts will help
             you find the best options for your journey.
           </p>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col lg:flex-row items-center gap-2 lg:max-w-5xl">
             {items.map((item, index) => (
-              <div className="flex items-center gap-2" key={index}>
-                <div className="flex justify-start">
-                  {" "}
+              <React.Fragment key={index}>
+                <div className="flex flex-col items-center gap-2" key={index}>
                   <div className="p-[2px] rounded-full bg-linear-to-br from-[#39D3C8]/60 from-30% to-[#810303] shadow-md shadow-teal-400/20">
                     <div className="bg-[#111822] text-white rounded-full p-3 flex items-center justify-center">
                       {item.icon}
                     </div>
-                  </div>{" "}
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-center font-bold text-lg lg:text-xl">
+                      {item.title}
+                    </p>
+                    <span className="text-center text-sm text-gray-300">
+                      {item.description}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-xl font-bold">{item.title}</p>
-                  <span className="text-sm text-gray-300">
-                    {item.description}
-                  </span>
-                </div>
-              </div>
+                <div className="h-20 w-1 last:h-0 lg:w-44 lg:last:w-0 lg:h-1 rounded-full mask-x-from-40% bg-linear-to-b from-[#39D3C8]/60 from-30% to-[#810303]" />
+              </React.Fragment>
             ))}
           </div>
         </div>

@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useGSAP } from "@gsap/react";
 import {
   Accordion,
   AccordionContent,
@@ -6,9 +8,8 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 
-import { Button } from "../ui/button";
 import { ShineBorder } from "../ui/shine-border";
-
+import gsap from "gsap";
 const Faqs = () => {
   const questions = [
     {
@@ -42,9 +43,22 @@ const Faqs = () => {
         "Contact us to join the program. Once approved, you'll promote our services and earn commission on successful sales and bookings.",
     },
   ];
+
+  useGSAP(() => {
+    gsap.from("#faqs", {
+      scrollTrigger: {
+        trigger: "#faqs",
+        start: "top 70%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    });
+  }, []);
   return (
     <section id="faqs" className="">
-      <div className="flex flex-col gap-10 items-center text-white 2xl:container 2xl:mx-auto">
+      <div className="flex flex-col gap-6 items-center text-white 2xl:container 2xl:mx-auto">
         <span className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
           <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
           FAQs

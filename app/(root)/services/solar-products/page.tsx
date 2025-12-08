@@ -9,15 +9,22 @@ import { ShineBorder } from "@/components/ui/shine-border";
 import { Spotlight } from "@/components/ui/spotlight";
 import { Button as StatefulButton } from "@/components/ui/stateful-button";
 import { Button } from "@/components/ui/button";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const startRef = useRef<HTMLDivElement>(null);
-
+  const productsRef = useRef<HTMLElement>(null);
   const handleClick = (index: number) => {
     setActiveIndex(index);
     if (startRef.current) {
       startRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const handleScrollClick = () => {
+    if (productsRef.current) {
+      productsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -38,9 +45,112 @@ const page = () => {
       icon: <TrendingUp className="size-6" />,
     },
   ];
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top 70%",
+      },
+    });
+    tl.from(".hero-img", {
+      scale: 1.2,
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    })
+      .from(
+        ".shine-border",
+        {
+          filter: "blur(10px)",
+          opacity: 0,
+          y: -20,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<"
+      )
+      .from(
+        ".hero-title",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<"
+      )
+      .from(
+        ".hero-desc",
+        {
+          y: 20,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.5"
+      )
+      .from(
+        ".cta-btns",
+        {
+          y: 20,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.5"
+      );
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#form-section",
+        start: "top 70%",
+      },
+    });
+    tl2
+      .from(".form-title", {
+        x: 50,
+        opacity: 0,
+        duration: 1.8,
+        ease: "power3.out",
+      })
+      .from(
+        ".form-desc",
+        {
+          x: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      )
+      .from(
+        ".form-items",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      )
+      .from(
+        ".form-card",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      );
+  }, []);
   return (
     <div className="flex flex-col items-center w-full h-full   text-white">
-      <section className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden">
+      <section
+        id="hero"
+        className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden"
+      >
         <div className="absolute inset-0 w-full 2xl:container 2xl:mx-auto">
           <Spotlight
             className="-top-40 left-0 md:-top-20 md:left-60 2xl:left-1/2 2xl:-translate-x-1/2"
@@ -48,25 +158,28 @@ const page = () => {
           />
         </div>
         <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
+        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
           <div className="flex justify-center">
             {" "}
-            <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
+            <h2 className="text-base relative shine-border px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
               <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
               SOLAR PRODUCTS
             </h2>
           </div>
 
-          <p className="text-[3rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
+          <p className="text-[2rem] hero-title lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
             CWORTH ENERGY SOLAR
           </p>
-          <p className="lg:text-xl leading-loose text-center max-w-xl mx-auto text-gray-300">
+          <p className="lg:text-xl hero-desc leading-loose text-center max-w-xl mx-auto text-gray-300">
             Discover premium CWorth Energy solar products and systems.
             High-performance panels, inverters, and battery storage engineered
             for Nigerian conditions.
           </p>
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-4 mt-4">
-            <StatefulButton className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-4 md:px-8 md:text-base max-lg:w-full md:rounded-full  items-center  gap-2">
+          <div className="flex flex-col cta-btns lg:flex-row lg:items-center lg:justify-center gap-4 mt-4">
+            <StatefulButton
+              onClick={handleScrollClick}
+              className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-4 md:px-8 md:text-base max-lg:w-full max-lg:max-w-sm mx-auto md:rounded-full  items-center  gap-2"
+            >
               Explore Products
             </StatefulButton>
           </div>
@@ -74,14 +187,10 @@ const page = () => {
       </section>
 
       {/* products */}
-      <section className="flex flex-col px-4 md:px-20 w-full lg:pt-20 pb-32 text-black bg-[#ffffff] ">
-        {/* <div className="flex flex-col gap-2 w-full">
-          <p className="text-4xl text-center">Power Your World With Solar</p>
-          <p className="text-center mx-auto text-lg lg:text-xl lg:max-w-xl">
-            From panels to batteries, explore a range of products built for
-            efficiency, reliability, and long-lasting performance.
-          </p> 
-        </div> */}
+      <section
+        ref={productsRef}
+        className="flex flex-col px-4 md:px-20 w-full lg:pt-20 pb-32 text-black bg-[#ffffff] "
+      >
         <div
           ref={startRef}
           className="flex flex-col lg:flex-row  2xl:container 2xl:mx-auto lg:justify-between lg:gap-20 items-start mt-20  relative"
@@ -142,16 +251,16 @@ const page = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4">
+      <section id="form-section" className="py-20 px-4">
         <div className="flex flex-col items-center gap-6 ">
-          <h2 className="text-3xl lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
+          <h2 className="text-3xl form-title lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
             Interested in CWorth Solar products?
           </h2>
-          <p className="lg:text-lg max-w-xl text-center text-gray-300">
+          <p className="lg:text-lg form-desc max-w-xl text-center text-gray-300">
             Submit your inquiry to learn more about CWorth Energy products and
             systems. Our team will provide detailed information and pricing.
           </p>
-          <div className="flex flex-col lg:flex-row items-center gap-2 lg:max-w-5xl">
+          <div className="flex flex-col lg:flex-row form-items items-center gap-2 lg:max-w-5xl">
             {items.map((item, index) => (
               <React.Fragment key={index}>
                 <div className="flex flex-col items-center gap-2" key={index}>

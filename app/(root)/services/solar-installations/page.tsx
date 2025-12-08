@@ -131,7 +131,7 @@ const page = () => {
           />
         </div>
         <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
+        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
           <div className="flex justify-center">
             {" "}
             <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
@@ -140,7 +140,7 @@ const page = () => {
             </h2>
           </div>
 
-          <p className="text-[3rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
+          <p className="text-[2rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
             PROFESSIONAL INSTALLATION SERVICES
           </p>
           <p className="lg:text-xl leading-loose text-center max-w-xl mx-auto text-gray-300">
@@ -162,7 +162,7 @@ const page = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-6 2xl:container 2xl:mx-auto">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 2xl:container 2xl:mx-auto">
           {installationServices.map((service, index) => (
             <Card
               key={index}
@@ -198,7 +198,7 @@ const page = () => {
           />
         </div>
         <div className="absolute inset-0 w-full  h-full bg-black opacity-92   z-10" />
-        <div className=" mx-auto relative lg:max-w-4xl pt-20 overflow-clip z-40">
+        <div className=" mx-auto relative lg:max-w-4xl pt-20 overflow-clip z-30">
           <Timeline
             header="Simple Steps to Solar Installation"
             subheader="Follow these easy steps to get certified installers to set up your

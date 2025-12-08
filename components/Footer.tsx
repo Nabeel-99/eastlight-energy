@@ -1,7 +1,11 @@
+"use client";
+
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/stateful-button";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const Footer = () => {
   const serviceLinks = [
     {
@@ -25,8 +29,20 @@ const Footer = () => {
       link: "/services/flight-booking",
     },
   ];
+
+  useGSAP(() => {
+    gsap.from("footer", {
+      scrollTrigger: {
+        trigger: "footer",
+        start: "top 70%",
+      },
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    });
+  }, []);
   return (
-    <footer className=" w-full bg-teal-400/10 text-white border-t border-t-teal-400/20 z-20">
+    <footer className="footer w-full bg-teal-400/10 text-white border-t border-t-teal-400/20 z-20">
       <div className="flex flex-col  lg:flex-row  2xl:container 2xl:mx-auto">
         <section className="flex flex-col px-6 pt-10 lg:pt-20 lg:pl-20 lg:pr-40 items-start gap-6 lg:border-r lg:border-r-teal-400/20 pb-10 lg:pb-20">
           <Link

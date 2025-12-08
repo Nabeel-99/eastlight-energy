@@ -74,7 +74,7 @@ const MarqueeEffect = forwardRef<
       ref={marqueeRef}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="hidden  md:block md:w-full overflow-hidden mt-10 "
+      className="hidden  md:block md:w-full mask-x-from-50% overflow-hidden mt-10 "
     >
       {children}
     </div>

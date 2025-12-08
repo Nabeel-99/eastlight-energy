@@ -158,7 +158,7 @@ const page = () => {
         </div>
         <div className="absolute  inset-0 w-full rounded-b-3xl h-full bg-black opacity-80 z-10" />
 
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20">
+        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20">
           <div className="flex justify-center">
             {" "}
             <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
@@ -210,7 +210,7 @@ const page = () => {
               <React.Fragment key={index}>
                 <div className="flex flex-col items-center gap-2" key={index}>
                   <div className="p-[-2px] h-10 w-10 rounded-full bg-linear-to-br from-transparent from-30% to-teal-400 shadow-md shadow-teal-400/20">
-                    <div className="bg-[#111822] h-10 w-10 text-white rounded-full  flex items-center justify-center">
+                    <div className="bg-[#111822] font-bold text-xl h-10 w-10 text-white rounded-full  flex items-center justify-center">
                       {index + 1}
                     </div>
                   </div>

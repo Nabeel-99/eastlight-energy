@@ -49,7 +49,7 @@ const page = () => {
           />
         </div>
         <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
+        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
           <div className="flex justify-center">
             {" "}
             <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
@@ -74,7 +74,7 @@ const page = () => {
           {acDetails.map((detail, index) => (
             <div
               key={index}
-              className="border-2 rounded-2xl   p-4 grid lg:grid-cols-2 gap-6         bg-[#111822] overflow-hidden md:mask-b-from-70% hover:mask-none  text-gray-300   border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:-translate-y-1 hover:drop-shadow-md  transition-all duration-300 ease-in-out group"
+              className="border-2 rounded-2xl   p-4 grid lg:grid-cols-2 gap-6         bg-[#111822] overflow-hidden  text-gray-300   border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:-translate-y-1 hover:drop-shadow-md  transition-all duration-300 ease-in-out group"
             >
               <div className="aspect-square border-4 border-teal-400/10 group-hover:border-teal-400/20 w-full h-[300px] lg:h-[375px] rounded-xl overflow-hidden">
                 <img

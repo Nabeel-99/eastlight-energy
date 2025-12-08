@@ -1,9 +1,29 @@
+"use client";
+
+import { useGSAP } from "@gsap/react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-
+import gsap from "gsap";
 const GetStarted = () => {
+  useGSAP(() => {
+    gsap.from("#get-started", {
+      scrollTrigger: {
+        trigger: "#get-started",
+        start: "top 70%",
+      },
+      y: 50,
+      filter: "blur(10px)",
+      opacity: 0,
+      delay: 0.5,
+      duration: 1.8,
+      ease: "power3.out",
+    });
+  }, []);
   return (
-    <section className="relative  overflow-hidden flex flex-col items-center p-10 lg:p-20 justify-center bg-black rounded-3xl border-2 border-teal-400/60 lg:border-teal-400/20 hover:border-teal-400 hover:shadow-md hover:shadow-teal-400 transition-colors duration-300 ease-in-out text-white max-w-6xl  2xl:container mx-auto w-full">
+    <section
+      id="get-started"
+      className="relative  overflow-hidden flex flex-col items-center p-10 lg:p-20 justify-center bg-black rounded-3xl border-2 border-teal-400/60 lg:border-teal-400/20 hover:border-teal-400 hover:shadow-md hover:shadow-teal-400 transition-colors duration-300 ease-in-out text-white max-w-6xl  2xl:container mx-auto w-full"
+    >
       <div className="absolute  inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
         <img
           src={"/panelfour.jpg"}
@@ -29,26 +49,6 @@ const GetStarted = () => {
           </Link>
         </div>
       </div>
-      {/* <div className="w-full ">
-        <div className="rounded-xl shadow-md  hidden md:block -right-10  absolute  xl:right-20 -top-10  lg:w-56 lg:h-56">
-          <Image
-            src={"/solar.jpg"}
-            alt="solar"
-            width={150}
-            height={150}
-            className="object-cover rounded-xl rotate-12 w-full h-full"
-          />
-        </div>
-        <div className="rounded-xl shadow-md  hidden md:block  absolute -left-10 -bottom-30  xl:left-20 lg:-bottom-10  lg:w-56 lg:h-56">
-          <Image
-            src={"/solartwo.png.avif"}
-            alt="solar"
-            width={150}
-            height={150}
-            className="object-cover rounded-xl rotate-12 w-full h-full"
-          />
-        </div>
-      </div> */}
     </section>
   );
 };

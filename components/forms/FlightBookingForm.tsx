@@ -36,7 +36,7 @@ import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import axios from "axios";
 import { LoaderCircle } from "lucide-react";
-import { cn, formatDate } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { DatePicker } from "../ui/DatePicker";
 import { toast } from "sonner";
 
@@ -102,7 +102,7 @@ export function FlightBookingForm() {
     }
   };
   return (
-    <Card className="w-full bg-teal-800/10 border-teal-400/10 text-white">
+    <Card className="mt-10 lg:w-3/4 lg:mx-auto bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Flight Booking Form

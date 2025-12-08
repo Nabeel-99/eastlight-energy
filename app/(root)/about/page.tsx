@@ -55,7 +55,7 @@ const page = () => {
           />
         </div>
         <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-40 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
+        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
           <div className="flex justify-center">
             {" "}
             <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
@@ -72,7 +72,7 @@ const page = () => {
           </p>
         </div>
       </section>
-      <section className="grid lg:grid-cols-2  gap-10 mt-20  px-4 md:px-10">
+      <section className="grid lg:grid-cols-2  gap-10 mt-20  px-4 md:px-10 2xl:container 2xl:mx-auto">
         <div className="flex flex-col items-center lg:items-start gap-6 lg:mt-20 ">
           <div className="p-[2px] rounded-full bg-linear-to-br from-transparent from-30% to-teal-400 shadow-md shadow-teal-400/20">
             <h2 className="bg-[#111822] rounded-full  py-1 px-2">WHO WE ARE</h2>
@@ -89,7 +89,7 @@ const page = () => {
           <img
             src="/about.png"
             alt="about"
-            className="w-full h-[300px] lg:h-[500px] border border-teal-400/10 rounded-2xl object-cover"
+            className="w-full h-[300px] lg:h-[500px] hover:shadow-md hover:shadow-teal-400 transition-all duration-300 ease-in-out border border-teal-400/10 rounded-2xl object-cover"
           />
         </div>
       </section>
@@ -135,7 +135,7 @@ const page = () => {
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 gap-10 px-4 md:px-10 ">
+      <section className="grid md:grid-cols-2 max-w-4xl  gap-6 max-md:px-4  ">
         <div className="flex flex-col items-start gap-6  lg:mt-20 ">
           <div className="p-[2px] rounded-full bg-linear-to-br from-transparent from-30% to-teal-400 shadow-md shadow-teal-400/20">
             <h2 className="bg-[#111822] rounded-full  py-1 px-2">
@@ -149,7 +149,7 @@ const page = () => {
             convenience, and operational efficiency in everyday life.
           </p>
         </div>
-        <div className="flex flex-col items-start gap-6 lg:mt-20 ">
+        <div className="flex flex-col items-start  gap-6 lg:mt-20 ">
           <div className="p-[2px] rounded-full bg-linear-to-br from-transparent from-30% to-teal-400 shadow-md shadow-teal-400/20">
             <h2 className="bg-[#111822] rounded-full  py-1 px-2">
               {" "}
