@@ -59,7 +59,7 @@ export function DatePicker({
         id={id}
         value={inputValue}
         placeholder={placeholder}
-        className="bg-background pr-10"
+        className="pr-10"
         aria-invalid={ariaInvalid}
         onChange={(e) => {
           const newDate = new Date(e.target.value);

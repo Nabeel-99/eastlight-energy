@@ -102,7 +102,7 @@ export function FlightBookingForm() {
     }
   };
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Flight Booking Form
@@ -385,7 +385,7 @@ export function FlightBookingForm() {
           disabled={loading}
           type="submit"
           form="flight-booking-form"
-          className="w-full"
+          className="w-full hover:bg-teal-400/50 bg-teal-400/60"
         >
           {loading ? (
             <LoaderCircle className="animate-spin" />

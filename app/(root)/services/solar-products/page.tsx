@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { solarProducts } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import React, { useRef, useState } from "react";
@@ -8,6 +7,8 @@ import { Check, ChevronRight, Sun, TrendingUp, Wrench } from "lucide-react";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { Spotlight } from "@/components/ui/spotlight";
+import { Button as StatefulButton } from "@/components/ui/stateful-button";
+import { Button } from "@/components/ui/button";
 
 const page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -65,9 +66,9 @@ const page = () => {
             for Nigerian conditions.
           </p>
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-4 mt-4">
-            <Button className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-6 md:px-8 md:text-base max-lg:w-full md:rounded-full  items-center  gap-2">
+            <StatefulButton className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-4 md:px-8 md:text-base max-lg:w-full md:rounded-full  items-center  gap-2">
               Explore Products
-            </Button>
+            </StatefulButton>
           </div>
         </div>
       </section>

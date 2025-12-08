@@ -72,7 +72,19 @@
     }
   }
 }
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.5;
+  width: 12px !important;
+  height: 12px !important;
+  transition: all 0.3s ease;
+}
 
+.swiper-pagination-bullet-active {
+  background: #115e59 !important;
+  opacity: 1;
+  transform: scale(1.2);
+}
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
