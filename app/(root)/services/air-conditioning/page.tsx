@@ -170,7 +170,18 @@ const page = () => {
                   <Phone className="w-5 h-5 text-teal-400" />
                   <div className="flex flex-col ">
                     <span className="text-sm text-gray-500">Phone</span>
-                    <span className="font-semibold">+2348069754944</span>
+                    <a
+                      href="tel:+2347072245877"
+                      className="hover:text-teal-400 font-semibold transition-colors"
+                    >
+                      +234 707 224 5877
+                    </a>
+                    <a
+                      href="tel:+2347072252441"
+                      className="hover:text-teal-400 font-semibold transition-colors"
+                    >
+                      +234 707 225 2441
+                    </a>
                   </div>
                 </div>
               </li>
@@ -180,7 +191,7 @@ const page = () => {
                   <div className="flex flex-col">
                     <span className="text-sm text-gray-500">Opening Hours</span>
                     <span className="font-semibold">
-                      Mon-Sun: 9:00 AM - 6:00 PM
+                      Mon-Sun: 9:00 AM - 4:00 PM
                     </span>
                   </div>
                 </div>

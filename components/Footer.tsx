@@ -1,7 +1,6 @@
 "use client";
 
 import { Mail, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/stateful-button";
 import { useGSAP } from "@gsap/react";
@@ -50,12 +49,10 @@ const Footer = () => {
             className="text-xl font-bold  border border-yellow-500/10 bg-black px-1 md:px-4 rounded-full"
           >
             <div className="w-20 md:w-24">
-              <Image
+              <img
                 src="/logo.png"
                 alt="logo"
                 loading="eager"
-                width={100}
-                height={100}
                 className="object-cover rounded-full w-full h-auto"
               />
             </div>
@@ -74,15 +71,42 @@ const Footer = () => {
             <ul className="flex flex-col gap-4 mt-4">
               <li className="flex items-center gap-2">
                 <Phone className="size-4 w-4" />
-                <span>+234 806 000 0000</span>
+                <div className="flex flex-col gap-1">
+                  <a
+                    href="tel:+2347072245877"
+                    className="hover:text-teal-400 transition-colors"
+                  >
+                    +234 707 224 5877
+                  </a>
+                  <a
+                    href="tel:+2347072252441"
+                    className="hover:text-teal-400 transition-colors"
+                  >
+                    +234 707 225 2441
+                  </a>
+                </div>
               </li>
+
               <li className="flex items-center gap-2">
                 <Mail className="size-6 w-4" />
-                <span>info@eastlightenergy.com</span>
+                <a
+                  href="mailto:info@eastlightenergyltd.com"
+                  className="hover:text-teal-400 transition-colors"
+                >
+                  info@eastlightenergyltd.com
+                </a>
               </li>
+
               <li className="flex items-center gap-2">
                 <MapPin className="size-4 w-4" />
-                <span>Nigeria</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=16+Gwani+street+Wuse+Zone+4+Abuja+Nigeria"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-400 transition-colors"
+                >
+                  16 Gwani street, Wuse Zone 4 Abuja
+                </a>
               </li>
             </ul>
           </div>

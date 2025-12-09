@@ -20,7 +20,6 @@ const page = () => {
 
   const handleCardClick = (card: SelectedHotel) => {
     setSelectedHotel(card);
-    console.log(card);
     marqueeRef.current?.pause();
   };
 
@@ -88,6 +87,13 @@ const page = () => {
       heading: "Urban Elegance",
       subheading:
         "Perfect blend of contemporary style and traditional hospitality in Nigeria's most vibrant business districts.",
+    },
+    {
+      id: 11,
+      thumbnail: "/hotel.avif",
+      heading: "Suite Perfection",
+      subheading:
+        "Spacious rooms featuring plush bedding, modern furnishings, and private balconies for the ultimate relaxation experience.",
     },
     {
       id: 6,

@@ -73,13 +73,24 @@ const page = () => {
             <p className="text-gray-600 mt-1 text-center">
               We’re here to help with any questions or requests.
             </p>
+
             <ul className="flex flex-col gap-2">
               <li className="flex items-center gap-2">
                 <div className="flex items-center gap-3 w-full bg-teal-500/10 rounded-lg p-4">
                   <Phone className="w-5 h-5 text-teal-400" />
-                  <div className="flex flex-col">
-                    <span className="text-sm text-gray-500"></span>
-                    <span className="font-semibold">+2348069754944</span>
+                  <div className="flex flex-col gap-1">
+                    <a
+                      href="tel:+2347072245877"
+                      className="hover:text-teal-400 font-semibold transition-colors"
+                    >
+                      +234 707 224 5877
+                    </a>
+                    <a
+                      href="tel:+2347072252441"
+                      className="hover:text-teal-400 font-semibold transition-colors"
+                    >
+                      +234 707 225 2441
+                    </a>
                   </div>
                 </div>
               </li>
@@ -87,10 +98,12 @@ const page = () => {
                 <div className="flex items-center gap-3 w-full bg-teal-500/10 rounded-lg p-4">
                   <Mail className="w-5 h-5 text-teal-400" />
                   <div className="flex flex-col">
-                    <span className="text-sm text-gray-500"></span>
-                    <span className="font-semibold">
-                      info@eastlightenergy.com
-                    </span>
+                    <a
+                      href="mailto:info@eastlightenergyltd.com"
+                      className="hover:text-teal-400 transition-colors"
+                    >
+                      info@eastlightenergyltd.com
+                    </a>
                   </div>
                 </div>
               </li>
@@ -100,7 +113,7 @@ const page = () => {
                   <div className="flex flex-col">
                     <span className="text-sm text-gray-500">Opening Hours</span>
                     <span className="font-semibold">
-                      Mon-Sun: 9:00 AM - 6:00 PM
+                      Mon-Sun: 9:00 AM - 4:00 PM
                     </span>
                   </div>
                 </div>

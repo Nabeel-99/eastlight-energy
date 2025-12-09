@@ -33,53 +33,8 @@ import { useState } from "react";
 import axios from "axios";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
+import { locations } from "@/lib/data";
 
-const locations = [
-  {
-    id: "lagos",
-    title: "Lagos",
-  },
-  {
-    id: "abuja",
-    title: "Abuja",
-  },
-  {
-    id: "port-harcourt",
-    title: "Port Harcourt",
-  },
-  {
-    id: "kano",
-    title: "Kano",
-  },
-  {
-    id: "ibadan",
-    title: "Ibadan",
-  },
-  {
-    id: "enugu",
-    title: "Enugu",
-  },
-  {
-    id: "calabar",
-    title: "Calabar",
-  },
-  {
-    id: "uyo",
-    title: "Uyo",
-  },
-  {
-    id: "warri",
-    title: "Warri",
-  },
-  {
-    id: "benin-city",
-    title: "Benin City",
-  },
-  {
-    id: "other",
-    title: "Other Location",
-  },
-];
 export function AffiliateForm() {
   const [loading, setLoading] = useState(false);
 

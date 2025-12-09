@@ -9,7 +9,6 @@ const resend = new Resend(process.env.RESEND_API_KEY!);
 export const POST = async (req: NextRequest) => {
   try {
     const formData = await req.json();
-    console.log("formData", formData);
 
     //  contact email
     await resend.emails.send({

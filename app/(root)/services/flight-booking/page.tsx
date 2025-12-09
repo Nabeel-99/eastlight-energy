@@ -28,7 +28,7 @@ const page = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#form-section",
-        start: "top 70%",
+        start: "top center",
       },
     });
     tl.from(".form-title", {

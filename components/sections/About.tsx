@@ -91,24 +91,7 @@ const About = () => {
             </Link>
           </div>
         </div>
-        {/* <div className="flex flex-col lg:flex-row gap-2">
-          <div className="h-[300px] max-sm:scale-90 lg:h-[400px] rotate-4 aspect-square md:w-[500px] mx-auto lg:w-full rounded-xl overflow-hidden">
-            {" "}
-            <img
-              src={"/buildingsolar.jpg"}
-              alt="solar"
-              className="object-cover w-full h-full"
-            />
-          </div>
-          <div className="h-[300px] max-sm:scale-90 lg:h-[400px] lg:mt-10 -rotate-4 aspect-square md:w-[500px] mx-auto lg:w-full rounded-xl overflow-hidden">
-            {" "}
-            <img
-              src={"/solartwo.png.avif"}
-              alt="solar"
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </div> */}
+
         <div className="relative grid grid-cols-2 gap-4 lg:gap-6">
           <div className="col-span-2  max-lg:aspect-square max-lg:mx-auto lg:col-span-1 h-[280px] lg:h-[350px] rotate-3 rounded-2xl overflow-hidden shadow-xl shadow-teal-500/10 hover:rotate-2 transition-transform duration-300">
             <img
