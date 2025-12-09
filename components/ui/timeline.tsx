@@ -6,6 +6,11 @@ import {
   motion,
 } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface TimelineEntry {
   title: string;
@@ -40,16 +45,40 @@ export const Timeline = ({
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
+  useGSAP(() => {
+    // Animate the content from right as each item comes into view
+    gsap.utils.toArray(".timeline-content").forEach((content: any) => {
+      gsap.fromTo(
+        content,
+        {
+          x: 100,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: content,
+            start: "top center",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, [data]);
+
   return (
     <div
-      className="w-full text-gray-300 dark:bg-neutral-950  md:px-10"
+      className="w-full text-gray-300 dark:bg-neutral-950 md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto  px-4 md:px-8 lg:px-10">
-        <h2 className="text-xl md:text-5xl mb-4  text-center dark:text-white font-bold bg-linear-to-t from-white/70    to-teal-400 to-70% bg-clip-text text-transparent">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10">
+        <h2 className="text-xl md:text-5xl mb-4 text-center dark:text-white font-bold bg-linear-to-t from-white/70 to-teal-400 to-70% bg-clip-text text-transparent">
           {header}
         </h2>
-        <p className="text-gray-300 dark:text-neutral-300 text-center lg:text-lg md:text-base ">
+        <p className="text-gray-300 dark:text-neutral-300 text-center lg:text-lg md:text-base">
           {subheader}
         </p>
       </div>
@@ -63,16 +92,16 @@ export const Timeline = ({
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full bg-teal-400/50 dark:bg-teal-400/50 border border-teal-400 dark:border-teal-400 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold  ">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold">
                 {item.title}
               </h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
+            <div className="relative pl-20 pr-4 md:pl-4 w-full timeline-content">
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-gray-300">
                 {item.title}
               </h3>
-              {item.content}{" "}
+              {item.content}
             </div>
           </div>
         ))}
@@ -80,14 +109,14 @@ export const Timeline = ({
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-teal-400/50 dark:via-teal-400/50 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-teal-400/50 dark:via-teal-400/50 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-teal-500 via-teal-400 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-teal-500 via-teal-400 to-transparent from-[0%] via-[10%] rounded-full"
           />
         </div>
       </div>

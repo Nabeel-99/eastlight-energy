@@ -75,7 +75,7 @@ const ChooseUs = () => {
       <div className="grid max-lg:max-w-xl max-lg:mx-auto  lg:grid-cols-3 gap-10">
         {chooseDetails.map((item, index) => (
           <div key={index} className="choose-us-card opacity-0 translate-y-20">
-            <Card className="bg-[#111822]  flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20  hover:drop-shadow-md  transition-all duration-300 ease-in-out group">
+            <Card className="bg-[#111822] h-full flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20  hover:drop-shadow-md  transition-all duration-300 ease-in-out group">
               <CardHeader>
                 {" "}
                 <div className="flex justify-start">

@@ -3,12 +3,13 @@
 import { MapPin, Phone, Star } from "lucide-react";
 import { HotelBookingForm } from "@/components/forms/HotelBookingForm";
 import MarqueeEffect, { MarqueeEffectRef } from "@/components/ui/MarqueeEffect";
-import { Spotlight } from "@/components/ui/spotlight";
-import { ShineBorder } from "@/components/ui/shine-border";
 import { useRef, useState, useEffect } from "react";
 import { SelectedHotel } from "@/lib/interface";
 import CustomModal from "@/components/ui/CustomModal";
 import { Carousel } from "@/components/ui/apple-cards-carousel";
+import ServiceHero from "@/components/ServiceHero";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const page = () => {
   const marqueeRef = useRef<MarqueeEffectRef>(null);
@@ -137,34 +138,60 @@ const page = () => {
     },
   ];
 
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#form-section",
+        start: "top center",
+      },
+    });
+    tl.from(".form-title", {
+      x: 50,
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    })
+      .from(
+        ".form-desc",
+        {
+          x: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      )
+      .from(
+        ".form-items",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      )
+      .from(
+        ".form-card",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      );
+  }, []);
+
   return (
     <div className="flex flex-col items-center w-full h-full overflow-x-hidden   text-white">
-      <section className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden">
-        <div className="absolute inset-0 w-full 2xl:container 2xl:mx-auto">
-          <Spotlight
-            className="-top-40 left-0 md:-top-20 md:left-60 2xl:left-1/2 2xl:-translate-x-1/2"
-            fill="#2DD4BF"
-          />
-        </div>
-        <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
-          <div className="flex justify-center">
-            {" "}
-            <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
-              <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
-              HOTEL BOOKING
-            </h2>
-          </div>
+      <ServiceHero
+        badge="HOTEL BOOKING"
+        title="Find Your Perfect Stay"
+        description="Discover premium 4-star and 5-star hotels across Nigeria. Book your
+            stay with confidence and enjoy exceptional hospitality."
+      />
 
-          <p className="text-[3rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
-            Find Your Perfect Stay
-          </p>
-          <p className="lg:text-xl leading-loose text-center max-w-xl mx-auto text-gray-300">
-            Discover premium 4-star and 5-star hotels across Nigeria. Book your
-            stay with confidence and enjoy exceptional hospitality.
-          </p>
-        </div>
-      </section>
       <MarqueeEffect ref={marqueeRef}>
         <div className="flex marquee-effect-left w-max items-center  h-[500px]">
           {cards.map((item, index) => (
@@ -212,7 +239,7 @@ const page = () => {
         </div>
       </MarqueeEffect>
 
-      <div className="md:hidden w-full">
+      <div className="md:hidden marquee w-full">
         <Carousel cards={cards} onCardClick={handleCardClick} />
       </div>
 
@@ -224,18 +251,19 @@ const page = () => {
         />
       )}
       <section
+        id="form-section"
         ref={formRef}
         className="grid lg:grid-cols-2 gap-10  px-4 md:px-10  py-20 lg:py-40 2xl:container 2xl:mx-auto"
       >
         <div className="flex flex-col gap-6 ">
-          <h2 className="text-3xl lg:text-5xl font-bold bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
+          <h2 className="text-3xl lg:text-5xl form-title font-bold bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
             Book Your Stay
           </h2>
-          <p className="text-base text-gray-300">
+          <p className="text-base form-desc text-gray-300">
             Submit your hotel booking request and our team will assist you in
             finding the perfect accommodation for your needs.
           </p>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col form-items gap-8">
             {items.map((item, index) => (
               <div className="flex items-center gap-2" key={index}>
                 <div className="flex justify-start">

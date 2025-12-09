@@ -53,7 +53,7 @@ export function ContactForm() {
     }
   };
   return (
-    <Card className="w-full bg-teal-800/10 border-teal-400/10 text-white">
+    <Card className="w-full form-card bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">Get in Touch</CardTitle>
         <CardDescription>

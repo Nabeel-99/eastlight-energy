@@ -5,12 +5,10 @@ import { cn } from "@/lib/utils";
 import React, { useRef, useState } from "react";
 import { Check, ChevronRight, Sun, TrendingUp, Wrench } from "lucide-react";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
-import { ShineBorder } from "@/components/ui/shine-border";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Button as StatefulButton } from "@/components/ui/stateful-button";
 import { Button } from "@/components/ui/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ServiceHero from "@/components/ServiceHero";
 
 const page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -49,71 +47,16 @@ const page = () => {
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#hero",
-        start: "top 70%",
-      },
-    });
-    tl.from(".hero-img", {
-      scale: 1.2,
-      opacity: 0,
-      duration: 1.8,
-      ease: "power3.out",
-    })
-      .from(
-        ".shine-border",
-        {
-          filter: "blur(10px)",
-          opacity: 0,
-          y: -20,
-          duration: 1.8,
-          ease: "power3.out",
-        },
-        "<"
-      )
-      .from(
-        ".hero-title",
-        {
-          y: 50,
-          opacity: 0,
-          duration: 1.8,
-          ease: "power3.out",
-        },
-        "<"
-      )
-      .from(
-        ".hero-desc",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 1.8,
-          ease: "power3.out",
-        },
-        "<0.5"
-      )
-      .from(
-        ".cta-btns",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 1.8,
-          ease: "power3.out",
-        },
-        "<0.5"
-      );
-
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
         trigger: "#form-section",
         start: "top 70%",
       },
     });
-    tl2
-      .from(".form-title", {
-        x: 50,
-        opacity: 0,
-        duration: 1.8,
-        ease: "power3.out",
-      })
+    tl.from(".form-title", {
+      x: 50,
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    })
       .from(
         ".form-desc",
         {
@@ -147,45 +90,13 @@ const page = () => {
   }, []);
   return (
     <div className="flex flex-col items-center w-full h-full   text-white">
-      <section
-        id="hero"
-        className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden"
-      >
-        <div className="absolute inset-0 w-full 2xl:container 2xl:mx-auto">
-          <Spotlight
-            className="-top-40 left-0 md:-top-20 md:left-60 2xl:left-1/2 2xl:-translate-x-1/2"
-            fill="#2DD4BF"
-          />
-        </div>
-        <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
-          <div className="flex justify-center">
-            {" "}
-            <h2 className="text-base relative shine-border px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
-              <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
-              SOLAR PRODUCTS
-            </h2>
-          </div>
-
-          <p className="text-[2rem] hero-title lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
-            CWORTH ENERGY SOLAR
-          </p>
-          <p className="lg:text-xl hero-desc leading-loose text-center max-w-xl mx-auto text-gray-300">
-            Discover premium CWorth Energy solar products and systems.
-            High-performance panels, inverters, and battery storage engineered
-            for Nigerian conditions.
-          </p>
-          <div className="flex flex-col cta-btns lg:flex-row lg:items-center lg:justify-center gap-4 mt-4">
-            <StatefulButton
-              onClick={handleScrollClick}
-              className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-4 md:px-8 md:text-base max-lg:w-full max-lg:max-w-sm mx-auto md:rounded-full  items-center  gap-2"
-            >
-              Explore Products
-            </StatefulButton>
-          </div>
-        </div>
-      </section>
-
+      <ServiceHero
+        badge="SOLAR PRODUCTS"
+        title="CWORTH ENERGY SOLAR"
+        description="Discover premium CWorth Energy solar products and systems. High-performance panels, inverters, and battery storage engineered for Nigerian conditions."
+        btnText="Contact Us"
+        handleScrollClick={handleScrollClick}
+      />
       {/* products */}
       <section
         ref={productsRef}

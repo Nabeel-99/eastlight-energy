@@ -2,10 +2,10 @@
 
 import { MapPin, PlaneIcon, Users2Icon } from "lucide-react";
 import { FlightBookingForm } from "@/components/forms/FlightBookingForm";
-import { ShineBorder } from "@/components/ui/shine-border";
-import { Spotlight } from "@/components/ui/spotlight";
-import WorldMap from "@/components/ui/world-map";
 import React from "react";
+import ServiceHero from "@/components/ServiceHero";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const page = () => {
   const items = [
     {
@@ -24,120 +24,68 @@ const page = () => {
       icon: <Users2Icon className="size-6" />,
     },
   ];
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#form-section",
+        start: "top 70%",
+      },
+    });
+    tl.from(".form-title", {
+      x: 50,
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    })
+      .from(
+        ".form-desc",
+        {
+          x: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      )
+      .from(
+        ".form-items",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      )
+      .from(
+        ".form-card",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1.8,
+          ease: "power3.out",
+        },
+        "<0.2"
+      );
+  }, []);
   return (
     <div className="flex flex-col items-center w-full h-full   text-white">
-      <section className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden">
-        <div className="absolute inset-0 w-full 2xl:container 2xl:mx-auto">
-          <Spotlight
-            className="-top-40 left-0 md:-top-20 md:left-60 2xl:left-1/2 2xl:-translate-x-1/2"
-            fill="#2DD4BF"
-          />
-        </div>
-        <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% z-10 pt-20">
-          <WorldMap
-            dots={[
-              {
-                start: {
-                  lat: 64.2008,
-                  lng: -149.4937,
-                }, // Alaska (Fairbanks)
-                end: {
-                  lat: 34.0522,
-                  lng: -118.2437,
-                }, // Los Angeles
-              },
-              {
-                start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
-                end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-              },
-              {
-                start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-                end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
-              },
-              {
-                start: { lat: 51.5074, lng: -0.1278 }, // London
-                end: { lat: 28.6139, lng: 77.209 }, // New Delhi
-              },
-              {
-                start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-                end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
-              },
-              {
-                start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-                end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
-              },
-            ]}
-          />
-          {/* <WorldMap
-            dots={[
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: 9.0765, lng: 7.3986 },
-              }, // Lagos → Abuja
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: 4.8156, lng: 7.0498 },
-              }, // Lagos → Port Harcourt
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: -1.2921, lng: 36.8219 },
-              }, // Lagos → Nairobi
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: -26.2041, lng: 28.0473 },
-              }, // Lagos → Johannesburg
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: 31.2304, lng: 121.4737 },
-              }, // Lagos → Shanghai
-              {
-                start: { lat: 9.0765, lng: 7.3986 },
-                end: { lat: 23.1291, lng: 113.2644 },
-              }, // Abuja → Guangzhou
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: 52.52, lng: 13.405 },
-              }, // Lagos → Berlin
-              {
-                start: { lat: 9.0765, lng: 7.3986 },
-                end: { lat: 25.2048, lng: 55.2708 },
-              }, // Abuja → Dubai
-              {
-                start: { lat: 6.5244, lng: 3.3792 },
-                end: { lat: 37.7749, lng: -122.4194 },
-              }, // Lagos → San Francisco
-            ]}
-          /> */}
-        </div>
-        <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
-          <div className="flex justify-center">
-            {" "}
-            <h2 className="text-base relative  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
-              <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
-              FLIGHT BOOKING
-            </h2>
-          </div>
-
-          <p className="text-[3rem] lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
-            Plan Your Trip
-          </p>
-          <p className="lg:text-xl leading-loose text-center max-w-xl mx-auto text-gray-300">
-            Book flights to your dream destinations with ease. Enjoy competitive
-            rates and excellent customer service.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 px-4">
+      <ServiceHero
+        badge="FLIGHT BOOKING"
+        title="Plan Your Trip"
+        description="Book flights to your dream destinations with ease. Enjoy competitive rates and excellent customer service."
+        bgType="custom"
+      />
+      <section id="form-section" className="py-20 px-4">
         <div className="flex flex-col items-center gap-6 ">
-          <h2 className="text-3xl lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
+          <h2 className="text-3xl form-title lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
             Book Your Flight
           </h2>
-          <p className="lg:text-lg max-w-xl text-center text-gray-300">
+          <p className="lg:text-lg max-w-xl form-desc text-center text-gray-300">
             Submit your flight booking request and our travel experts will help
             you find the best options for your journey.
           </p>
-          <div className="flex flex-col lg:flex-row items-center gap-2 lg:max-w-5xl">
+          <div className="flex flex-col lg:flex-row items-center form-items gap-2 lg:max-w-5xl">
             {items.map((item, index) => (
               <React.Fragment key={index}>
                 <div className="flex flex-col items-center gap-2" key={index}>

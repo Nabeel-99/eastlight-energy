@@ -83,7 +83,7 @@ export function ACServiceForm() {
     }
   };
   return (
-    <Card className="w-full lg:max-w-4xl mx-auto bg-teal-800/10 border-teal-400/10 text-white">
+    <Card className="w-full form-card lg:max-w-4xl mx-auto bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Service Request Form

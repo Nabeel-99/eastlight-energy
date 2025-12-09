@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef, useImperativeHandle, forwardRef } from "react";
-
+import { useMediaQuery } from "react-responsive";
 export interface MarqueeEffectRef {
   pause: () => void;
   resume: () => void;
@@ -20,8 +20,18 @@ const MarqueeEffect = forwardRef<
   const marqueeRef = useRef(null);
   const tweenRef = useRef<gsap.core.Tween | null>(null);
   const isPausedRef = useRef(false);
-
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   useGSAP(() => {
+    gsap.from(".marquee", {
+      scrollTrigger: {
+        trigger: ".marquee",
+        start: isMobile ? "top center" : "top 70%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.out",
+    });
     const ctx = gsap.context(() => {
       if (reverse) {
         gsap.set(".marquee-effect-right", { xPercent: -50 });
@@ -74,7 +84,7 @@ const MarqueeEffect = forwardRef<
       ref={marqueeRef}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="hidden  md:block md:w-full mask-x-from-50% overflow-hidden mt-10 "
+      className="hidden marquee  md:block md:w-full mask-x-from-50% overflow-hidden mt-10 "
     >
       {children}
     </div>

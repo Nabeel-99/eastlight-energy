@@ -109,7 +109,7 @@ export function AffiliateForm() {
     }
   };
   return (
-    <Card className="w-full bg-teal-800/10 border-teal-400/10 text-white">
+    <Card className="w-full form-card bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Affiliate Application

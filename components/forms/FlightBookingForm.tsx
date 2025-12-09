@@ -102,7 +102,7 @@ export function FlightBookingForm() {
     }
   };
   return (
-    <Card className="mt-10 lg:w-3/4 lg:mx-auto bg-teal-800/10 border-teal-400/10 text-white">
+    <Card className="mt-10 form-card lg:w-3/4 lg:mx-auto bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
           Flight Booking Form
