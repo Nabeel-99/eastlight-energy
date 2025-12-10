@@ -99,10 +99,10 @@ const page = () => {
                   <Mail className="w-5 h-5 text-teal-400" />
                   <div className="flex flex-col">
                     <a
-                      href="mailto:info@eastlightenergyltd.com"
+                      href="mailto:info@eastlightenergy.com"
                       className="hover:text-teal-400 transition-colors"
                     >
-                      info@eastlightenergyltd.com
+                      info@eastlightenergy.com
                     </a>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const page = () => {
                   <div className="flex flex-col">
                     <span className="text-sm text-gray-500">Opening Hours</span>
                     <span className="font-semibold">
-                      Mon-Sun: 9:00 AM - 4:00 PM
+                      Mon-Fri: 9:00 AM - 4:00 PM
                     </span>
                   </div>
                 </div>

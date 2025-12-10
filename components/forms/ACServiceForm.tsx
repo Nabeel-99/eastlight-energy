@@ -34,24 +34,24 @@ import { LoaderCircle } from "lucide-react";
 
 const serviceOptions = [
   {
-    id: "purchase",
+    id: "ac-purchase",
     title: "AC Purchase",
     description: "Get quotes on new AC units and brands",
   },
   {
-    id: "installation",
+    id: "ac-installation",
     title: "AC Installation",
     description: "Professional installation of new air conditioning units",
   },
   {
-    id: "repair",
-    title: "Repair",
+    id: "ac-repair",
+    title: "AC Repair",
     description:
       "Fix cooling issues, electrical faults, and refrigerant recharge",
   },
   {
-    id: "maintenance",
-    title: "Maintenance",
+    id: "ac-maintenance",
+    title: "AC Maintenance",
     description: "Regular cleaning, filter replacement, and system checks",
   },
 ] as const;
@@ -180,7 +180,7 @@ export function ACServiceForm() {
                             </FieldDescription>
                           </FieldContent>
                           <RadioGroupItem
-                            value={option.id}
+                            value={option.title}
                             id={`service-${option.id}`}
                             aria-invalid={fieldState.invalid}
                           />

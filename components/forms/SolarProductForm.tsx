@@ -219,7 +219,7 @@ export function SolarProductForm() {
                             <FieldTitle>{property.title}</FieldTitle>
                           </FieldContent>
                           <RadioGroupItem
-                            value={property.id}
+                            value={property.title}
                             id={`property-${property.id}`}
                             aria-invalid={fieldState.invalid}
                           />

@@ -9,25 +9,23 @@ import {
   Hr,
 } from "@react-email/components";
 
-interface SolarBookingEmailProps {
-  name: string;
+interface SolarProductEmailProps {
+  fullname: string;
   email: string;
   phone: string;
-  state: string;
-  systemSize: string;
-  address: string;
-  notes?: string;
+  property: string;
+  product_interest: string[];
+  message?: string;
 }
 
 export default function SolarProductEmail({
-  name,
+  fullname,
   email,
   phone,
-  state,
-  systemSize,
-  address,
-  notes,
-}: SolarBookingEmailProps) {
+  property,
+  product_interest,
+  message,
+}: SolarProductEmailProps) {
   return (
     <Html>
       <Head />
@@ -42,49 +40,45 @@ export default function SolarProductEmail({
             maxWidth: "600px",
           }}
         >
-          <Heading>New Solar Installation Request</Heading>
+          <Heading>New Solar Product Inquiry</Heading>
 
           <Section>
-            <Text style={{ fontSize: "16px", lineHeight: "24px" }}>
-              <strong>Client Details:</strong>
+            <Text style={{ fontSize: "16px", fontWeight: "bold" }}>
+              Client Details:
             </Text>
-
-            <Text>
-              <strong>Name:</strong> {name}
-            </Text>
-            <Text>
-              <strong>Email:</strong> {email}
-            </Text>
-            <Text>
-              <strong>Phone:</strong> {phone}
-            </Text>
-            <Text>
-              <strong>State:</strong> {state}
-            </Text>
-
-            <Hr />
-
-            <Text style={{ fontSize: "16px", lineHeight: "24px" }}>
-              <strong>Installation Details:</strong>
-            </Text>
-
-            <Text>
-              <strong>System Size:</strong> {systemSize}
-            </Text>
-            <Text>
-              <strong>Address:</strong> {address}
-            </Text>
-            {notes && (
-              <Text>
-                <strong>Notes:</strong> {notes}
-              </Text>
-            )}
+            <Text>Name: {fullname}</Text>
+            <Text>Email: {email}</Text>
+            <Text>Phone: {phone}</Text>
+            <Text>Property Type: {property}</Text>
           </Section>
 
           <Hr />
 
+          <Section>
+            <Text style={{ fontSize: "16px", fontWeight: "bold" }}>
+              Products of Interest:
+            </Text>
+            {product_interest.map((product, index) => (
+              <Text key={index}>• {product}</Text>
+            ))}
+          </Section>
+
+          {message && (
+            <>
+              <Hr />
+              <Section>
+                <Text style={{ fontSize: "16px", fontWeight: "bold" }}>
+                  Additional Information:
+                </Text>
+                <Text>{message}</Text>
+              </Section>
+            </>
+          )}
+
+          <Hr />
           <Text style={{ fontSize: "12px", color: "#6b7280" }}>
-            Submitted on {new Date().toLocaleDateString()}
+            Submitted on {new Date().toLocaleDateString()} at{" "}
+            {new Date().toLocaleTimeString()}
           </Text>
         </Container>
       </Body>

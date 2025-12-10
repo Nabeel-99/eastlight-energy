@@ -6,37 +6,54 @@ import { Manrope } from "next/font/google";
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "EastLight Energy",
+  metadataBase: new URL("https://eastlightenergy.com"),
+
+  title: {
+    default: "EastLight Energy - Solar Solutions for Homes & Businesses",
+    template: "%s | EastLight Energy",
+  },
   description:
-    "Major Distributor for Cworth Energy Systems. Quality solar products powering homes & businesses..",
+    "Major distributor for Cworth Energy Systems. Quality solar products, installation services, and energy solutions for homes and businesses across Nigeria.",
+  keywords: [
+    "solar energy Nigeria",
+    "solar panels Abuja",
+    "Cworth Energy distributor",
+    "solar installation Nigeria",
+    "renewable energy",
+    "solar products",
+    "inverters Nigeria",
+    "solar batteries",
+  ],
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "EastLight Energy",
+    title: "EastLight Energy - Solar Solutions for Homes & Businesses",
     description:
-      "Major Distributor for Cworth Energy Systems. Quality solar products powering homes & businesses.",
-    url: "https://eastlight-energy.vercel.app",
+      "Major distributor for Cworth Energy Systems. Quality solar products, installation services, and energy solutions across Nigeria.",
+    url: "https://eastlightenergy.com",
     siteName: "EastLight Energy",
     images: [
       {
-        url: "/logo.png",
-        width: 800,
-        height: 600,
-        alt: "EastLight Energy Logo",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "EastLight Energy - Sustainable Solar Solutions",
       },
     ],
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EastLight Energy",
+    title: "EastLight Energy - Solar Solutions",
     description:
-      "Major Distributor for Cworth Energy Systems. Quality solar products powering homes & businesses..",
-    images: ["/logo.png"],
+      "Major distributor for Cworth Energy Systems. Quality solar products and installation services across Nigeria.",
+    images: ["/og-image.png"],
   },
 };
 

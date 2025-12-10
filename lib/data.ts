@@ -146,4 +146,8 @@ export const locations = [
   { id: "yobe", title: "Yobe" },
   { id: "zamfara", title: "Zamfara" },
   { id: "fct", title: "FCT, Abuja" },
+  {
+    id: "other",
+    title: "Other Location",
+  },
 ];

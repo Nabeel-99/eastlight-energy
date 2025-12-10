@@ -13,8 +13,8 @@ export const POST = async (req: NextRequest) => {
 
     //  contact email
     await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "codingacademy599@gmail.com",
+      from: "EastLight Energy <noreply@eastlightenergy.com>",
+      to: process.env.EMAIL!,
       replyTo: formData.email,
       subject: "New Hotel Booking Form Submission",
       react: HotelBookingEmail(formData),
@@ -22,7 +22,7 @@ export const POST = async (req: NextRequest) => {
 
     // confirmation Email
     await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "EastLight Energy <noreply@eastlightenergy.com>",
       to: formData.email,
       subject: "Confirmation Email",
       react: ConfirmationEmail({

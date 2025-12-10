@@ -200,7 +200,7 @@ export function HotelBookingForm() {
                     </SelectTrigger>
                     <SelectContent>
                       {locations.map((location) => (
-                        <SelectItem key={location.id} value={location.id}>
+                        <SelectItem key={location.id} value={location.title}>
                           {location.title}
                         </SelectItem>
                       ))}

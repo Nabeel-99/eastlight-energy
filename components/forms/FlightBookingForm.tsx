@@ -344,7 +344,7 @@ export function FlightBookingForm() {
                     </SelectTrigger>
                     <SelectContent>
                       {classes.map((item) => (
-                        <SelectItem key={item.id} value={item.id}>
+                        <SelectItem key={item.id} value={item.title}>
                           {item.title}
                         </SelectItem>
                       ))}

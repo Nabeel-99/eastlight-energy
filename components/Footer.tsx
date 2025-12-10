@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "./ui/stateful-button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { FaXTwitter, FaInstagram, FaFacebookF } from "react-icons/fa6";
 const Footer = () => {
   const serviceLinks = [
     {
@@ -26,6 +27,21 @@ const Footer = () => {
     {
       name: "Flight Booking",
       link: "/services/flight-booking",
+    },
+  ];
+
+  const socialLinks = [
+    {
+      icon: <FaInstagram />,
+      link: "https://www.instagram.com/eastlightenergy/",
+    },
+    {
+      icon: <FaXTwitter />,
+      link: "https://x.com/Eastlightenergy",
+    },
+    {
+      icon: <FaFacebookF />,
+      link: "https://web.facebook.com/profile.php?id=61583476835088",
     },
   ];
 
@@ -61,7 +77,7 @@ const Footer = () => {
             Major Distributor for Cworth Energy Systems. Quality solar products
             powering homes & businesses.
           </p>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-6">
             <Link href={"/affiliate-program"} className="max-lg:w-full">
               {" "}
               <Button className="flex bg-white/90 text-black hover:ring-yellow-500 hover:bg-white  hover:shadow-md hover:shadow-white max-lg:w-full items-center md:p-3 md:px-8  md:text-base md:rounded-full  gap-2">
@@ -90,10 +106,10 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Mail className="size-6 w-4" />
                 <a
-                  href="mailto:info@eastlightenergyltd.com"
+                  href="mailto:info@eastlightenergy.com"
                   className="hover:text-teal-400 transition-colors"
                 >
-                  info@eastlightenergyltd.com
+                  info@eastlightenergy.com
                 </a>
               </li>
 
@@ -109,9 +125,22 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+            <div className="flex items-center gap-4">
+              {socialLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-teal-400/50 hover:bg-teal-500 transition-colors duration-300 ease-in-out rounded-full p-2"
+                >
+                  {link.icon}
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
-        <section className="flex flex-col gap-8 w-full">
+        <section className="flex  flex-col justify-between gap-8 w-full">
           <div className="grid lg:grid-cols-2 gap-20 w-full px-6 pt-10 lg:pt-20 lg:px-20 pb-10 lg:pb-20">
             <div className="flex flex-col gap-2">
               <p className="font-bold mb-4">Services</p>
@@ -158,12 +187,12 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="border-t mt-10 pt-4 border-t-teal-400/20 pb-10">
-            <p className="text-center text-sm">
-              Copyright &copy; 2025 Eastlight Energy. All Rights Reserved
-            </p>
-          </div>
         </section>
+      </div>
+      <div className="border-t pt-4 border-t-teal-400/20 py-10">
+        <p className="text-center text-sm">
+          Copyright &copy; 2025 Eastlight Energy. All Rights Reserved
+        </p>
       </div>
     </footer>
   );

@@ -77,9 +77,7 @@ export default function ConfirmationEmail({
             borderRadius: "8px",
           }}
         >
-          <Heading style={{ color: "#24a090", marginBottom: "20px" }}>
-            Thank You for Contacting EastLight Energy!
-          </Heading>
+          <Heading>Thank You for Contacting EastLight Energy!</Heading>
 
           <Section>
             <Text style={{ fontSize: "16px", lineHeight: "1.6" }}>
@@ -107,29 +105,16 @@ export default function ConfirmationEmail({
               style={{ fontSize: "14px", margin: "8px 0", lineHeight: "1.6" }}
             >
               <strong>Phone:</strong>{" "}
-              <Link
-                href="tel:+2347072245877"
-                style={{ color: "#24a090", textDecoration: "none" }}
-              >
-                07072245877
-              </Link>
+              <Link href="tel:+2347072245877">07072245877</Link>
               {" | "}
-              <Link
-                href="tel:+2347072252441"
-                style={{ color: "#24a090", textDecoration: "none" }}
-              >
-                07072252441
-              </Link>
+              <Link href="tel:+2347072252441">07072252441</Link>
             </Text>
             <Text
               style={{ fontSize: "14px", margin: "8px 0", lineHeight: "1.6" }}
             >
               <strong>Email:</strong>{" "}
-              <Link
-                href="mailto:info@eastlightenergyltd.com"
-                style={{ color: "#24a090", textDecoration: "none" }}
-              >
-                info@eastlightenergyltd.com
+              <Link href="mailto:info@eastlightenergy.com">
+                info@eastlightenergy.com
               </Link>
             </Text>
             <Text
