@@ -41,6 +41,10 @@ const ChooseUs = () => {
         });
       },
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
   const chooseDetails = [
     {

@@ -95,6 +95,10 @@ const Service = () => {
         });
       },
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
   return (
     <section

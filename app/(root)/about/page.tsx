@@ -142,6 +142,10 @@ const page = () => {
         });
       },
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
   return (
     <div className="flex flex-col items-center w-full h-full   text-white">
