@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/stateful-button";
 import { useGSAP } from "@gsap/react";
@@ -102,7 +102,17 @@ const Footer = () => {
                   </a>
                 </div>
               </li>
-
+              <li className="flex items-center gap-2">
+                <Clock className="size-4 w-4" />
+                <div className="flex flex-col">
+                  <span className="text-sm text-gray-500">Opening Hours</span>
+                  <span className="text-sm">
+                    Mon-Fri: 9:00 AM - 5:00 PM
+                    <br />
+                    Sat: 9:00 AM - 4:00 PM
+                  </span>
+                </div>
+              </li>
               <li className="flex items-center gap-2">
                 <Mail className="size-6 w-4" />
                 <a

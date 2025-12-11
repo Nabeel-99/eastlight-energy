@@ -29,10 +29,10 @@ import {
   CardTitle,
 } from "../ui/card";
 import { useState } from "react";
-import { locations } from "@/lib/data";
 import axios from "axios";
 import { toast } from "sonner";
 import { LoaderCircle } from "lucide-react";
+import { locations } from "@/lib/utils";
 
 export function SolarInstallerForm() {
   const [loading, setLoading] = useState(false);

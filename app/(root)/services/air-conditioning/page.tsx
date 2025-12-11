@@ -191,7 +191,9 @@ const page = () => {
                   <div className="flex flex-col">
                     <span className="text-sm text-gray-500">Opening Hours</span>
                     <span className="font-semibold">
-                      Mon-Fri: 9:00 AM - 4:00 PM
+                      Mon-Fri: 9:00 AM - 5:00 PM
+                      <br />
+                      Sat: 9:00 AM - 4:00 PM
                     </span>
                   </div>
                 </div>

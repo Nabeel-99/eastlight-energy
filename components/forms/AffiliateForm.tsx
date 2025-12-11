@@ -33,7 +33,7 @@ import { useState } from "react";
 import axios from "axios";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
-import { locations } from "@/lib/data";
+import { locations } from "@/lib/utils";
 
 export function AffiliateForm() {
   const [loading, setLoading] = useState(false);
