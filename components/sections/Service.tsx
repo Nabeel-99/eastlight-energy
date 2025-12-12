@@ -84,7 +84,7 @@ const Service = () => {
       },
       "<0.2"
     );
-    ScrollTrigger.batch(".service-card", {
+    ScrollTrigger.batch(".home-service-card", {
       start: "top center",
       onEnter: (batch) => {
         gsap.to(batch, {
@@ -114,7 +114,10 @@ const Service = () => {
       </p>
       <div className="grid md:grid-cols-2  gap-6 lg:grid-cols-3 lg:gap-10 mt-6">
         {servicesCards.map((item, index) => (
-          <div className="service-card opacity-0 translate-y-20" key={index}>
+          <div
+            className="home-service-card opacity-0 translate-y-20"
+            key={index}
+          >
             <Link
               href={item.link}
               className="bg-[#111822] h-full  overflow-hidden  p-0 flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:-translate-y-1 hover:drop-shadow-md  transition-all duration-300 ease-in-out group"

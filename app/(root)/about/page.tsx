@@ -120,7 +120,7 @@ const page = () => {
         },
         "<0.2"
       );
-    ScrollTrigger.batch(".service-card", {
+    ScrollTrigger.batch(".about-service-card", {
       start: "top center",
       onEnter: (batch) => {
         gsap.to(batch, {
@@ -146,7 +146,7 @@ const page = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [isMobile]);
   return (
     <div className="flex flex-col items-center w-full h-full   text-white">
       <ServiceHero
@@ -181,9 +181,9 @@ const page = () => {
 
       <section
         id="what-we-do"
-        className="flex flex-col items-center overflow-x-hidden px-4 md:px-10 xl:px-0 mt-10 lg:mt-0 max-w-4xl gap-6"
+        className="flex flex-col items-center  px-4 md:px-10 xl:px-0 mt-10 lg:mt-0 max-w-4xl gap-6"
       >
-        <div className="flex flex-col items-center gap-6 lg:mt-20 ">
+        <div className="flex flex-col overflow-x-hidden items-center gap-6 lg:mt-20 ">
           <h2 className="text-base relative what-we-do-title  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
             <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
             WHAT WE DO
@@ -197,7 +197,10 @@ const page = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           {services.map((service, index) => (
-            <div key={index} className="opacity-0 translate-y-20 service-card">
+            <div
+              key={index}
+              className=" opacity-0 translate-y-20 about-service-card"
+            >
               <Card className="bg-[#111822] h-full flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20  hover:drop-shadow-md  transition-all duration-300 ease-in-out group">
                 <CardHeader>
                   {" "}

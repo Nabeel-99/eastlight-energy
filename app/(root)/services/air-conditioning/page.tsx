@@ -43,7 +43,7 @@ const page = () => {
   };
 
   useGSAP(() => {
-    ScrollTrigger.batch(".service-card", {
+    ScrollTrigger.batch(".ac-service-card", {
       start: "top 70%",
       onEnter: (batch) => {
         gsap.to(batch, {
@@ -115,7 +115,10 @@ const page = () => {
       <section className="flex flex-col gap-6 px-4 md:px-10  w-full">
         <div className="grid lg:grid-cols-2 gap-10 2xl:container 2xl:mx-auto">
           {acDetails.map((detail, index) => (
-            <div key={index} className="service-card opacity-0 translate-y-20">
+            <div
+              key={index}
+              className="ac-service-card opacity-0 translate-y-20"
+            >
               <div className="border-2 rounded-2xl    p-4 grid lg:grid-cols-2 gap-6         bg-[#111822] overflow-hidden  text-gray-300   border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:-translate-y-1 hover:drop-shadow-md  transition-all duration-300 ease-in-out group">
                 <div className="aspect-square border-4 border-teal-400/10 group-hover:border-teal-400/20 w-full h-[300px] lg:h-[375px] rounded-xl overflow-hidden">
                   <img

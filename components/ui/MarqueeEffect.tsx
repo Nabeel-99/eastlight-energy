@@ -51,7 +51,7 @@ const MarqueeEffect = forwardRef<
       }
     }, marqueeRef);
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   useImperativeHandle(ref, () => ({
     pause: () => {

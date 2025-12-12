@@ -147,7 +147,7 @@ const page = () => {
       "<0.2"
     );
 
-    ScrollTrigger.batch(".service-card", {
+    ScrollTrigger.batch(".installer-service-card", {
       start: "top center",
       onEnter: (batch) => {
         gsap.to(batch, {
@@ -244,7 +244,10 @@ const page = () => {
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 2xl:container 2xl:mx-auto">
           {installationServices.map((service, index) => (
-            <div key={index} className="service-card opacity-0 translate-y-20">
+            <div
+              key={index}
+              className="installer-service-card opacity-0 translate-y-20"
+            >
               <Card className="bg-[#111822] h-full  flex flex-col gap-4 text-gray-300 rounded-2xl border-2 border-teal-400/60 lg:border-teal-400/10 hover:border-teal-400 hover:shadow-xl hover:shadow-teal-500/20  hover:drop-shadow-md  transition-all duration-300 ease-in-out group">
                 <CardHeader>
                   {" "}
