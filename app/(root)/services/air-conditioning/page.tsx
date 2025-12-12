@@ -151,7 +151,7 @@ const page = () => {
       <section
         id="form-section"
         ref={formRef}
-        className="flex flex-col items-center  gap-6 px-4 md:px-10 py-20 lg:py-40 w-full"
+        className="flex flex-col overflow-x-hidden items-center  gap-6 px-4 md:px-10 py-20 lg:py-40 w-full"
       >
         <h2 className="text-4xl form-title lg:text-7xl font-bold text-center bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent">
           Need AC Services?

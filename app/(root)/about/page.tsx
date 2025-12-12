@@ -156,7 +156,7 @@ const page = () => {
       />
       <section
         id="who-we-are"
-        className="grid lg:grid-cols-2  gap-10 mt-20  px-4 md:px-10 2xl:container 2xl:mx-auto"
+        className="grid lg:grid-cols-2 overflow-x-hidden gap-10 mt-20  px-4 md:px-10 2xl:container 2xl:mx-auto"
       >
         <div className="flex flex-col  items-center lg:items-start gap-6 lg:mt-20 ">
           <div className="p-[2px] rounded-full who-we-are-title bg-linear-to-br from-transparent from-30% to-teal-400 shadow-md shadow-teal-400/20">
@@ -181,7 +181,7 @@ const page = () => {
 
       <section
         id="what-we-do"
-        className="flex flex-col items-center px-4 md:px-10 xl:px-0 mt-10 lg:mt-0 max-w-4xl gap-6"
+        className="flex flex-col items-center overflow-x-hidden px-4 md:px-10 xl:px-0 mt-10 lg:mt-0 max-w-4xl gap-6"
       >
         <div className="flex flex-col items-center gap-6 lg:mt-20 ">
           <h2 className="text-base relative what-we-do-title  px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">

@@ -134,7 +134,7 @@ const page = () => {
         solarProducts={solarProducts}
       />
 
-      <section id="form-section" className="py-20 px-4">
+      <section id="form-section" className="py-20 px-4 overflow-x-hidden">
         <div className="flex flex-col items-center gap-6 ">
           <h2 className="text-3xl form-title lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
             Interested in CWorth Solar products?

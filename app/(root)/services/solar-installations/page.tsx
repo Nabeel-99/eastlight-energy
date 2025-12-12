@@ -291,7 +291,7 @@ const page = () => {
       </section>
       <section
         id="form-section"
-        className="grid lg:grid-cols-2 gap-10  px-4 md:px-10  py-20 lg:py-40 2xl:container 2xl:mx-auto"
+        className="grid lg:grid-cols-2 gap-10 overflow-x-hidden  px-4 md:px-10  py-20 lg:py-40 2xl:container 2xl:mx-auto"
       >
         <div className="flex flex-col gap-6 ">
           <h2 className="text-3xl lg:text-5xl form-title font-bold bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
