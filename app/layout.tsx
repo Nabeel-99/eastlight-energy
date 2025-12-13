@@ -11,7 +11,9 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eastlightenergy.com"),
-
+  verification: {
+    google: "XRof_3ZCz11dn9Sit9PkkF92tyEGNidyFjMZHpO2bzg",
+  },
   title: {
     default: "EastLight Energy - Solar Solutions for Homes & Businesses",
     template: "%s | EastLight Energy",
