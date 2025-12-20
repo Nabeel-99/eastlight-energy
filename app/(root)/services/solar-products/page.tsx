@@ -1,16 +1,23 @@
 "use client";
 
 import { solarProducts } from "@/lib/data";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Sun, TrendingUp, Wrench } from "lucide-react";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ServiceHero from "@/components/ServiceHero";
 import SolarProductCatalogue from "@/components/SolarProductCatalogue";
+import { useSearchParams } from "next/navigation";
 
 const page = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const searchParams = useSearchParams();
+  const activeParam = searchParams.get("active");
+
+  // Initialize with query param if available
+  const [activeIndex, setActiveIndex] = useState(
+    activeParam ? parseInt(activeParam) : 0
+  );
 
   const startRef = useRef<HTMLDivElement>(null);
   const productsRef = useRef<HTMLElement>(null);
@@ -20,11 +27,28 @@ const page = () => {
   const hasMultipleSeries = currentDataSource.length > 1;
   const currentSeries =
     currentDataSource[selectedSeriesIndex] || currentDataSource[0];
+
   const getSpecKeys = () => {
     if (!currentSeries?.models || currentSeries.models.length === 0) return [];
     const firstModel = currentSeries.models[0];
     return Object.keys(firstModel).filter((key) => key !== "model");
   };
+
+  // Update active index when query param changes
+  useEffect(() => {
+    if (activeParam) {
+      const index = parseInt(activeParam);
+      if (!isNaN(index) && index >= 0 && index < solarProducts.length) {
+        setActiveIndex(index);
+        // Scroll to products section
+        if (productsRef.current) {
+          setTimeout(() => {
+            productsRef.current?.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      }
+    }
+  }, [activeParam]);
 
   const handleSeriesClick = (seriesIndex: number) => {
     setSelectedSeriesIndex(seriesIndex);
@@ -34,6 +58,7 @@ const page = () => {
   };
 
   const specKeys = getSpecKeys();
+
   const handleProductClick = (index: number) => {
     setActiveIndex(index);
     setSelectedSeriesIndex(0);
@@ -42,6 +67,7 @@ const page = () => {
       startRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   const handleScrollClick = () => {
     if (productsRef.current) {
       productsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -56,7 +82,7 @@ const page = () => {
     },
     {
       title: "Competitive Pricing",
-      description: "Best reates on CWorth Energy products",
+      description: "Best rates on CWorth Energy products",
       icon: <Wrench className="size-6" />,
     },
     {
@@ -110,8 +136,9 @@ const page = () => {
         "<0.2"
       );
   }, []);
+
   return (
-    <div className="flex flex-col items-center w-full h-full    text-white">
+    <div className="flex flex-col items-center w-full h-full text-white">
       <ServiceHero
         badge="SOLAR PRODUCTS"
         title="CWORTH ENERGY SOLAR"
@@ -135,8 +162,8 @@ const page = () => {
       />
 
       <section id="form-section" className="py-20 px-4 overflow-x-hidden">
-        <div className="flex flex-col items-center gap-6 ">
-          <h2 className="text-3xl form-title lg:text-5xl text-center mx-auto max-w-xl  font-bold  xl:text-6xl lg:tracking-tight  bg-linear-to-b from-red-500/70   to-teal-400 to-40% bg-clip-text text-transparent ">
+        <div className="flex flex-col items-center gap-6">
+          <h2 className="text-3xl form-title lg:text-5xl text-center mx-auto max-w-xl font-bold xl:text-6xl lg:tracking-tight bg-linear-to-b from-red-500/70 to-teal-400 to-40% bg-clip-text text-transparent">
             Interested in CWorth Solar products?
           </h2>
           <p className="lg:text-lg form-desc max-w-xl text-center text-gray-300">
@@ -146,7 +173,7 @@ const page = () => {
           <div className="flex flex-col lg:flex-row form-items items-center gap-2 lg:max-w-5xl">
             {items.map((item, index) => (
               <React.Fragment key={index}>
-                <div className="flex flex-col items-center gap-2" key={index}>
+                <div className="flex flex-col items-center gap-2">
                   <div className="p-[2px] rounded-full bg-linear-to-br from-[#39D3C8]/60 from-30% to-[#810303] shadow-md shadow-teal-400/20">
                     <div className="bg-[#111822] text-white rounded-full p-3 flex items-center justify-center">
                       {item.icon}

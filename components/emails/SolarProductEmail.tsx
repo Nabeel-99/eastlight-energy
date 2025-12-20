@@ -16,6 +16,7 @@ interface SolarProductEmailProps {
   property: string;
   product_interest: string[];
   message?: string;
+  quantity?: number;
 }
 
 export default function SolarProductEmail({
@@ -25,6 +26,7 @@ export default function SolarProductEmail({
   property,
   product_interest,
   message,
+  quantity,
 }: SolarProductEmailProps) {
   return (
     <Html>
@@ -61,6 +63,7 @@ export default function SolarProductEmail({
             {product_interest.map((product, index) => (
               <Text key={index}>• {product}</Text>
             ))}
+            <Text>• Quantity: {quantity}</Text>
           </Section>
 
           {message && (

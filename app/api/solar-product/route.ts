@@ -38,6 +38,7 @@ export const POST = async (req: NextRequest) => {
       formData.product_interest.join(", "),
       formData.property,
       formData.message,
+      `${formData.quantity}` || "N/A",
     ]);
 
     return NextResponse.json({ message: "Success" }, { status: 200 });

@@ -5,6 +5,7 @@ export const solarProductFormSchema = z.object({
   email: z.email({ error: "Invalid email address" }),
   phone: z.string().min(1, { error: "Phone number is required" }),
   property: z.string().min(1, { error: "Please select a property" }),
+  quantity: z.number().optional().or(z.literal(undefined)),
   product_interest: z
     .array(z.string())
     .min(1, { error: "Please select at least one product interest" }),

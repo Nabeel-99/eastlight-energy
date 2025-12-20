@@ -57,6 +57,7 @@ export function SolarProductForm() {
       email: "",
       phone: "",
       property: "",
+      quantity: 0,
       product_interest: [],
       message: "",
     },
@@ -191,6 +192,30 @@ export function SolarProductForm() {
                     <FieldError errors={[fieldState.error]} />
                   )}
                 </FieldSet>
+              )}
+            />
+            <Controller
+              name="quantity"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="quantity">Quantity</FieldLabel>
+                  <Input
+                    {...field}
+                    id="quantity"
+                    aria-invalid={fieldState.invalid}
+                    type="number"
+                    placeholder="Enter quantity"
+                    value={field.value ?? ""}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      field.onChange(value === "" ? undefined : Number(value));
+                    }}
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
               )}
             />
             <Controller
