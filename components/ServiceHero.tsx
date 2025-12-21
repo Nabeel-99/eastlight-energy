@@ -165,6 +165,7 @@ const ServiceHero = ({
               <img
                 src={bgImage}
                 alt=""
+                loading="eager"
                 className="w-full h-full object-cover rounded-b-3xl"
               />
             </div>

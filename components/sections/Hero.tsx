@@ -71,6 +71,7 @@ const Hero = () => {
         <img
           src={"/herobg.jpeg"}
           alt=""
+          loading="eager"
           className="w-full h-full  hero-img object-cover rounded-b-3xl object-top"
         />
       </div>
