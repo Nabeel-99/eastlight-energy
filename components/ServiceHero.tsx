@@ -143,17 +143,18 @@ const ServiceHero = ({
       case "video":
         return (
           <>
-            <div className="absolute inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
+            <div className="absolute inset-0 w-full h-full rounded-b-3xl overflow-hidden z-0">
               <video
                 autoPlay
                 loop
                 muted
-                className="w-full h-full object-cover rounded-b-3xl"
-                src={"/affiliatevideo.mp4"}
+                playsInline
                 preload="auto"
+                className="w-full h-full object-cover pointer-events-none"
+                src="/affiliatevideo.mp4"
               />
             </div>
-            <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-black opacity-80 z-10" />
+            <div className="absolute inset-0 bg-black/80 rounded-b-3xl z-10 pointer-events-none" />
           </>
         );
 
