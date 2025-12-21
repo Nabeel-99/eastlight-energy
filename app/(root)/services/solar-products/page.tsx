@@ -1,7 +1,7 @@
 "use client";
 
 import { solarProducts } from "@/lib/data";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import { Sun, TrendingUp, Wrench } from "lucide-react";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import { useGSAP } from "@gsap/react";
@@ -18,7 +18,8 @@ const solarProductImages = [
   "/solarproductbg.jpg",
   "/solarbg.png",
 ];
-const page = () => {
+
+const SolarProductsContent = () => {
   const searchParams = useSearchParams();
   const activeParam = searchParams.get("active");
 
@@ -207,4 +208,16 @@ const page = () => {
   );
 };
 
-export default page;
+export default function page() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-400"></div>
+        </div>
+      }
+    >
+      <SolarProductsContent />
+    </Suspense>
+  );
+}
