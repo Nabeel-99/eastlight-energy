@@ -13,6 +13,16 @@ import gsap from "gsap";
 const Faqs = () => {
   const questions = [
     {
+      question: "Do you sell complete solar systems or individual components?",
+      answer:
+        "We offer both complete solar power systems and individual components such as panels, inverters, batteries, and accessories. Our team helps you choose what best fits your power needs and budget.",
+    },
+    {
+      question: "Can I get installation after purchasing solar products?",
+      answer:
+        "Absolutely. We provide professional installation services to ensure your solar system is properly set up and performs optimally.",
+    },
+    {
       question: "How do I book a solar installer?",
       answer:
         "Simply select your state from our booking form, provide your contact details and energy requirements, and we'll connect you with a certified installer in your area within 24 hours.",

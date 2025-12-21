@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
-  FieldContent,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
   FieldSet,
+  FieldContent,
   FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -48,8 +48,38 @@ const properties = [
     title: "Industrial (Factory/Warehouse)",
   },
 ] as const;
-export function SolarProductForm() {
+
+interface SolarProductFormProps {
+  preSelectedProduct?: string;
+  parentCategory?: string;
+  otherSeriesInCategory?: string[];
+}
+
+export function SolarProductForm({
+  preSelectedProduct,
+  parentCategory,
+  otherSeriesInCategory = [],
+}: SolarProductFormProps = {}) {
   const [loading, setLoading] = useState(false);
+  const isFromDetailsPage = !!preSelectedProduct;
+
+  const generatePlaceholder = () => {
+    if (!isFromDetailsPage) {
+      return "Please enter any additional information";
+    }
+
+    if (otherSeriesInCategory.length > 0) {
+      const otherSeries = otherSeriesInCategory
+        .filter((s) => s !== preSelectedProduct)
+        .slice(0, 2)
+        .join(" or ");
+
+      return `Example: Also interested in ${otherSeries} from ${parentCategory}`;
+    }
+
+    return "Example: Also interested in other products like Inverters (specify model/series)";
+  };
+
   const form = useForm<z.infer<typeof solarProductFormSchema>>({
     resolver: zodResolver(solarProductFormSchema),
     defaultValues: {
@@ -57,8 +87,10 @@ export function SolarProductForm() {
       email: "",
       phone: "",
       property: "",
-      quantity: 0,
-      product_interest: [],
+      primary_product: preSelectedProduct || "",
+      primary_category: parentCategory || "",
+      quantity: "",
+      additional_products: [],
       message: "",
     },
   });
@@ -69,7 +101,17 @@ export function SolarProductForm() {
       const res = await axios.post("/api/solar-product", data);
       if (res.status === 200) {
         toast.success("Message sent successfully");
-        form.reset();
+        form.reset({
+          fullname: "",
+          email: "",
+          phone: "",
+          property: "",
+          primary_product: preSelectedProduct || "",
+          primary_category: parentCategory || "",
+          quantity: "",
+          additional_products: [],
+          message: "",
+        });
       }
     } catch (error) {
       toast.error("Something went wrong");
@@ -77,19 +119,35 @@ export function SolarProductForm() {
       setLoading(false);
     }
   };
+
   return (
     <Card className="mt-10 form-card lg:w-3/4 lg:mx-auto bg-teal-800/10 border-teal-400/10 text-white">
       <CardHeader>
         <CardTitle className="text-xl lg:text-2xl">
-          Cworth Solar Product Inquiry
+          {isFromDetailsPage ? "Request Quote" : "Cworth Solar Product Inquiry"}
         </CardTitle>
         <CardDescription>
-          Request information on our solar products.
+          {isFromDetailsPage
+            ? "Fill out the form below to request a quote for this product."
+            : "Request information on our solar products."}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form id="solar-product-form" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
+            {isFromDetailsPage && (
+              <div className="mb-6 p-4 bg-teal-400/20 border border-teal-400/30 rounded-xl">
+                <p className="text-sm text-gray-300 mb-2">
+                  Requesting Quote For:
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="px-4 py-2 bg-teal-400/30 text-white font-semibold rounded-lg text-base">
+                    {parentCategory} - {preSelectedProduct}
+                  </span>
+                </div>
+              </div>
+            )}
+
             <Controller
               name="fullname"
               control={form.control}
@@ -101,7 +159,6 @@ export function SolarProductForm() {
                     id="fullname"
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter full name"
-                    className=""
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -109,6 +166,7 @@ export function SolarProductForm() {
                 </Field>
               )}
             />
+
             <div className="grid lg:grid-cols-2 gap-6">
               <Controller
                 name="email"
@@ -134,7 +192,7 @@ export function SolarProductForm() {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor="email">Phone</FieldLabel>
+                    <FieldLabel htmlFor="phone">Phone</FieldLabel>
                     <Input
                       {...field}
                       id="phone"
@@ -149,14 +207,45 @@ export function SolarProductForm() {
               />
             </div>
 
+            {isFromDetailsPage && (
+              <Controller
+                name="quantity"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor="quantity">
+                      Quantity (Optional)
+                    </FieldLabel>
+                    <Input
+                      {...field}
+                      id="quantity"
+                      type="number"
+                      min="1"
+                      aria-invalid={fieldState.invalid}
+                      placeholder="Enter quantity (e.g., 2)"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            )}
+
             <Controller
-              name="product_interest"
+              name="additional_products"
               control={form.control}
               render={({ field, fieldState }) => (
                 <FieldSet data-invalid={fieldState.invalid}>
-                  <FieldLegend variant="label">Product Interest</FieldLegend>
+                  <FieldLegend variant="label">
+                    {isFromDetailsPage
+                      ? "Also Interested In (Optional)"
+                      : "Product Interest"}
+                  </FieldLegend>
                   <FieldDescription>
-                    Select products of interest
+                    {isFromDetailsPage
+                      ? "Select any additional products. Specify models/series in the message below."
+                      : "Select products of interest"}
                   </FieldDescription>
                   <FieldGroup data-slot="checkbox-group">
                     {solarProducts.map((product, index) => (
@@ -166,21 +255,24 @@ export function SolarProductForm() {
                         data-invalid={fieldState.invalid}
                       >
                         <Checkbox
-                          id={`product-interest-${index}`}
+                          id={`additional-product-${index}`}
                           name={field.name}
                           aria-invalid={fieldState.invalid}
-                          checked={field.value.includes(product.title)}
+                          checked={
+                            field.value?.includes(product.title) || false
+                          }
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             const newValue = checked
-                              ? [...field.value, product.title]
-                              : field.value.filter(
+                              ? [...currentValue, product.title]
+                              : currentValue.filter(
                                   (value) => value !== product.title
                                 );
                             field.onChange(newValue);
                           }}
                         />
                         <FieldLabel
-                          htmlFor={`product-interest-${index}`}
+                          htmlFor={`additional-product-${index}`}
                           className="font-normal"
                         >
                           {product.title}
@@ -194,30 +286,7 @@ export function SolarProductForm() {
                 </FieldSet>
               )}
             />
-            <Controller
-              name="quantity"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="quantity">Quantity</FieldLabel>
-                  <Input
-                    {...field}
-                    id="quantity"
-                    aria-invalid={fieldState.invalid}
-                    type="number"
-                    placeholder="Enter quantity"
-                    value={field.value ?? ""}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      field.onChange(value === "" ? undefined : Number(value));
-                    }}
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
+
             <Controller
               name="property"
               control={form.control}
@@ -258,6 +327,7 @@ export function SolarProductForm() {
                 </FieldSet>
               )}
             />
+
             <Controller
               name="message"
               control={form.control}
@@ -266,11 +336,16 @@ export function SolarProductForm() {
                   <FieldLabel htmlFor="message">
                     Additional Information
                   </FieldLabel>
+                  <FieldDescription>
+                    {isFromDetailsPage && otherSeriesInCategory.length > 0
+                      ? `Interested in other ${parentCategory} series? Specify models/quantities here.`
+                      : "Please specify any additional products, models, or requirements"}
+                  </FieldDescription>
                   <Textarea
                     {...field}
                     id="message"
                     aria-invalid={fieldState.invalid}
-                    placeholder="Please enter any additional information"
+                    placeholder={generatePlaceholder()}
                     className="min-h-[120px] max-h-[120px]"
                   />
                   {fieldState.invalid && (
@@ -291,6 +366,8 @@ export function SolarProductForm() {
         >
           {loading ? (
             <LoaderCircle className="animate-spin" />
+          ) : isFromDetailsPage ? (
+            `Request Quote for ${preSelectedProduct}`
           ) : (
             "Request Product Information"
           )}

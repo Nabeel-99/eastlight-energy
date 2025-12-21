@@ -2,26 +2,35 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Spotlight } from "./ui/spotlight";
 import { ShineBorder } from "./ui/shine-border";
 import { Button as StatefulButton } from "./ui/stateful-button";
 import WorldMap from "./ui/world-map";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 type ServiceHeroProps = {
+  bgImage?: string;
   badge: string;
   title: string;
   description: string;
   btnText?: string;
-  bgType?: "default" | "custom" | "video";
+  bgType?: "default" | "custom" | "video" | "image" | "swiper";
+  swiperImages?: string[];
   handleScrollClick?: () => void;
 };
+
 const ServiceHero = ({
+  bgImage,
   badge,
   title,
   description,
   btnText,
   bgType = "default",
+  swiperImages,
   handleScrollClick,
 }: ServiceHeroProps) => {
   useGSAP(() => {
@@ -94,10 +103,47 @@ const ServiceHero = ({
             <div className="absolute inset-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80% bg-[linear-gradient(rgba(45,212,191,0.07)_1px,transparent_1px),linear-gradient(to_right,rgba(45,212,191,0.07)_1px,transparent_1px)] bg-size-[32px_32px]" />
           </>
         );
+
+      case "swiper":
+        return (
+          <>
+            {/* Swiper Background */}
+            <div className="absolute inset-0 w-full h-full rounded-b-3xl overflow-hidden z-0">
+              <Swiper
+                modules={[Autoplay, EffectFade]}
+                effect="slide"
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                speed={1500}
+                className="w-full h-full"
+              >
+                {swiperImages?.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="w-full h-full relative">
+                      <img
+                        src={image}
+                        alt={`Product ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Gradient overlay for text readability */}
+                      <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-black/30 z-10" />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            {/* Dark overlay for better text contrast */}
+            <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-black/50 z-10" />
+          </>
+        );
+
       case "video":
         return (
           <>
-            <div className="absolute  inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
+            <div className="absolute inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
               <video
                 autoPlay
                 loop
@@ -107,9 +153,24 @@ const ServiceHero = ({
                 preload="auto"
               />
             </div>
-            <div className="absolute  inset-0 w-full rounded-b-3xl h-full bg-black opacity-80 z-10" />
+            <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-black opacity-80 z-10" />
           </>
         );
+
+      case "image":
+        return (
+          <>
+            <div className="absolute inset-0 w-full h-full rounded-b-3xl shadow-xl shadow-cyan-500/10 z-0">
+              <img
+                src={bgImage}
+                alt=""
+                className="w-full h-full object-cover rounded-b-3xl"
+              />
+            </div>
+            <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-black opacity-70 z-10" />
+          </>
+        );
+
       case "custom":
         return (
           <>
@@ -123,14 +184,8 @@ const ServiceHero = ({
               <WorldMap
                 dots={[
                   {
-                    start: {
-                      lat: 64.2008,
-                      lng: -149.4937,
-                    },
-                    end: {
-                      lat: 34.0522,
-                      lng: -118.2437,
-                    },
+                    start: { lat: 64.2008, lng: -149.4937 },
+                    end: { lat: 34.0522, lng: -118.2437 },
                   },
                   {
                     start: { lat: 64.2008, lng: -149.4937 },
@@ -159,22 +214,22 @@ const ServiceHero = ({
         );
     }
   };
+
   return (
     <section
       id="hero"
       className="relative flex flex-col items-center gap-6 bg-linear-to-b from-[#0A0F18] via-teal-950/20 to-[#0A0F18] p-10 lg:p-16 xl:p-24 w-full rounded-b-[3rem] overflow-hidden"
     >
       {renderBg()}
-      <div className="flex flex-col gap-2 lg:items-center  w-full z-30 pt-20  2xl:container 2xl:mx-auto pb-20 lg:pb-10">
+      <div className="flex flex-col gap-2 lg:items-center w-full z-30 pt-20 2xl:container 2xl:mx-auto pb-20 lg:pb-10">
         <div className="flex justify-center">
-          {" "}
           <h2 className="text-base relative shine-border px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
             <ShineBorder duration={30} shineColor={["#2DD4BF", "#DC2626"]} />
             {badge}
           </h2>
         </div>
 
-        <p className="text-[2rem] hero-title lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30%   to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-xl">
+        <p className="text-[2rem] hero-title lg:text-[4rem] xl:text-[5rem] lg:tracking-tight font-medium text-center xl:leading-tight bg-linear-to-tl from-yellow-500/70 from-30% to-teal-400 to-70% bg-clip-text text-transparent lg:max-w-2xl">
           {title}
         </p>
         <p className="lg:text-xl hero-desc leading-loose text-center max-w-xl mx-auto text-gray-300">
@@ -184,9 +239,9 @@ const ServiceHero = ({
           <div className="flex flex-col cta-btns lg:flex-row lg:items-center lg:justify-center gap-4 mt-4">
             <StatefulButton
               onClick={handleScrollClick}
-              className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-4 md:px-8 md:text-base max-lg:w-full max-lg:max-w-sm mx-auto md:rounded-full  items-center  gap-2"
+              className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500 md:p-4 md:px-8 md:text-base max-lg:w-full max-lg:max-w-sm mx-auto md:rounded-full items-center gap-2"
             >
-              Explore Products
+              {btnText}
             </StatefulButton>
           </div>
         )}

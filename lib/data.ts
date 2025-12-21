@@ -5,7 +5,7 @@ export const solarPanels = [
     series: "CE-200W/320W/350W",
     type: "Mono Half-Cut Solar Panel N-Type",
     description:
-      "Positive power tolerance of 0~+3%. TOPCon Technology with Multi Busbar Technology for better light trapping and current collection. PID Resistance with excellent Anti-PID performance. Enhanced mechanical load certified to withstand wind load (2400 Pascal) and snow load (5400 Pascal).",
+      "Get reliable, efficient solar power that reduces your energy bills and provides clean electricity for your home or business. Built with TOPCon and Multi Busbar Technology for superior light capture and durability, it withstands harsh weather while minimizing degradation for long-term savings. Positive power tolerance of 0~+3% ensures you get more output than expected, with excellent PID resistance and certified strength against wind (2400 Pascal) and snow (5400 Pascal) loads.",
     warranty: {
       product: "12-year Product Warranty",
       power: "25-year Linear Power Output Warranty",
@@ -78,7 +78,7 @@ export const solarPanels = [
     series: "CE-400W/420W",
     type: "Mono Half-Cut Solar Panel N-Type",
     description:
-      "Positive power tolerance of 0~+3%. TOPCon Technology with Multi Busbar Technology. PID Resistance and durability against extreme environmental conditions. Reduced hot spot loss with enhanced mechanical load.",
+      "Enjoy peace of mind with robust solar panels that deliver consistent power, cutting your reliance on the grid and lowering costs. Featuring TOPCon and Multi Busbar Technology for optimal performance in low light, plus PID resistance and reduced hot spot risks, they're built for extreme conditions and long-lasting efficiency. Positive power tolerance of 0~+3% guarantees extra output, with enhanced mechanical load for durability.",
     warranty: {
       product: "12-year Product Warranty",
       power: "25-year Linear Power Output Warranty",
@@ -135,7 +135,7 @@ export const solarPanels = [
     series: "CE-500W/550W/600W",
     type: "Mono Half-Cut Solar Panel N-Type",
     description:
-      "Positive power tolerance of 0~+3%. TOPCon Technology with Multi Busbar Technology. Excellent Anti-PID performance and high salt mist and ammonia resistance. Enhanced mechanical load certified for extreme conditions.",
+      "Power your larger setups with high-output panels that maximize energy harvest, ensuring security and convenience during blackouts or off-grid living. Advanced TOPCon and Multi Busbar tech boost efficiency, while excellent Anti-PID and resistance to salt mist/ammonia make them ideal for tough environments. Positive power tolerance of 0~+3% and certified for extreme loads provide reliable, cost-saving performance over decades.",
     warranty: {
       product: "12-year Product Warranty",
       power: "25-year Linear Power Output Warranty",
@@ -212,13 +212,7 @@ export const mpptControllers = [
     id: "mppt-1",
     category: "MPPT Solar Charge Controller",
     series: "MPPT Series",
-    description: `This solar charge controller is an advanced solar
-charger with maximum power point tracking.
-The MPPT battery charging process has been
-optimized for long battery life and improved
-system Performance. Self-diagnostics and
-electronic error protections prevent damage
-when installation errors or system faults occur.`,
+    description: `Maximize your solar harvest and extend battery life with this advanced charger that boosts efficiency by 20-35%, ensuring reliable power for your off-grid setup without wasting energy. It optimizes charging for various battery types, prevents damage from errors, and delivers peak performance >98% for cost savings and peace of mind.`,
     features: [
       "Suitable for wide range of battery types (User-Defined/AGM/FLD/LIB)",
       "Multi-stage charging optimizes battery performance",
@@ -301,7 +295,7 @@ export const inverters = [
     series: "High Frequency Solar Inverter Series",
     type: "CE-H1.8K/CE-H4K/CE-H6K/CE-H12K",
     description:
-      "Pure sine wave inverter with built-in MPPT solar charge controller. Configurable input voltage range for home appliances and personal. Configurable battery charging current based on applications via LCD setting. Compatible to main voltage or generator power.",
+      "Achieve energy independence with a pure sine wave inverter that seamlessly integrates solar and grid power, saving you money while providing uninterrupted electricity for your appliances. Customizable settings for voltage, charging, and priorities ensure optimal performance, with built-in protections, lithium compatibility, and parallel options for scalability—delivering efficiency up to 95% and quiet operation.",
     features: [
       "Pure sine wave inverter",
       "Built-in MPPT solar charge controller",
@@ -510,7 +504,7 @@ export const inverters = [
     model: "CE-L10K (10KVA)",
     image: "/transformerbased.webp",
     description:
-      "Transformer based inverter with wide range AC input voltage (90-280V). Compatible with 50/60Hz. High charging current with bypass charging function. Supports multiple battery types with comprehensive safety protection.",
+      "Gain stability and convenience with a robust inverter that handles wide voltage fluctuations (90-280V), ensuring your appliances run smoothly without interruptions or damage. High charging capacity, multiple battery support, and comprehensive protections provide security and flexibility, while multistage charging extends battery life for long-term savings.",
     features: [
       "90-280V Wide range of AC input voltage",
       "Compatible with 50/60Hz",
@@ -578,7 +572,7 @@ export const lifePO4Batteries = [
     category: "LiFePO4 Battery",
     series: "LBD Series",
     description:
-      "Safe and long life cycle lithium battery pack with intelligent BMS. Hidden connection design for safety. Comprehensive compatibility with off-grid and hybrid inverters.",
+      "Store energy safely and reliably for extended use, with up to 6000 cycles that outlast traditional batteries, saving you replacement costs and providing peace of mind during outages. Intelligent protection keeps your family safe, while hidden connections and inverter compatibility make setup hassle-free.",
     features: [
       "Safe and long life cycle - recyclable about 6000 times",
       "Intelligent battery protection system",
@@ -619,7 +613,7 @@ export const lifePO4Batteries = [
         ingressProtection: "IP21",
         cycleTimes: "≥6000@80% DOD, 25°C, 0.5C",
         workingTemp: "-10°C~60°C",
-        newWeight: "83.5kg",
+        netWeight: "83.5kg",
         dimensions: "680x450x420mm",
       },
     ],
@@ -630,7 +624,7 @@ export const lifePO4Batteries = [
     series: "LBF Series",
     image: "/lbfseries.webp",
     description:
-      "High energy lithium battery pack with professional application design. Easy installation with casters for mobility. Safe and long life cycle with up to 20KWH storage capacity.",
+      "Scale up your storage to 20KWH for whole-home backup, ensuring convenience and security without frequent recharges. With 6000+ cycles and easy mobility via casters, it's designed for professional solar setups that deliver long-term value and reliability.",
     features: [
       "Safe and long life cycle - recyclable about 6000 times",
       "High energy - up to 20KWH storage",
@@ -682,7 +676,7 @@ export const lifePO4Batteries = [
     series: "LBC Series",
     image: "/lbcseries.webp",
     description:
-      "Specially designed for home photovoltaic energy storage. Flexible usage with wall mounting and movable wheels. Large-capacity batteries reduce energy storage system costs. BMS monitors safety in real-time.",
+      "Optimize your home solar storage with flexible mounting options, delivering up to 20KWH for reliable power that reduces bills and provides FOMO-proof energy security. Real-time BMS monitoring ensures safety, while 6000+ cycles offer economical, long-lasting performance.",
     features: [
       "Safe and long life cycle - recyclable about 6000 times",
       "Comprehensive compatibility with inverters",
@@ -734,7 +728,7 @@ export const lifePO4Batteries = [
     series: "LBT Series",
     image: "/lbtseries.webp",
     description:
-      "Safe and long life cycle LiFePO4 battery pack with intelligent BMS and modular design, suitable for industrial and civil use.",
+      "Power industrial or home needs with modular, scalable storage that lasts 6000+ cycles, offering cost savings and dependable energy without frequent maintenance. Intelligent BMS ensures safety and stability, making it a reliable choice for off-grid convenience.",
     features: [
       "Safe and long life cycle - recyclable about 6000 times",
       "Intelligent BMS for stability and safety",
@@ -788,7 +782,7 @@ export const lifePO4Batteries = [
     series: "LBW Series",
     image: "/lbwseries.jpeg",
     description:
-      "Specially designed for home energy storage with flexible wall mounting. BMS monitors battery safety in real-time. Comprehensive compatibility with inverters.",
+      "Wall-mount your storage for space-saving convenience in home setups, with real-time safety monitoring that protects your investment and family. Up to 6000 cycles mean fewer replacements and lower costs, paired with broad inverter compatibility for seamless integration.",
     features: [
       "Safe and long life cycle - recyclable about 6000 times",
       "Intelligent BMS for stability and safety",
@@ -842,7 +836,7 @@ export const lifePO4Batteries = [
     series: "GCL Series",
     image: "/gclseries.webp",
     description:
-      "Modular design lithium battery with intelligent BMS. Industrial quality design suitable for industrial and civil use. Comprehensive compatibility with inverters.",
+      "Affordable, modular storage for industrial or home use, with 3200+ cycles that provide reliable backup and energy savings. Intelligent design ensures safety and scalability, making it easy to expand as your needs grow.",
     features: [
       "Safe and long life cycle - recyclable about 3200 times",
       "Intelligent BMS for stability and safety",
@@ -955,7 +949,7 @@ export const gelBatteries = [
     category: "GEL Battery",
     series: "GEL Series",
     description:
-      "Silica gel electrolyte lead acid batteries with deep discharge capability. Sulfuric acid exists in colloid form - solid, not easy to leak. Can be placed vertically or horizontally with comprehensive floating charging design.",
+      "Experience leak-proof, maintenance-free storage that handles deep discharges for reliable backup power in extreme conditions (-20°C to 60°C), extending your system's life and reducing downtime. The gel electrolyte prevents leaks and stratification, ensuring safe, eco-friendly operation with no acid mist—perfect for homes or businesses seeking economical durability.",
     features: [
       "Safe and long life cycle - deep discharge capability",
       "Solve electrolyte stratification and sulfuric acid leakage",
@@ -1017,7 +1011,7 @@ export const streetLights = [
     category: "Street Light",
     series: "C1/C2 Series",
     description:
-      "Integrated solar street light with high capacity LiFePO4 battery and Philips LED chip. High efficient solar cell (>23%) with intelligent controller. Convenient installation with modular design.",
+      "Illuminate your outdoor spaces efficiently with integrated solar lights that save on electricity bills and provide bright, reliable lighting for safety and convenience. High-efficiency panels (>23%) and Philips LEDs (160LM/W) ensure optimal brightness, while modular design makes installation quick and cable-free—even on rainy days for 5+ nights.",
     features: [
       "Integrated design with high capacity LiFePO4 lithium battery",
       "Philips LED chip with 180LM/W efficiency, whole lamp 160LM/W",
@@ -1082,7 +1076,7 @@ export const streetLights = [
     series: "TK Series",
     image: "/tkseries.webp",
     description:
-      "High brightness solar street light supporting multiple mounting options (ground, wall, pole). High capacity LiFePO4 battery with Philips LED chip and efficient intelligent controller.",
+      "Enhance security and visibility with versatile solar lights that mount anywhere, delivering high brightness to deter issues and light paths reliably. Efficient components like Philips LEDs and >23% solar cells provide cost-free operation for 12+ hours nightly, even through 5+ rainy days.",
     features: [
       "High Brightness - supports ground, wall, and pole fixation",
       "High capacity LiFePO4 lithium battery",
@@ -1135,7 +1129,7 @@ export const portableSolarSystems = [
     category: "Portable Solar Power System",
     series: "CS-PLB1200 Series",
     description:
-      "Portable solar system with built-in MPPT controller, integrating lithium batteries and inverters. Ideal for charging devices and powering home appliances.",
+      "Stay powered on the go with a compact system that charges devices and runs appliances effortlessly, providing convenience during camping, emergencies, or travel. Integrated MPPT and multiple ports ensure fast, efficient charging from solar or mains, with an LCD for easy monitoring.",
     features: [
       "Portable design",
       "Built in MPPT controller",
@@ -1172,7 +1166,7 @@ export const distributionBox = [
     category: "Distribution Box",
     series: "E-BOX Series",
     description:
-      "Provides current and voltage visualization. Protects MPPT controller and inverter from damage. Prevents inverter damage due to excessive input voltage fluctuation.",
+      "Protect your solar investment with real-time monitoring that prevents damage from surges or overloads, ensuring system longevity and safe operation. It stabilizes voltage and current, giving you control and peace of mind while avoiding costly repairs.",
     features: [
       "Current and voltage visualization",
       "Prevent damage to MPPT controller and inverter caused by lightning strikes",
@@ -1205,7 +1199,7 @@ export const offGridSolarSystem = [
     category: "Solar Energy System",
     series: "Off-Grid Solar Energy System",
     description:
-      "Renewable environmental protection system suitable for various applications like residential, industrial, and agricultural use. Supplies power for household appliances and office equipment.",
+      "Go green and independent with a complete off-grid system that powers your home or business reliably, cutting bills and preventing outages for ultimate security. Easy to install and expandable, it keeps your environment clean while providing professional-grade performance for appliances and equipment.",
     features: [
       "High quality",
       "Professional solutions",

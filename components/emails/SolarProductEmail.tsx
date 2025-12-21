@@ -14,9 +14,11 @@ interface SolarProductEmailProps {
   email: string;
   phone: string;
   property: string;
-  product_interest: string[];
-  message?: string;
+  primary_product?: string;
+  primary_category?: string;
   quantity?: number;
+  additional_products?: string[];
+  message?: string;
 }
 
 export default function SolarProductEmail({
@@ -24,10 +26,14 @@ export default function SolarProductEmail({
   email,
   phone,
   property,
-  product_interest,
-  message,
+  primary_product,
+  primary_category,
   quantity,
+  additional_products = [],
+  message,
 }: SolarProductEmailProps) {
+  const isFromDetailsPage = !!primary_product;
+
   return (
     <Html>
       <Head />
@@ -56,16 +62,41 @@ export default function SolarProductEmail({
 
           <Hr />
 
-          <Section>
-            <Text style={{ fontSize: "16px", fontWeight: "bold" }}>
-              Products of Interest:
-            </Text>
-            {product_interest.map((product, index) => (
-              <Text key={index}>• {product}</Text>
-            ))}
-            <Text>• Quantity: {quantity}</Text>
-          </Section>
+          {/* PRIMARY PRODUCT */}
+          {isFromDetailsPage && (
+            <Section>
+              <Text style={{ fontSize: "16px", fontWeight: "bold" }}>
+                Primary Product Request:
+              </Text>
+              <Text style={{ marginLeft: "10px" }}>
+                • {primary_category} - {primary_product}
+              </Text>
+              <Text style={{ marginLeft: "20px", color: "#6b7280" }}>
+                Quantity: {quantity || 1} unit(s)
+              </Text>
+            </Section>
+          )}
 
+          {/* ADDITIONAL PRODUCTS */}
+          {additional_products.length > 0 && (
+            <>
+              {isFromDetailsPage && <Hr />}
+              <Section>
+                <Text style={{ fontSize: "16px", fontWeight: "bold" }}>
+                  {isFromDetailsPage
+                    ? "Also Interested In:"
+                    : "Products of Interest:"}
+                </Text>
+                {additional_products.map((product, index) => (
+                  <Text key={index} style={{ marginLeft: "10px" }}>
+                    • {product}
+                  </Text>
+                ))}
+              </Section>
+            </>
+          )}
+
+          {/* MESSAGE */}
           {message && (
             <>
               <Hr />

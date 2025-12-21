@@ -193,11 +193,17 @@ const page = () => {
     <div className="flex flex-col items-center w-full h-full overflow-x-hidden   text-white">
       <ServiceHero
         badge="HOTEL BOOKING"
-        title="Find Your Perfect Stay"
-        description="Discover premium 4-star and 5-star hotels across Nigeria. Book your
-            stay with confidence and enjoy exceptional hospitality."
+        title="Premium Hotel Stays Made Simple"
+        description="We help you secure verified hotels at competitive rates, with support before and during your stay."
+        bgType="swiper"
+        swiperImages={[
+          "/hotel1.jpeg",
+          "/hotel8.webp",
+          "/hotel5.webp",
+          "/hotel3.webp",
+          "/hotel4.webp",
+        ]}
       />
-
       <MarqueeEffect ref={marqueeRef}>
         <div className="flex marquee-effect-left w-max items-center  h-[500px]">
           {cards.map((item, index) => (

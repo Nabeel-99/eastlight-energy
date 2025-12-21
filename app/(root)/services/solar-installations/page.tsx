@@ -227,10 +227,70 @@ const page = () => {
         description=" Connect with certified solar installers across Nigeria. Professional
             installation services for CWorth Energy products and other solar
             systems."
+        bgType="image"
+        bgImage="/solarinstallerbg.png"
       />
       <section
+        id="form-section"
+        className="grid lg:grid-cols-2 gap-10 overflow-x-hidden  px-4 md:px-10  py-20 lg:py-40 2xl:container 2xl:mx-auto"
+      >
+        <div className="flex flex-col gap-6 ">
+          <h2 className="text-3xl lg:text-5xl form-title font-bold bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
+            Book a Professional Installer
+          </h2>
+          <p className="text-base form-desc text-gray-300">
+            Submit your installation request and we'll connect you with the best
+            certified installer for your project. Our installers work with
+            CWorth Energy products and other quality solar systems.
+          </p>
+          <div className="flex flex-col gap-8 form-items">
+            {items.map((item, index) => (
+              <div className="flex items-center gap-2" key={index}>
+                <div className="flex justify-start">
+                  {" "}
+                  <div className="p-[2px] rounded-full bg-linear-to-br from-[#39D3C8]/60 from-30% to-[#810303] shadow-md shadow-teal-400/20">
+                    <div className="bg-[#111822] text-white rounded-full p-3 flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                  </div>{" "}
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xl font-bold">{item.title}</p>
+                  <span className="text-sm text-gray-300">
+                    {item.description}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <SolarInstallerForm />
+      </section>
+
+      <section
+        id="timeline"
+        className="mt-20 relative timeline-section lg:mt-40  w-full mx-auto"
+      >
+        <div className=" absolute mask-radial-at-bottom mask-radial-from-70%  inset-0 w-full h-full z-0">
+          <img
+            src={"/panelone.webp"}
+            alt=""
+            className="w-full h-full object-cover  object-top"
+          />
+        </div>
+        <div className="absolute inset-0 w-full  h-full bg-black opacity-92   z-10" />
+        <div className=" mx-auto relative lg:max-w-4xl pt-20 overflow-clip z-30">
+          <Timeline
+            header="Simple Steps to Solar Installation"
+            subheader="Follow these easy steps to get certified installers to set up your
+          solar system."
+            data={installationSteps}
+          />
+        </div>
+      </section>
+      <section
         id="services"
-        className="flex flex-col gap-6 mt-20 px-4 lg:px-10  w-full"
+        className="flex flex-col gap-6 mt-20 px-4 lg:px-10  pb-40 w-full"
       >
         <div className="flex flex-col gap-3">
           {" "}
@@ -270,63 +330,6 @@ const page = () => {
             </div>
           ))}
         </div>
-      </section>
-      <section
-        id="timeline"
-        className="mt-20 relative timeline-section lg:mt-40  w-full mx-auto"
-      >
-        <div className=" absolute mask-radial-at-bottom mask-radial-from-70%  inset-0 w-full h-full z-0">
-          <img
-            src={"/panelone.webp"}
-            alt=""
-            className="w-full h-full object-cover  object-top"
-          />
-        </div>
-        <div className="absolute inset-0 w-full  h-full bg-black opacity-92   z-10" />
-        <div className=" mx-auto relative lg:max-w-4xl pt-20 overflow-clip z-30">
-          <Timeline
-            header="Simple Steps to Solar Installation"
-            subheader="Follow these easy steps to get certified installers to set up your
-          solar system."
-            data={installationSteps}
-          />
-        </div>
-      </section>
-      <section
-        id="form-section"
-        className="grid lg:grid-cols-2 gap-10 overflow-x-hidden  px-4 md:px-10  py-20 lg:py-40 2xl:container 2xl:mx-auto"
-      >
-        <div className="flex flex-col gap-6 ">
-          <h2 className="text-3xl lg:text-5xl form-title font-bold bg-linear-to-b from-red-200/70 lg:from-30%   to-teal-400 to-40% lg:to-70% bg-clip-text text-transparent">
-            Book a Professional Installer
-          </h2>
-          <p className="text-base form-desc text-gray-300">
-            Submit your installation request and we'll connect you with the best
-            certified installer for your project. Our installers work with
-            CWorth Energy products and other quality solar systems.
-          </p>
-          <div className="flex flex-col gap-8 form-items">
-            {items.map((item, index) => (
-              <div className="flex items-center gap-2" key={index}>
-                <div className="flex justify-start">
-                  {" "}
-                  <div className="p-[2px] rounded-full bg-linear-to-br from-[#39D3C8]/60 from-30% to-[#810303] shadow-md shadow-teal-400/20">
-                    <div className="bg-[#111822] text-white rounded-full p-3 flex items-center justify-center">
-                      {item.icon}
-                    </div>
-                  </div>{" "}
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-xl font-bold">{item.title}</p>
-                  <span className="text-sm text-gray-300">
-                    {item.description}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <SolarInstallerForm />
       </section>
     </div>
   );

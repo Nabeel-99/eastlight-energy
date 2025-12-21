@@ -3,7 +3,12 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/stateful-button";
-import { FaXTwitter, FaInstagram, FaFacebookF } from "react-icons/fa6";
+import {
+  FaXTwitter,
+  FaInstagram,
+  FaFacebookF,
+  FaWhatsapp,
+} from "react-icons/fa6";
 const Footer = () => {
   const serviceLinks = [
     {
@@ -29,6 +34,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
+    {
+      icon: <FaWhatsapp />,
+      link: "https://wa.me/2347072245877?text=Hello%20I%20would%20like%20to%20make%20an%20enquiry",
+    },
     {
       icon: <FaInstagram />,
       link: "https://www.instagram.com/eastlightenergy/",

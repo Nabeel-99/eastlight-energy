@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState, use } from "react";
-import { ChevronRight, Download, ChevronLeft } from "lucide-react";
+import React, { use } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { solarProducts } from "@/lib/data";
 import { SolarProductForm } from "@/components/forms/SolarProductForm";
 import DataTable from "@/components/DataTable";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { RelatedProducts } from "@/components/RelatedProducts";
 
-// Generate slug helper
 const generateSlug = (seriesName: string) => {
   return seriesName
     .toLowerCase()
@@ -26,7 +26,6 @@ export default function page({
   const { slug } = use(params);
   const router = useRouter();
 
-  // Find the series based on slug
   let seriesData: any = null;
   let parentProduct: any = null;
   let parentIndex = 0;
@@ -49,7 +48,6 @@ export default function page({
     }
   }
 
-  // If not found, show error
   if (!seriesData) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
@@ -70,7 +68,6 @@ export default function page({
       ? Object.keys(seriesData.models[0]).filter((key) => key !== "model")
       : [];
 
-  // Check if there are next/previous series
   const hasMultipleSeries = parentProduct.dataSource.length > 1;
   const hasPrevious = currentSeriesIndex > 0;
   const hasNext = currentSeriesIndex < parentProduct.dataSource.length - 1;
@@ -90,8 +87,17 @@ export default function page({
   };
 
   const handleCategoryClick = (productIndex: number) => {
-    // Navigate to products page with the correct active index
     router.push(`/services/solar-products?active=${productIndex}`);
+  };
+
+  const getOtherSeriesInCategory = (parentProduct: any, currentSeries: any) => {
+    if (!parentProduct.dataSource || parentProduct.dataSource.length <= 1) {
+      return [];
+    }
+
+    return parentProduct.dataSource
+      .filter((s: any) => s.series !== currentSeries.series)
+      .map((s: any) => s.series);
   };
 
   return (
@@ -138,6 +144,7 @@ export default function page({
                 {seriesData.description || parentProduct.description}
               </p>
               <button
+                type="button"
                 onClick={() =>
                   document
                     .getElementById("inquiry-form")
@@ -152,7 +159,6 @@ export default function page({
 
             {/* PRODUCT IMAGE + INFO */}
             <section className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Image */}
               <div className="border border-black/10 rounded-2xl p-8 flex items-center justify-center">
                 <img
                   src={seriesData.image || parentProduct.image}
@@ -278,7 +284,7 @@ export default function page({
               className="py-20 px-4 overflow-x-hidden bg-[#0A0F18] rounded-3xl"
             >
               <div className="flex flex-col items-center gap-6">
-                <h2 className="text-3xl lg:text-5xl text-center mx-auto max-w-xl font-bold bg-gradient-to-b from-red-500/70 to-teal-400 bg-clip-text text-transparent">
+                <h2 className="text-3xl lg:text-5xl text-center mx-auto max-w-xl font-bold bg-gradient-to-b from-red-500/70 to-40% to-teal-400 bg-clip-text text-transparent">
                   Interested in{" "}
                   {seriesData.series || seriesData.models[0]?.model}?
                 </h2>
@@ -287,10 +293,22 @@ export default function page({
                   will provide detailed information and pricing.
                 </p>
               </div>
-              <SolarProductForm />
+              <SolarProductForm
+                preSelectedProduct={
+                  seriesData.series || seriesData.models[0]?.model
+                }
+                parentCategory={parentProduct.title}
+                otherSeriesInCategory={getOtherSeriesInCategory(
+                  parentProduct,
+                  seriesData
+                )}
+              />
             </section>
-
-            {/* NEXT/PREVIOUS NAVIGATION (if multiple series) */}
+            <RelatedProducts
+              parentProduct={parentProduct}
+              currentSeries={seriesData}
+            />
+            {/* NEXT/PREVIOUS NAVIGATION */}
             {hasMultipleSeries && (
               <section className="grid grid-cols-2 lg:flex items-center justify-between gap-4">
                 {hasPrevious ? (

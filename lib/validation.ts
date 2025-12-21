@@ -1,17 +1,17 @@
-import z from "zod";
+import { z } from "zod";
 
 export const solarProductFormSchema = z.object({
-  fullname: z.string().min(1, { error: "Fullname is required" }),
-  email: z.email({ error: "Invalid email address" }),
-  phone: z.string().min(1, { error: "Phone number is required" }),
-  property: z.string().min(1, { error: "Please select a property" }),
-  quantity: z.number().optional().or(z.literal(undefined)),
-  product_interest: z
-    .array(z.string())
-    .min(1, { error: "Please select at least one product interest" }),
+  fullname: z.string().min(1, { message: "Fullname is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  phone: z.string().min(1, { message: "Phone number is required" }),
+  property: z.string().min(1, { message: "Please select a property" }),
+  additional_products: z.array(z.string()),
   message: z
     .string()
-    .min(1, { error: "Please provide additional information." }),
+    .min(1, { message: "Please provide additional information." }),
+  primary_product: z.string().optional(),
+  primary_category: z.string().optional(),
+  quantity: z.string().optional(),
 });
 
 export const solarInstallerFormSchema = z.object({

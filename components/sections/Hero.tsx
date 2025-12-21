@@ -104,10 +104,13 @@ const Hero = () => {
             </Button>
           </Link>
 
-          <Link href={"/affiliate-program"} className=" max-lg:w-full mx-auto ">
+          <Link
+            href={"/services/solar-installations"}
+            className=" max-lg:w-full mx-auto "
+          >
             {" "}
             <Button className="flex bg-white/90 text-black hover:ring-yellow-500 hover:bg-white hover:-translate-y-1 hover:shadow-md hover:shadow-white  max-lg:w-full items-center md:p-4 md:px-8  max-lg:max-w-sm mx-auto md:text-base md:rounded-full  gap-2">
-              Join Affiliate Program
+              Book Solar Installation
             </Button>
           </Link>
         </div>

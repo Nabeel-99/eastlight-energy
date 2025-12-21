@@ -10,11 +10,18 @@ import ServiceHero from "@/components/ServiceHero";
 import SolarProductCatalogue from "@/components/SolarProductCatalogue";
 import { useSearchParams } from "next/navigation";
 
+const solarProductImages = [
+  "/streetlightsolar2.webp",
+  "/paneltwo.webp",
+  "/streetlightsolar.png",
+  "/solarpanel.avif",
+  "/solarproductbg.jpg",
+  "/solarbg.png",
+];
 const page = () => {
   const searchParams = useSearchParams();
   const activeParam = searchParams.get("active");
 
-  // Initialize with query param if available
   const [activeIndex, setActiveIndex] = useState(
     activeParam ? parseInt(activeParam) : 0
   );
@@ -34,13 +41,12 @@ const page = () => {
     return Object.keys(firstModel).filter((key) => key !== "model");
   };
 
-  // Update active index when query param changes
   useEffect(() => {
     if (activeParam) {
       const index = parseInt(activeParam);
       if (!isNaN(index) && index >= 0 && index < solarProducts.length) {
         setActiveIndex(index);
-        // Scroll to products section
+
         if (productsRef.current) {
           setTimeout(() => {
             productsRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -141,10 +147,12 @@ const page = () => {
     <div className="flex flex-col items-center w-full h-full text-white">
       <ServiceHero
         badge="SOLAR PRODUCTS"
-        title="CWORTH ENERGY SOLAR"
-        description="Discover premium CWorth Energy solar products and systems. High-performance panels, inverters, and battery storage engineered for Nigerian conditions."
-        btnText="Contact Us"
+        title="CWORTH SOLAR PRODUCTS"
+        description="High-performance panels, inverters, and battery storage built for Nigeria. Get reliable power without equipment failure or compatibility issues."
+        btnText="Explore Products"
         handleScrollClick={handleScrollClick}
+        bgType="swiper"
+        swiperImages={solarProductImages}
       />
       {/* products */}
       <SolarProductCatalogue

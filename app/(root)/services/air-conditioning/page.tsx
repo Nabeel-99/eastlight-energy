@@ -107,12 +107,12 @@ const page = () => {
       <ServiceHero
         badge="AIR CONDITIONING"
         title="AC SERVICES"
-        description="Professional air conditioning installation, maintenance, and repair
-            services. Stay cool and comfortable year-round with our expert
-            solutions."
+        description="We install, service, and repair air conditioners to keep your space cool, efficient, and comfortable year-round."
+        bgType="image"
+        bgImage="/acservicesbg.png"
       />
 
-      <section className="flex flex-col gap-6 px-4 md:px-10  w-full">
+      <section className="flex flex-col gap-6 px-4 pt-10 md:px-10  w-full">
         <div className="grid lg:grid-cols-2 gap-10 2xl:container 2xl:mx-auto">
           {acDetails.map((detail, index) => (
             <div

@@ -6,11 +6,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
+
 export const POST = async (req: NextRequest) => {
   try {
     const formData = await req.json();
 
-    //  contact email
+    // Contact email
     await resend.emails.send({
       from: "EastLight Energy <noreply@eastlightenergy.com>",
       to: process.env.EMAIL!,
@@ -19,7 +20,7 @@ export const POST = async (req: NextRequest) => {
       react: SolarProductEmail(formData),
     });
 
-    // confirmation Email
+    // Confirmation Email
     await resend.emails.send({
       from: "EastLight Energy <noreply@eastlightenergy.com>",
       to: formData.email,
@@ -30,19 +31,34 @@ export const POST = async (req: NextRequest) => {
       }),
     });
 
+    const isFromDetailsPage = !!formData.primary_product;
+
+    const primaryProductColumn = isFromDetailsPage
+      ? `${formData.primary_category} - ${formData.primary_product}`
+      : "N/A";
+
+    const quantityColumn = `'${formData.quantity}` || "N/A";
+
+    const additionalProductsColumn =
+      formData.additional_products && formData.additional_products.length > 0
+        ? formData.additional_products.join(", ")
+        : "N/A";
+
     await appendToSheet("Solar Products Form", [
       timestamp,
       formData.fullname,
       formData.email,
       `'${formData.phone}`,
-      formData.product_interest.join(", "),
       formData.property,
-      formData.message,
-      `${formData.quantity}` || "N/A",
+      primaryProductColumn,
+      quantityColumn,
+      additionalProductsColumn,
+      formData.message || "N/A",
     ]);
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
+    console.error("Error:", error);
     return NextResponse.json(
       { message: "Something went wrong" },
       { status: 500 }

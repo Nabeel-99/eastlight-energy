@@ -73,7 +73,8 @@ const page = () => {
       <ServiceHero
         badge="FLIGHT BOOKING"
         title="Plan Your Trip"
-        description="Book flights to your dream destinations with ease. Enjoy competitive rates and excellent customer service."
+        description="Book flights to your dream destinations with ease. 
+Enjoy competitive rates and excellent customer service."
         bgType="custom"
       />
       <section id="form-section" className="py-20 overflow-x-hidden px-4">
