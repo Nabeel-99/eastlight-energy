@@ -74,7 +74,7 @@ const Footer = () => {
             powering homes & businesses.
           </p>
           <div className="flex flex-col gap-6">
-            <Link href={"/affiliate-program"} className="max-lg:w-full">
+            <Link href={"/contact"} className="max-lg:w-full">
               {" "}
               <Button className="flex bg-white/90 text-black hover:ring-yellow-500 hover:bg-white  hover:shadow-md hover:shadow-white max-lg:w-full items-center md:p-3 md:px-8  md:text-base md:rounded-full  gap-2">
                 Contact Us
