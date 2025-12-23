@@ -47,6 +47,12 @@ const GetStarted = () => {
               Book Solar Installation
             </Button>
           </Link>
+          <Link href={"/energy-calculator"} className="max-lg:w-full">
+            {" "}
+            <Button className="flex bg-[#24a090] text-white hover:bg-teal-500 hover:ring-teal-500 hover:-translate-y-1 hover:shadow-md hover:shadow-yellow-500  md:p-6 md:px-8 md:text-base max-lg:w-full md:rounded-full  items-center  gap-2">
+              Energy Calculator
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

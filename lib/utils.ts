@@ -239,3 +239,76 @@ export const specLabels = {
   pvFrame: "PV Frame",
   pvCable: "PV Cables",
 };
+
+export interface Appliance {
+  id: string;
+  label: string;
+  wattage: number;
+}
+
+export type NigeriaSolarMap = Record<string, number>;
+
+export const appliances: Appliance[] = [
+  { id: "tv_32", label: 'TV - 32"', wattage: 100 },
+  { id: "tv_43", label: 'TV - 43"', wattage: 345 },
+  { id: "tv_50", label: 'TV - 50"', wattage: 200 },
+  { id: "tv_55", label: 'TV - 55"', wattage: 220 },
+  { id: "tv_60", label: 'TV - 60"', wattage: 250 },
+  { id: "tv_65", label: 'TV - 65"', wattage: 300 },
+  { id: "tv_75", label: 'TV - 75"', wattage: 600 },
+  { id: "tv_85", label: 'TV - 85"', wattage: 750 },
+  { id: "tv_105", label: 'TV - 105"', wattage: 500 },
+  { id: "fan", label: "Fan", wattage: 100 },
+  { id: "bulb", label: "Bulb", wattage: 20 },
+  { id: "sound_system", label: "Sound System", wattage: 100 },
+  { id: "ac_1hp_inv", label: "1HP Inverter AC", wattage: 750 },
+  { id: "ac_1.5hp_inv", label: "1.5HP Inverter AC", wattage: 1200 },
+  { id: "ac_2hp_inv", label: "2HP Inverter AC", wattage: 1600 },
+  { id: "fridge_table", label: "Table Fridge", wattage: 200 },
+  { id: "fridge_kitchen", label: "Kitchen Fridge", wattage: 300 },
+  { id: "freezer", label: "Freezer", wattage: 200 },
+  { id: "washing_machine", label: "Washing Machine", wattage: 150 },
+  { id: "air_conditioner", label: "Air Conditioner", wattage: 1200 },
+  { id: "pumping_machine", label: "Pumping Machine", wattage: 1200 },
+  { id: "microwave", label: "Microwave", wattage: 1000 },
+  { id: "electric_kettle", label: "Electric Kettle", wattage: 1000 },
+];
+export const nigeriaSolarMap: NigeriaSolarMap = {
+  abia: 4.3,
+  adamawa: 6.0,
+  "akwa-ibom": 4.0,
+  anambra: 4.4,
+  bauchi: 5.9,
+  bayelsa: 3.7,
+  benue: 5.3,
+  borno: 6.7,
+  "cross-river": 4.2,
+  delta: 3.8,
+  ebonyi: 4.6,
+  edo: 4.4,
+  ekiti: 4.8,
+  enugu: 4.3,
+  gombe: 5.9,
+  imo: 4.3,
+  jigawa: 6.4,
+  kaduna: 5.8,
+  kano: 6.3,
+  katsina: 6.4,
+  kebbi: 6.4,
+  kogi: 5.2,
+  kwara: 5.3,
+  lagos: 4.1,
+  nasarawa: 5.5,
+  niger: 5.8,
+  ogun: 4.6,
+  ondo: 4.7,
+  osun: 4.8,
+  oyo: 5.0,
+  plateau: 5.7,
+  rivers: 3.8,
+  sokoto: 6.5,
+  taraba: 5.6,
+  yobe: 6.6,
+  zamfara: 6.4,
+  fct: 5.5,
+};

@@ -4,3 +4,18 @@ export interface SelectedHotel {
   heading: string;
   subheading: string;
 }
+
+export interface FormAppliance {
+  id: number;
+  applianceId: string;
+  wattage: number;
+  units: number;
+}
+export interface FormData {
+  propertyType: string;
+  systemType: string;
+  batteryType: string;
+  appliances: FormAppliance[];
+  backupHours: string;
+  location: string;
+}

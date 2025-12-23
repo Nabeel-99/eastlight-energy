@@ -190,6 +190,14 @@ const Footer = () => {
                     Affiliate Program
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/energy-calculator"
+                    className="hover:text-teal-400 transition-colors duration-300 ease-in-out"
+                  >
+                    Energy Calculator
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
