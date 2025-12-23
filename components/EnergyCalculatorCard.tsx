@@ -351,7 +351,6 @@ const EnergyCalculatorCard = ({
                     id="backup-hours"
                     type="number"
                     min="0"
-                    step="0.5"
                     placeholder="Enter backup hours (e.g., 5, 12, 24)"
                     value={formData.backupHours}
                     onChange={(e) =>
