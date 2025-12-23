@@ -100,13 +100,9 @@ const EnergyCalculator = () => {
       let solarValue = 0;
 
       if (formData.batteryType === "dry-cell") {
-        // Logic for Dry Cell: (Battery * 2.5) / Regional Constant
-        // North Constant = 8.9 | South Constant = 7.65
         const regionalDivider = isNorth ? 8.9 : 7.65;
         solarValue = (batteryCapacity * 2.5) / regionalDivider;
       } else {
-        // Logic for Lithium: (Battery * 2.5) / Lithium Constant
-        // Lithium Constant = 6.25 (Used for Ogun test)
         const lithiumDivider = 6.25;
         solarValue = (batteryCapacity * 2.5) / lithiumDivider;
       }
