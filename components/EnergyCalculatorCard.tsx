@@ -237,87 +237,100 @@ const EnergyCalculatorCard = ({
                 </p>
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-12 gap-2 text-sm font-medium text-gray-800">
-                    <div className="col-span-5">Appliance</div>
-                    <div className="col-span-3">Wattage (W)</div>
-                    <div className="col-span-2">Unit(s)</div>
-                    <div className="col-span-2">Total (W)</div>
+                  <div className="overflow-x-auto">
+                    <div className="min-w-[600px]">
+                      {" "}
+                      <div className="grid grid-cols-12 gap-2 text-sm font-medium text-gray-800 pb-2 border-b border-gray-200">
+                        <div className="col-span-5">Appliance</div>
+                        <div className="col-span-3">Wattage (W)</div>
+                        <div className="col-span-2">Unit(s)</div>
+                        <div className="col-span-2">Total (W)</div>
+                      </div>
+                      {formData.appliances.map((appliance, index) => (
+                        <div
+                          key={appliance.id}
+                          className="grid grid-cols-12 gap-2 items-center py-3 border-b border-gray-100"
+                        >
+                          <div className="col-span-5">
+                            <Select
+                              value={appliance.applianceId}
+                              onValueChange={(value) =>
+                                handleApplianceSelect(appliance.id, value)
+                              }
+                            >
+                              <SelectTrigger className="border border-black/10 focus-visible:border-black/10 focus-visible:ring-black/10">
+                                <SelectValue placeholder="Select appliance" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {appliances.map((app) => (
+                                  <SelectItem
+                                    key={app.id}
+                                    value={app.id}
+                                    className="focus:bg-black/10 focus:text-black/80"
+                                  >
+                                    {app.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+
+                          <div className="col-span-3">
+                            <Input
+                              type="number"
+                              value={appliance.wattage}
+                              onChange={(e) =>
+                                updateAppliance(
+                                  appliance.id,
+                                  "wattage",
+                                  Number(e.target.value)
+                                )
+                              }
+                              className="text-center border border-black/10 focus-visible:border-black/10 focus-visible:ring-black/10"
+                            />
+                          </div>
+
+                          <div className="col-span-2">
+                            <Input
+                              type="number"
+                              min="1"
+                              value={appliance.units}
+                              onChange={(e) =>
+                                updateAppliance(
+                                  appliance.id,
+                                  "units",
+                                  Number(e.target.value)
+                                )
+                              }
+                              className="text-center border border-black/10 focus-visible:border-black/10 focus-visible:ring-black/10"
+                            />
+                          </div>
+
+                          <div className="col-span-1 text-center font-medium text-gray-900">
+                            {appliance.wattage * appliance.units}
+                          </div>
+
+                          <div className="col-span-1 flex justify-center">
+                            {formData.appliances.length > 1 && (
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => removeAppliance(appliance.id)}
+                                className="hover:bg-red-50 hover:text-red-600"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  {formData.appliances.map((appliance, index) => (
-                    <div
-                      key={appliance.id}
-                      className="grid grid-cols-12 gap-2 items-center"
-                    >
-                      <div className="col-span-5">
-                        <Select
-                          value={appliance.applianceId}
-                          onValueChange={(value) =>
-                            handleApplianceSelect(appliance.id, value)
-                          }
-                        >
-                          <SelectTrigger className="border border-black/10 focus-visible:border-black/10 focus-visible:ring-black/10">
-                            <SelectValue placeholder="Select appliance" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {appliances.map((app) => (
-                              <SelectItem
-                                key={app.id}
-                                value={app.id}
-                                className=" focus:bg-black/10 focus:text-black/80"
-                              >
-                                {app.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="col-span-3">
-                        <Input
-                          type="number"
-                          value={appliance.wattage}
-                          onChange={(e) =>
-                            updateAppliance(
-                              appliance.id,
-                              "wattage",
-                              Number(e.target.value)
-                            )
-                          }
-                          className="text-center border border-black/10 focus-visible:border-black/10 focus-visible:ring-black/10 "
-                        />
-                      </div>
-                      <div className="col-span-2">
-                        <Input
-                          type="number"
-                          min="1"
-                          value={appliance.units}
-                          onChange={(e) =>
-                            updateAppliance(
-                              appliance.id,
-                              "units",
-                              Number(e.target.value)
-                            )
-                          }
-                          className="text-center border border-black/10 focus-visible:border-black/10 focus-visible:ring-black/10 "
-                        />
-                      </div>
-                      <div className="col-span-1 text-center font-medium">
-                        {appliance.wattage * appliance.units}
-                      </div>
-                      <div className="col-span-1">
-                        {formData.appliances.length > 1 && (
-                          <Button
-                            type="button"
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => removeAppliance(appliance.id)}
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                  <p className="text-xs text-gray-500 text-center md:hidden">
+                    ← Scroll horizontally to see all columns →
+                  </p>
                 </div>
 
                 <Button
