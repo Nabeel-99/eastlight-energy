@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
-import { ChevronLeft, ChevronRight, Calculator, Building2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 const Hero = () => {
@@ -263,8 +263,12 @@ const Hero = () => {
             <div className="grid lg:grid-cols-2 gap-8 h-full items-center px-8 lg:px-14 xl:px-20 2xl:container 2xl:mx-auto py-20 lg:py-20">
               {/* Left Content */}
               <div className="flex flex-col justify-center items-center lg:items-start h-full gap-4 z-20 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 calc-badge">
-                  <h2 className="text-sm lg:text-base px-4 py-2 bg-yellow-400/20 backdrop-blur-sm rounded-full text-yellow-400 font-semibold border border-yellow-400/30">
+                <div className="flex justify-center calc-badge">
+                  <h2 className="text-base relative shine-border px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
+                    <ShineBorder
+                      duration={30}
+                      shineColor={["#2DD4BF", "#DC2626"]}
+                    />
                     ENERGY CALCULATOR
                   </h2>
                 </div>
@@ -282,12 +286,12 @@ const Hero = () => {
 
                 <div className="flex flex-col gap-4 mt-4 w-full lg:w-auto calc-button">
                   <Link
-                    href="/energy-calculator"
-                    className="w-full lg:max-w-md"
+                    href={"/energy-calculator"}
+                    className="max-lg:w-full mx-auto"
                   >
-                    <Button className="w-full flex bg-yellow-400 py-4 px-6 text-black font-bold hover:bg-yellow-500 hover:ring-4 hover:ring-yellow-400/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-500/50 rounded-xl items-center justify-center gap-3 transition-all duration-300">
-                      <Calculator className="w-6 h-6" />
+                    <Button className="flex bg-white/90 text-black hover:ring-yellow-500 hover:bg-white hover:-translate-y-1 hover:shadow-md hover:shadow-white max-lg:w-full items-center md:p-4 md:px-8 max-lg:max-w-sm mx-auto md:text-base md:rounded-full gap-2">
                       Try It Now
+                      <ArrowRight />
                     </Button>
                   </Link>
                 </div>
@@ -323,11 +327,14 @@ const Hero = () => {
             <div className="absolute inset-0 w-full rounded-b-3xl h-full bg-gradient-to-b from-black/70 via-black/60 to-black/80 z-10" />
 
             <div className="relative flex flex-col gap-4 items-center justify-center text-center h-full w-full z-30 px-8 lg:px-14 xl:px-20 2xl:container 2xl:mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/20 backdrop-blur-sm rounded-full border border-yellow-400/30 office-badge">
-                <Building2 className="w-5 h-5 text-yellow-400" />
-                <span className="text-sm lg:text-base text-yellow-400 font-semibold">
+              <div className="flex justify-center office-badge">
+                <h2 className="text-base relative shine-border px-4 py-1 bg-black/80 shadow-md rounded-full text-center text-gray-300">
+                  <ShineBorder
+                    duration={30}
+                    shineColor={["#2DD4BF", "#DC2626"]}
+                  />
                   MEET OUR TEAM
-                </span>
+                </h2>
               </div>
 
               <h2 className="office-title text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight max-w-4xl">
@@ -365,7 +372,7 @@ const Hero = () => {
         className="hidden lg:block absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 bg-white/10 backdrop-blur-md hover:bg-white/20 text-black p-3 rounded-full transition-all duration-300 group"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
+        <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
       </button>
 
       <button
@@ -373,7 +380,7 @@ const Hero = () => {
         className="hidden lg:block absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 bg-white/10 backdrop-blur-md hover:bg-white/20 text-black p-3 rounded-full transition-all duration-300 group"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+        <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
       </button>
     </section>
   );
