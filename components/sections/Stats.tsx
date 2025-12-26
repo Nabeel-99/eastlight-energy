@@ -28,7 +28,7 @@ const Stats = () => {
       icon: <Star className="w-6 h-6" />,
     },
     {
-      number: 10,
+      number: 4,
       suffix: "+",
       label: "Years Experience",
       icon: <Award className="w-6 h-6" />,

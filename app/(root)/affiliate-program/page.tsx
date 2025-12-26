@@ -5,7 +5,6 @@ import {
   CheckCircle,
   Megaphone,
   Network,
-  Sun,
   TrendingUp,
   UserPlus,
   Zap,
@@ -128,18 +127,21 @@ const page = () => {
 
   const items = [
     {
-      title: "Access to Products",
-      description: "Promote premium CWorth Energy solar solutions",
-      icon: <Sun className="size-6" />,
+      title: "Field Marketing",
+      description:
+        "Earn ₦10,000 daily in Lagos, Abuja, PHC, Kano, Ibadan, Asaba, Uyo by generating 20 viable leads through flyer distribution",
+      icon: <UserPlus className="size-6" />,
     },
     {
-      title: "Earn Commissions",
-      description: "Receive rewards for every successful referral",
-      icon: <TrendingUp className="size-6" />,
+      title: "Micro-Blogging",
+      description:
+        "Earn ₦15,000 weekly as a micro-blogger advertising our products and services",
+      icon: <Megaphone className="size-6" />,
     },
     {
-      title: "Partner Network",
-      description: "Connect with a growing renewable energy community",
+      title: "Banner Hosting",
+      description:
+        "Host a banner in your gate monthly as a landlord for ₦30,000",
       icon: <Network className="size-6" />,
     },
   ];
@@ -326,9 +328,10 @@ const page = () => {
             Join Our Network
           </h2>
           <p className="text-base form-desc text-gray-300">
-            Complete the application form to start your journey as an Eastlight
-            Energy affiliate. Our team will review your application and provide
-            you with everything needed to succeed.
+            Become an Eastlight Energy affiliate and earn consistent income
+            promoting sustainable energy solutions. We offer flexible
+            opportunities for marketers, content creators, and property owners
+            across Nigeria.
           </p>
           <div className="flex flex-col gap-8 form-items">
             {items.map((item, index) => (
